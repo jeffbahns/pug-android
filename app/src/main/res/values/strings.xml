@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Puggy</string>
+    <string name="title_activity_home">Home</string>
+    <string name="my_games">My Games</string>
+    <string name="new_game">New Game</string>
+    <string name="title_activity_profile">Profile</string>
+    <string name="title_activity_settings">Settings</string>
+</resources>

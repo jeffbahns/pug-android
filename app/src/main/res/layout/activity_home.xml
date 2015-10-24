@@ -1,0 +1,42 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <Button
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/my_games"
+        android:textSize="13dp"
+        android:foreground="#5e3b86ef"
+        android:textColor="#010000" />
+    <Button
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/new_game"
+        android:textSize="13dp"
+        android:foreground="#5e3b86ef"
+        android:textColor="#010000" />
+    <Button
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_profile"
+        android:onClick="openSettings"
+        android:textSize="13dp"
+        android:foreground="#5e3b86ef"
+        android:textColor="#010000" />
+    <Button
+        android:layout_gravity="bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/title_activity_settings"
+        android:onClick="openSettings"
+        android:textSize="13dp"
+        android:foreground="#5e3b86ef"
+        android:textColor="#010000" />
+
+</LinearLayout>
