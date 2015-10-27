@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title_activity_profile"
-        android:onClick="openSettings"
+        android:onClick="openProfile"
         android:textSize="13dp"
         android:foreground="#5e3b86ef"
         android:textColor="#010000" />
