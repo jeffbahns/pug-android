@@ -3,22 +3,15 @@ package com.squad.pug;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.drive.Drive;
-import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -55,17 +48,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         } else {
-
+            mMap.setMyLocationEnabled(true);
         }
 
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng SonomaState = new LatLng(38.3393866, -122.6763699);
+        mMap.addMarker(new MarkerOptions().position(SonomaState).title("Marker in Sonoma State"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(SonomaState));
     }
 
    /* public void gotoCourtsList(View view){
         Intent intent = new Intent(this, PutCourtListClassHere)
     }*/
+    public void openProfile(View view) {
+       // build the intent
+       Intent intent = new Intent(this, ProfileActivity.class);
+       startActivity(intent);
+   }
 
+    public void openSettings(View view) {
+        // build the intent
+        Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+
+    public void openGames(View view) {
+        // build the intent
+        Intent intent = new Intent(this, GamesActivity.class);
+        startActivity(intent);
+    }
 }

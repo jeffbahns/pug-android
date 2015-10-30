@@ -6,26 +6,17 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.location.Location;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
-import com.google.android.gms.drive.Drive;
-import com.google.android.gms.location.FusedLocationProviderApi;
 import com.google.android.gms.location.LocationServices;
-
-
-import android.support.v4.app.FragmentActivity;
-import android.widget.TextView;
 
 
 public class Launcher extends AppCompatActivity
@@ -75,20 +66,28 @@ public class Launcher extends AppCompatActivity
 
         // Request Last Location
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        if (mLastLocation != null){
+        /*
+      //  if (mLastLocation != null){
             mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
             mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
             Intent intent = new Intent(this, MapsActivity.class);
             startActivity(intent);
+        */
+        mLatitudeText.setText(String.valueOf(-122.084095));
+        mLongitudeText.setText(String.valueOf(37.422006));
+        //mLatitudeText.setText(String.valueOf(mLastLocation.getLatitude()));
+        //mLongitudeText.setText(String.valueOf(mLastLocation.getLongitude()));
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
 
-            // Do something to notify user to enable location services in their device settings
-        }  /*else if (mLastLocation == null) {
-            Intent intentnull = new Intent(this, DisplayConnectedToGoogle.class);
+       /*     // Do something to notify user to enable location services in their device settings
+        }  else if (mLastLocation == null) {
+            Intent intentnull = new Intent(this, ProfileActivity    .class);
             String message = "Please enable your location services in settings.";
             intentnull.putExtra(EXTRA_MSG, message);
             startActivity(intentnull);
-        }*/
-/*
+        }
+
         Intent intent = new Intent(this, MapsActivity.class);
         String message = "You have connected to Google!";
         intent.putExtra(EXTRA_MSG, message);

@@ -1,24 +1,23 @@
 package com.squad.pug;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
-public class ProfileActivity extends AppCompatActivity {
+public class GamesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_games);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_profile, menu);
-        return true;
-    }
+    //@Override
+    //public boolean onCreateOptionsMenu(Menu menu) {
+    //    // Inflate the menu; this adds items to the action bar if it is present.
+    //    getMenuInflater().inflate(R.menu.menu_games, menu);
+    //    return true;
+    //}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -28,7 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_profile) {
+        if (id == R.id.action_games) {
             return true;
         }
 
