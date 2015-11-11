@@ -77,4 +77,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = new Intent(this, GamesActivity.class);
         startActivity(intent);
     }
+
+    public void openCreateGame(View view) {
+        Intent intent = new Intent(this, CreateGameActivity.class);
+        startActivity(intent);
+    }
 }
