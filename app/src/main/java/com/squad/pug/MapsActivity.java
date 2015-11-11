@@ -37,7 +37,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     public ArrayList<Geometry> CourtsList = new ArrayList<Geometry>();
     //    private JSONObject CourtsData;
-   // private GetCourtsRESTAdapter RESTAdapter = new GetCourtsRESTAdapter();
+    // private GetCourtsRESTAdapter RESTAdapter = new GetCourtsRESTAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -100,7 +100,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
-<<<<<<< HEAD
     public void pickCourtSearchLocation(View view) {
         // Build a place builder
         int PLACE_PICKER_REQUEST = 1;
@@ -114,89 +113,76 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 
-/**
- * Created by Trevor on 11/5/2015.
- */
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
 
 
-
-
-
-
-        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
-            if (requestCode == 1) {
-                if (resultCode == RESULT_OK) {
-
-
-                    Gson gson = new GsonBuilder()
-                            .create();
+                Gson gson = new GsonBuilder()
+                        .create();
 
                 /*    Retrofit RESTAdapter = new Retrofit.Builder()
                             .baseUrl(AppDefines.COURTS_BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
                             .build();   */
 
-                    // Set up picked location, and move camera accordingly
-                    Place place = PlacePicker.getPlace(data, this);
-                    LatLng placeLatLng = place.getLatLng();
-                    Location1 loc = new Location1(placeLatLng);
-                    //
-                    Geometry location = new Geometry(loc);
-                    final String strlocation = place.getLatLng().toString();
-                    String toastMsg = String.format("Place: %s", place.getName());
-                    Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 14));
+                // Set up picked location, and move camera accordingly
+                Place place = PlacePicker.getPlace(data, this);
+                LatLng placeLatLng = place.getLatLng();
+                Location1 loc = new Location1(placeLatLng);
+                //
+                Geometry location = new Geometry(loc);
+                final String strlocation = place.getLatLng().toString();
+                String toastMsg = String.format("Place: %s", place.getName());
+                Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 14));
 
-                    // Convert location to string and pass to maps http request
-                    //         IGetCourtsApi mApi = RESTAdapter.create(IGetCourtsApi.class);
+                // Convert location to string and pass to maps http request
+                //         IGetCourtsApi mApi = RESTAdapter.create(IGetCourtsApi.class);
 
-                    // Temps / Test values
-                    String rad = "500";
-                    String currentSearchTerm = "basketball court";
-
-
-                    // Call to Search using current location as a string
-
-                    RESTAPIClient.getCourtsProvider()
-                            .GetCourts(strlocation, currentSearchTerm, rad, AppDefines.GOOGLE_API)
-                            .subscribeOn(Schedulers.newThread())
-                            .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe(new Subscriber<ArrayList<Geometry>>() {
-                                           @Override
-                                           public void onCompleted() {
-
-                                           }
-
-                                           @Override
-                                           public void onError(Throwable e) {
-
-                                           }
-
-                                           @Override
-                                           public void onNext(ArrayList<Geometry> geometries) {
-                                               
-
-                                           }
-                                       });
-
-                                    Toast.makeText(getApplicationContext(), "Fetching courts...",
-                                            Toast.LENGTH_LONG).show();
+                // Temps / Test values
+                String rad = "500";
+                String currentSearchTerm = "basketball court";
 
 
+                // Call to Search using current location as a string
 
-                }
+                RESTAPIClient.getCourtsProvider()
+                        .GetCourts(strlocation, currentSearchTerm, rad, AppDefines.GOOGLE_API)
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(new Subscriber<ArrayList<Geometry>>() {
+                            @Override
+                            public void onCompleted() {
+
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+
+                            }
+
+                            @Override
+                            public void onNext(ArrayList<Geometry> geometries) {
+
+
+                            }
+                        });
+
+                Toast.makeText(getApplicationContext(), "Fetching courts...",
+                        Toast.LENGTH_LONG).show();
+
+
             }
         }
-=======
+    }
+
     public void openCreateGame(View view) {
         Intent intent = new Intent(this, CreateGameActivity.class);
         startActivity(intent);
     }
->>>>>>> refs/remotes/origin/create_game
 }
 
 

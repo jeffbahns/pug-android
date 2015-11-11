@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PUG.iml" filepath="$PROJECT_DIR$/PUG.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pug.iml" filepath="$PROJECT_DIR$/pug.iml" />
     </modules>
   </component>
 </project>
