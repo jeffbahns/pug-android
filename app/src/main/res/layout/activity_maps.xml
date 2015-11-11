@@ -42,6 +42,7 @@
         android:layout_centerHorizontal="true" />
 
     <Button
+<<<<<<< HEAD
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Set Search Location"
@@ -51,6 +52,16 @@
         android:clickable="true"
         android:onClick="pickCourtSearchLocation"
         android:textSize="10dp" />
+=======
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Game"
+        android:onClick="openCreateGame"
+        android:id="@+id/button4"
+        android:layout_above="@+id/button3"
+        android:layout_centerHorizontal="true" />
+>>>>>>> refs/remotes/origin/create_game
 
 
 </RelativeLayout>

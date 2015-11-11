@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_row="3"
+    android:layout_column="0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1">
+
+
+    <TextView
+        android:hint="Enter Date"
+        android:layout_width="187dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/setDate"
+        android:layout_marginTop="47dp"
+        android:layout_below="@+id/setTime"
+        android:layout_alignStart="@+id/setTime"
+        android:layout_weight="0.09"
+        android:textSize="24dp" />
+
+    <TextView
+        android:hint="Enter Time"
+        android:layout_width="189dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/setTime"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_row="5"
+        android:layout_column="0"
+        android:layout_weight="0.07"
+        android:textSize="24dp" />
+
+    <EditText
+        android:hint="Enter players needed"
+        android:layout_width="266dp"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:id="@+id/setNumPlayers"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:textSize="24dp" />
+
+    <EditText
+        android:hint="Enter Location"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/setLocation"
+        android:textSize="24dp" />
+
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SUBMIT"
+        android:id="@+id/submit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/setTime"
+        android:layout_row="0"
+        android:layout_column="2" />
+
+</LinearLayout>

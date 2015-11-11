@@ -100,6 +100,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         startActivity(intent);
     }
 
+<<<<<<< HEAD
     public void pickCourtSearchLocation(View view) {
         // Build a place builder
         int PLACE_PICKER_REQUEST = 1;
@@ -190,6 +191,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
             }
         }
+=======
+    public void openCreateGame(View view) {
+        Intent intent = new Intent(this, CreateGameActivity.class);
+        startActivity(intent);
+    }
+>>>>>>> refs/remotes/origin/create_game
 }
 
 

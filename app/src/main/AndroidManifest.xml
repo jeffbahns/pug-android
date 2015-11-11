@@ -16,10 +16,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-
         <activity
             android:name=".ProfileActivity"
-            android:label="@string/title_activity_profile">
+            android:label="@string/title_activity_profile" >
         </activity>
         <activity
             android:name=".SettingsActivity"
@@ -51,10 +50,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".GamesActivity"
-            android:label="@string/title_activity_games">
+            android:label="@string/title_activity_games" >
+        </activity>
+        <activity
+            android:name=".CreateGameActivity"
+            android:label="@string/title_activity_create_game" >
         </activity>
     </application>
 

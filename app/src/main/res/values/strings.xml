@@ -9,4 +9,5 @@
     <string name="title_activity_launcher">Pug</string>
     <string name="title_activity_map">Map</string>
     <string name="title_activity_games">Games</string>
+    <string name="title_activity_create_game">Create Game</string>
 </resources>
