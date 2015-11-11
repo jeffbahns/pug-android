@@ -17,6 +17,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.places.Places;
 
 
 public class Launcher extends AppCompatActivity
@@ -38,19 +39,15 @@ public class Launcher extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-     /*   FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-*/
+
+
+        // Build following Google APIs: Location Servcices; Places[GeoDataApi & PlaceDetectionApi]
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
                 .addApiIfAvailable(LocationServices.API)
+                .addApiIfAvailable(Places.GEO_DATA_API)
+                .addApiIfAvailable(Places.PLACE_DETECTION_API)
                 .build();
     }
 
@@ -88,10 +85,12 @@ public class Launcher extends AppCompatActivity
             startActivity(intentnull);
         }
 
+
         Intent intent = new Intent(this, MapsActivity.class);
         String message = "You have connected to Google!";
         intent.putExtra(EXTRA_MSG, message);
         startActivity(intent);*/
+
     }
 
     @Override

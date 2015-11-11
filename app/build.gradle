@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+//apply pluign: 'android-apt'
 
 android {
     compileSdkVersion 23
@@ -6,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.squad.pug"
-        minSdkVersion 21
+        minSdkVersion 22
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -20,9 +21,28 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    repositories { mavenCentral() }
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.0'
+
+    // Google Play API
     compile 'com.google.android.gms:play-services:8.1.0'
+
     compile 'com.android.support:design:23.1.0'
+
+    // Gson dependency
+    compile 'com.google.code.gson:gson:2.3.1'
+
+    // Retrofit dependencies
+    compile 'com.squareup.retrofit:retrofit:2.0.0-beta1'
+    compile 'com.squareup.retrofit:converter-gson:2.0.0-beta1'
+    compile 'com.squareup.retrofit:adapter-rxjava:2.0.0-beta1'
+
+    // rxAndroid dependencies
+    compile 'io.reactivex:rxandroid:1.0.1'
+    compile 'io.reactivex:rxjava:1.0.14'
+
+
+
 }
