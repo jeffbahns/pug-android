@@ -1,7 +1,6 @@
 package com.squad.pug.models;
 
 import com.google.gson.annotations.SerializedName;
-import com.squad.pug.Geometry.Geometry;
 
 import java.util.ArrayList;
 
@@ -10,13 +9,5 @@ import java.util.ArrayList;
  */
 public class SearchResultModel {
     @SerializedName("results")
-    ArrayList<Geometry> searchResults;
-
-    public ArrayList<Geometry> getSearchResults() {
-        return searchResults;
-    }
-
-    public void setSearchResults(ArrayList<Geometry> searchResults) {
-        this.searchResults = searchResults;
-    }
+    public ArrayList<SearchItemModel> courts;
 }

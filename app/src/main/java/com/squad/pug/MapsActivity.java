@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -21,8 +22,10 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.squad.pug.Geometry.Geometry;
-import com.squad.pug.Location.Location1;
+import com.squad.pug.models.GeometryData;
+import com.squad.pug.models.LocationData;
+import com.squad.pug.models.SearchItemModel;
+import com.squad.pug.models.SearchResultModel;
 import com.squad.pug.services.RESTAPIClient;
 
 import java.util.ArrayList;
@@ -35,7 +38,7 @@ import rx.android.schedulers.AndroidSchedulers;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    public ArrayList<Geometry> CourtsList = new ArrayList<Geometry>();
+  //  public SearchResultModel CourtSearchResults;
     //    private JSONObject CourtsData;
     // private GetCourtsRESTAdapter RESTAdapter = new GetCourtsRESTAdapter();
 
@@ -135,10 +138,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Set up picked location, and move camera accordingly
                 Place place = PlacePicker.getPlace(data, this);
                 LatLng placeLatLng = place.getLatLng();
-                Location1 loc = new Location1(placeLatLng);
-                //
-                Geometry location = new Geometry(loc);
-                final String strlocation = place.getLatLng().toString();
+                LocationData loc = new LocationData(placeLatLng);
+                String strlocationlat = loc.getLat().toString();
+                String strlocationlong = loc.getLng().toString();
+                String strlocation = strlocationlat + "," + strlocationlong;
                 String toastMsg = String.format("Place: %s", place.getName());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 14));
@@ -146,9 +149,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Convert location to string and pass to maps http request
                 //         IGetCourtsApi mApi = RESTAdapter.create(IGetCourtsApi.class);
 
-                // Temps / Test values
-                String rad = "500";
-                String currentSearchTerm = "basketball court";
+                // Temps / Test values (Distance in meters for radius)
+                String rad = "2000";
+                String currentSearchTerm = "court";
 
 
                 // Call to Search using current location as a string
@@ -157,26 +160,41 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                         .GetCourts(strlocation, currentSearchTerm, rad, AppDefines.GOOGLE_API)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Subscriber<ArrayList<Geometry>>() {
+                        .subscribe(new Subscriber<SearchResultModel>() {
                             @Override
                             public void onCompleted() {
 
+
+
                             }
 
                             @Override
-                            public void onError(Throwable e) {
-
-                            }
+                            public void onError(Throwable e) { int i = 0; }
 
                             @Override
-                            public void onNext(ArrayList<Geometry> geometries) {
+                            public void onNext(SearchResultModel courtsSearchResults) {
+
+                                int index = 0;
+                                // Testing to see if I have data
+                                String testing = courtsSearchResults.courts.get(1).id;
+
+                                Toast.makeText(getApplicationContext(), "TEST TEST",
+                                        Toast.LENGTH_LONG).show();
+                                Log.v("***********************", "onNext called.");
 
 
+                       /*         while(courtsSearchResults.courts.get(index) == null) {
+                                    mMap.addMarker(new MarkerOptions()
+                                    .position(courtsSearchResults.courts.get(index).getCourtLatLng())
+                                    .draggable(false));
+
+                                }
+                                */
                             }
                         });
-
-                Toast.makeText(getApplicationContext(), "Fetching courts...",
-                        Toast.LENGTH_LONG).show();
+//                Log.d("Test**", strlocation);
+//                Toast.makeText(getApplicationContext(), strlocation,
+//                       Toast.LENGTH_LONG).show();
 
 
             }

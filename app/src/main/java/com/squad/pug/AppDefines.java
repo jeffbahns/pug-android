@@ -6,6 +6,6 @@ package com.squad.pug;
 public class AppDefines {
 
     public static final String COURTS_BASE_URL = "https://maps.googleapis.com";
-    public static final String GOOGLE_API = "AIzaSyC_RlTZvJYYwCMGOWHD3PHnkU3zFxmsRzE";
+    public static final String GOOGLE_API = "AIzaSyCtPXuVo1-lb_bH_3y7_s2LExqVW5rfIhk";
 
 }

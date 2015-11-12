@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.squad.pug"
-        minSdkVersion 22
+        minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -43,6 +43,9 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.0.1'
     compile 'io.reactivex:rxjava:1.0.14'
 
+    // Parceler
+   // compile 'org.parceler:parceler-api:1.0.4'
+ //   apt 'org.parceler:parceler:1.0.4'
 
 
 }
