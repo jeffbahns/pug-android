@@ -17,11 +17,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".ProfileActivity"
+            android:name=".Activities.ProfileActivity"
             android:label="@string/title_activity_profile" >
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activities.SettingsActivity"
             android:label="@string/title_activity_settings" >
         </activity>
         <!--
@@ -37,11 +37,11 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
+            android:name=".Activities.MapsActivity"
             android:label="@string/title_activity_maps" >
         </activity>
         <activity
-            android:name=".Launcher"
+            android:name=".Activities.Launcher"
             android:label="@string/title_activity_launcher"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -51,12 +51,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GamesActivity"
+            android:name=".Activities.GamesActivity"
             android:label="@string/title_activity_games" >
         </activity>
         <activity
-            android:name=".CreateGameActivity"
+            android:name=".Activities.CreateGameActivity"
             android:label="@string/title_activity_create_game" >
+        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme.NoActionBar" >
         </activity>
     </application>
 
