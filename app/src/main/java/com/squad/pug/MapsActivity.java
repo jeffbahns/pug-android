@@ -169,7 +169,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                             }
 
                             @Override
-                            public void onError(Throwable e) { int i = 0; }
+                            public void onError(Throwable e) {
+
+                                int i = 0;
+
+                            }
 
                             @Override
                             public void onNext(SearchResultModel courtsSearchResults) {

@@ -15,7 +15,7 @@ public class RESTAPIClient {
 
     public static ICourtsProvider getCourtsProvider(){
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AppDefines.GOOGLE_API)
+                .baseUrl(AppDefines.COURTS_BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
