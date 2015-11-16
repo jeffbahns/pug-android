@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -23,10 +24,12 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squad.pug.AppDefines;
 import com.squad.pug.Geometry.Geometry;
+import com.squad.pug.HTTPRequest;
 import com.squad.pug.Location.Location1;
 import com.squad.pug.R;
 import com.squad.pug.services.RESTAPIClient;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import rx.Subscriber;
@@ -49,8 +52,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
 
@@ -79,6 +80,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng SonomaState = new LatLng(38.3393866, -122.6763699);
         mMap.addMarker(new MarkerOptions().position(SonomaState).title("Marker in Sonoma State"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(SonomaState));
+
+
+    }
+
+    public void populateMap(View view) throws IOException {
+        HTTPRequest request = new HTTPRequest();
+        String response = request.getCourts("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.3393866,-122.6763699&keyword=basketball&key=AIzaSyCtPXuVo1-lb_bH_3y7_s2LExqVW5rfIhk", "" );
+        //Log.v("CourtResponse", response);
     }
 
     /* public void gotoCourtsList(View view){
@@ -184,8 +193,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
-
 }
 
 
