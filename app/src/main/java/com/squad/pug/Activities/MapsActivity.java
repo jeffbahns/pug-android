@@ -1,4 +1,4 @@
-package com.squad.pug;
+package com.squad.pug.Activities;
 
 import android.Manifest;
 import android.content.Intent;
@@ -26,13 +26,23 @@ import com.squad.pug.models.GeometryData;
 import com.squad.pug.models.LocationData;
 import com.squad.pug.models.SearchItemModel;
 import com.squad.pug.models.SearchResultModel;
+import com.squad.pug.AppDefines;
+import com.squad.pug.Geometry.Geometry;
+import com.squad.pug.Location.Location1;
+import com.squad.pug.R;
 import com.squad.pug.services.RESTAPIClient;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import rx.Subscriber;
-import rx.schedulers.Schedulers;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -50,8 +60,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
 
@@ -80,6 +88,64 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng SonomaState = new LatLng(38.3393866, -122.6763699);
         mMap.addMarker(new MarkerOptions().position(SonomaState).title("Marker in Sonoma State"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(SonomaState));
+
+
+    }
+
+    public void populateMap(View view) throws IOException {
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    System.out.println("HELLLLLO");
+                    String urlString;
+                    urlString = "http://api.wunderground.com/api/1868967083e9ca9a/conditions/q/California/Oakland.json";
+                    URL url = new URL(urlString);
+                    URLConnection conn = url.openConnection();
+                    InputStream is = conn.getInputStream();
+
+                    String result = getStringFromInputStream(is);
+                    System.out.println(result);
+                    /*String city = jsonObject.getString("city");
+                    System.out.println(city);*/
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.v("test", "Background thread is f*cked");
+                }
+            }
+        });
+        thread.start();
+    }
+
+    // convert InputStream to String
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
     }
 
     /* public void gotoCourtsList(View view){
@@ -204,8 +270,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
-
 }
 
 

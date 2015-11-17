@@ -1,4 +1,4 @@
-package com.squad.pug;
+package com.squad.pug.Activities;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
 import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListener;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Places;
+import com.squad.pug.R;
 
 
 public class Launcher extends AppCompatActivity

@@ -1,4 +1,4 @@
-package com.squad.pug;
+package com.squad.pug.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -6,11 +6,15 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+
+import com.squad.pug.R;
 
 import java.util.Calendar;
 
@@ -37,6 +41,7 @@ public class CreateGameActivity extends AppCompatActivity {
         setDate = (TextView) findViewById(R.id.setDate);
         setNumPlayers = (EditText) findViewById(R.id.setNumPlayers);
 
+        // time picker
         setTime.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -55,6 +60,8 @@ public class CreateGameActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        // date picker
         setDate.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -76,6 +83,7 @@ public class CreateGameActivity extends AppCompatActivity {
                 }
         );
 
+        // submit button
         submitButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -95,6 +103,15 @@ public class CreateGameActivity extends AppCompatActivity {
                     }
                 }
         );
+
+        // autocomplete location picker
+        String[] COURTS = new String[] {
+                "Lady Bug Park", "Dorotea Park", "Callinan Sports & Fitness Center",
+                "Rancho Cotate High School", "Sonoma State University"
+        };
+        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, COURTS);
+        textView.setAdapter(adapter);
     }
 
     protected void testPrint() {
