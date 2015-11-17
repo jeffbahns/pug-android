@@ -24,17 +24,21 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squad.pug.AppDefines;
 import com.squad.pug.Geometry.Geometry;
-import com.squad.pug.HTTPRequest;
 import com.squad.pug.Location.Location1;
 import com.squad.pug.R;
 import com.squad.pug.services.RESTAPIClient;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import rx.Subscriber;
-import rx.schedulers.Schedulers;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -85,9 +89,59 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     public void populateMap(View view) throws IOException {
-        HTTPRequest request = new HTTPRequest();
-        String response = request.getCourts("https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=38.3393866,-122.6763699&keyword=basketball&key=AIzaSyCtPXuVo1-lb_bH_3y7_s2LExqVW5rfIhk", "" );
-        //Log.v("CourtResponse", response);
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    System.out.println("HELLLLLO");
+                    String urlString;
+                    urlString = "http://api.wunderground.com/api/1868967083e9ca9a/conditions/q/California/Oakland.json";
+                    URL url = new URL(urlString);
+                    URLConnection conn = url.openConnection();
+                    InputStream is = conn.getInputStream();
+
+                    String result = getStringFromInputStream(is);
+                    System.out.println(result);
+                    /*String city = jsonObject.getString("city");
+                    System.out.println(city);*/
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.v("test", "Background thread is f*cked");
+                }
+            }
+        });
+        thread.start();
+    }
+
+    // convert InputStream to String
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
     }
 
     /* public void gotoCourtsList(View view){
