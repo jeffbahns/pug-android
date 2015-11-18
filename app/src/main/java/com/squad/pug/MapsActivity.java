@@ -19,6 +19,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -28,6 +29,13 @@ import com.squad.pug.models.SearchItemModel;
 import com.squad.pug.models.SearchResultModel;
 import com.squad.pug.services.RESTAPIClient;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import rx.Subscriber;
@@ -38,9 +46,7 @@ import rx.android.schedulers.AndroidSchedulers;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-  //  public SearchResultModel CourtSearchResults;
-    //    private JSONObject CourtsData;
-    // private GetCourtsRESTAdapter RESTAdapter = new GetCourtsRESTAdapter();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,14 +83,99 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         // Add a marker in Sydney and move the camera
-        LatLng SonomaState = new LatLng(38.3393866, -122.6763699);
-        mMap.addMarker(new MarkerOptions().position(SonomaState).title("Marker in Sonoma State"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(SonomaState));
+//        LatLng SonomaState = new LatLng(38.3393866, -122.6763699);
+//        mMap.addMarker(new MarkerOptions().position(SonomaState).title("Marker in Sonoma State"));
+//        mMap.moveCamera(CameraUpdateFactory.newLatLng(SonomaState));
+
+        Marker helloWorld = mMap.addMarker(new MarkerOptions()
+//                  .position(latLngIndex0)
+                .position(new LatLng(38.3322549, -122.6724832))
+                .draggable(false)
+                .title("Hello World!"));
     }
 
     /* public void gotoCourtsList(View view){
          Intent intent = new Intent(this, PutCourtListClassHere)
      }*/
+
+    public void populateMap(View view) throws IOException {
+        Thread thread = new Thread(new Runnable(){
+            @Override
+            public void run() {
+                try {
+                    // Instantiate Gson
+                    Gson gson = new Gson();
+
+                    System.out.println("HELLLLLO");
+
+                    // Building query string
+                    String locationlatlng = "38.341402,-122.6838169";
+                    String rad = "&radius=5000";
+                    String type = "&type=park";
+
+                    // Make HTTP Connection & Request
+                    String urlString = AppDefines.urlStringBase + locationlatlng + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    URL url = new URL(urlString);
+                    URLConnection conn = url.openConnection();
+                    InputStream is = conn.getInputStream();
+
+                    // Deserialize data into SearchResultModel, which is an ArrayList<SearchItemModel>!
+                    Reader reader = new InputStreamReader(is);
+                    SearchResultModel response = gson.fromJson(reader, SearchResultModel.class);
+
+                    // Populate my first map
+                    int index = 0;
+                    // Get LatLng at index 0 and test
+                    LatLng latLngIndex0 = new LatLng(response.courts.get(index).geometry.getLocation1().getLat(),
+                            response.courts.get(index).geometry.getLocation1().getLng());
+                    String latLngTest = latLngIndex0.toString();
+                    Log.d("index 0 test", latLngTest);
+
+
+                    // Test stuff
+                    String result = getStringFromInputStream(is);
+                    System.out.println(result);
+
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.v("test", "Background thread is f*cked");
+                }
+            }
+        });
+        thread.start();
+    }
+
+    // convert InputStream to String
+    private static String getStringFromInputStream(InputStream is) {
+
+        BufferedReader br = null;
+        StringBuilder sb = new StringBuilder();
+
+        String line;
+        try {
+
+            br = new BufferedReader(new InputStreamReader(is));
+            while ((line = br.readLine()) != null) {
+                sb.append(line);
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (br != null) {
+                try {
+                    br.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return sb.toString();
+
+    }
+
     public void openProfile(View view) {
         // build the intent
         Intent intent = new Intent(this, ProfileActivity.class);
@@ -157,7 +248,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 // Call to Search using current location as a string
 
                 RESTAPIClient.getCourtsProvider()
-                        .GetCourts(strlocation, currentSearchTerm, rad, AppDefines.GOOGLE_API)
+                        .GetCourts(strlocation, currentSearchTerm, rad, AppDefines.GOOGLE_SERVER_API)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .subscribe(new Subscriber<SearchResultModel>() {
@@ -180,9 +271,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                                 int index = 0;
                                 // Testing to see if I have data
-                                String testing = courtsSearchResults.courts.get(1).id;
+                                String testing = courtsSearchResults.courts.get(index).id;
 
-                                Toast.makeText(getApplicationContext(), "TEST TEST",
+                                Toast.makeText(getApplicationContext(), testing,
                                         Toast.LENGTH_LONG).show();
                                 Log.v("***********************", "onNext called.");
 
