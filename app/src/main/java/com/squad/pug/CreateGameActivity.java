@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import static com.squad.pug.R.id.submit;
@@ -33,12 +34,11 @@ public class CreateGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
-
         submitButton = (Button) findViewById(submit);
         setTime = (TextView) findViewById(R.id.setTime);
         setDate = (TextView) findViewById(R.id.setDate);
         setNumPlayers = (EditText) findViewById(R.id.setNumPlayers);
-
+        ArrayList<String> courtNames = getIntent().getStringArrayListExtra("courtNames");
         // time picker
         setTime.setOnClickListener(
                 new View.OnClickListener() {
@@ -108,7 +108,7 @@ public class CreateGameActivity extends AppCompatActivity {
                 "Rancho Cotate High School", "Sonoma State University"
         };
         AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, COURTS);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, courtNames);
         textView.setAdapter(adapter);
     }
 

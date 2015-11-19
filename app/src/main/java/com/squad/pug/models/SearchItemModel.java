@@ -19,14 +19,13 @@ public class SearchItemModel {
     @SerializedName("name")
     public String name;
 
-//    @SerializedName("opening_hours")
-//    public OpeningHours openingHours;
- //   @SerializedName("photos")
- //   public List<Photo> photos = new ArrayList<Photo>();
-
     @SerializedName("place_id")
     public String placeId;
 
+//    @SerializedName("opening_hours")
+//    public OpeningHours openingHours;
+//    @SerializedName("photos")
+//    public List<Photo> photos = new ArrayList<Photo>();
 //    @SerializedName("scope")
 //    public String scope;
 //    @SerializedName("alt_ids")
@@ -43,20 +42,19 @@ public class SearchItemModel {
         return courtLatLng;
     }
 
-    // takes map param and injects a new marker ( court )
+    // takes map param and injects a a new court marker
     public void populateMapWithModel(GoogleMap mMap) {
         mMap.addMarker(new MarkerOptions()
                 .position(getCourtLatLng())
                 .draggable(false)
-                .title("Hello World!"));
+                .title(name)
+        );
     }
 
-    // for general testing purposes
+    // test print routine
     public void print() {
         System.out.println("Name: " + name);
         System.out.println("Location: " + geometry.getLocation1().getLat().toString() + ", " + geometry.getLocation1().getLng().toString());
-
     }
-
 
 }

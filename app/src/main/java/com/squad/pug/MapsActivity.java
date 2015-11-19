@@ -3,6 +3,7 @@ package com.squad.pug;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -26,7 +27,6 @@ import com.squad.pug.models.LocationData;
 import com.squad.pug.models.SearchResultModel;
 import com.squad.pug.services.RESTAPIClient;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -42,7 +42,7 @@ import rx.schedulers.Schedulers;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-
+    public SearchResultModel courtsResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,16 +56,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
@@ -77,36 +67,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             mMap.setMyLocationEnabled(true);
         }
+
     }
 
     /* public void gotoCourtsList(View view){
          Intent intent = new Intent(this, PutCourtListClassHere)
      }*/
 
-
-
     public void populateMap(View view) throws IOException {
+        Location myLocation = mMap.getMyLocation();
+        final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
         new AsyncTask<String, String, SearchResultModel>(){
             @Override
             protected SearchResultModel doInBackground(String... params) {
                 SearchResultModel model = new SearchResultModel();
 
                 try {
+                    System.out.println("Getting courts..");
+
                     // Instantiate Gson
                     Gson gson = new Gson();
 
-                    System.out.println("HELLLLLO");
-
                     // Building query string
-                    //Location myLocation = mMap.getMyLocation();
-                    //String locationLatLng = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
-                    String locationLatLng = "38.3393866,-122.6763699";
-                    System.out.println(locationLatLng);
                     String rad = "&radius=5000";
-                    String type = "&type=park";
+                    String type = "&keyword=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBase + locationLatLng + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBase + locationLatLong + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -114,12 +101,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // Deserialize data into SearchResultModel, which is an ArrayList<SearchItemModel>!
                     Reader reader = new InputStreamReader(is);
                     model = gson.fromJson(reader, SearchResultModel.class);
-                    //
-                } catch (Exception e){
-                    e.printStackTrace();
-                    Log.v("test", "Background thread is f*cked");
+                    courtsResult = model;
+                    courtsResult.getArrayOfNames();
                 }
-
+                catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println("COURT REQUEST FAILED");
+                }
                 return model;
             }
 
@@ -130,60 +118,28 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                 // print test
                 result.print();
-
             }
         }.execute("");
     }
 
-    private static String getStringFromInputStream(InputStream is) {
-
-        BufferedReader br = null;
-        StringBuilder sb = new StringBuilder();
-
-        String line;
-        try {
-
-            br = new BufferedReader(new InputStreamReader(is));
-            while ((line = br.readLine()) != null) {
-                sb.append(line);
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
-        return sb.toString();
-    }
-
     public void openProfile(View view) {
-        // build the intent
         Intent intent = new Intent(this, ProfileActivity.class);
         startActivity(intent);
     }
 
     public void openSettings(View view) {
-        // build the intent
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }
 
     public void openGames(View view) {
-        // build the intent
         Intent intent = new Intent(this, GamesActivity.class);
         startActivity(intent);
     }
 
     public void openCreateGame(View view) {
-        // build the intent
         Intent intent = new Intent(this, CreateGameActivity.class);
+        intent.putExtra("courtNames", courtsResult.getArrayOfNames());
         startActivity(intent);
     }
 
@@ -282,8 +238,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
-
-
 }
 
 

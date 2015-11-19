@@ -11,13 +11,20 @@ public class SearchResultModel {
 
     // iterates through courts and calls their inner populate function
     public void populateMapWithModels(GoogleMap mMap) {
-        for( int i = 0; i < courts.size(); i++ ) {
+        for( int i = 0; i < courts.size(); i++ )
             courts.get(i).populateMapWithModel(mMap);
-        }
-
     }
 
-    // for general testing purposes
+    // used to return a list of court names for autocomplete text purposes
+    public ArrayList<String> getArrayOfNames() {
+        ArrayList<String> courtNames = new ArrayList<>();
+        for( int i = 0; i < courts.size(); i++ )
+            courtNames.add(courts.get(i).name);
+
+        return courtNames;
+    }
+
+    // test print routine
     public void print() {
         System.out.println("_________________________________________________________________________");
         System.out.println("                           COURT RESULTS");
@@ -29,4 +36,5 @@ public class SearchResultModel {
         }
         System.out.println("_________________________________________________________________________");
     }
+
 }
