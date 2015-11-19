@@ -3,6 +3,7 @@ package com.squad.pug;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
@@ -23,9 +24,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.squad.pug.models.GeometryData;
 import com.squad.pug.models.LocationData;
-import com.squad.pug.models.SearchItemModel;
 import com.squad.pug.models.SearchResultModel;
 import com.squad.pug.services.RESTAPIClient;
 
@@ -36,11 +35,10 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
-import java.util.ArrayList;
 
 import rx.Subscriber;
-import rx.schedulers.Schedulers;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -98,10 +96,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
          Intent intent = new Intent(this, PutCourtListClassHere)
      }*/
 
+
+
     public void populateMap(View view) throws IOException {
-        Thread thread = new Thread(new Runnable(){
+        new AsyncTask<String, String, SearchResultModel>(){
             @Override
-            public void run() {
+            protected SearchResultModel doInBackground(String... params) {
+                SearchResultModel model = new SearchResultModel();
+
                 try {
                     // Instantiate Gson
                     Gson gson = new Gson();
@@ -121,29 +123,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     // Deserialize data into SearchResultModel, which is an ArrayList<SearchItemModel>!
                     Reader reader = new InputStreamReader(is);
-                    SearchResultModel response = gson.fromJson(reader, SearchResultModel.class);
+                    model = gson.fromJson(reader, SearchResultModel.class);
 
-                    // Populate my first map
-                    int index = 0;
-                    // Get LatLng at index 0 and test
-                    LatLng latLngIndex0 = new LatLng(response.courts.get(index).geometry.getLocation1().getLat(),
-                            response.courts.get(index).geometry.getLocation1().getLng());
-                    String latLngTest = latLngIndex0.toString();
-                    Log.d("index 0 test", latLngTest);
-
-
-                    // Test stuff
-                    String result = getStringFromInputStream(is);
-                    System.out.println(result);
-
-
-                } catch (Exception e) {
+                } catch (Exception e){
                     e.printStackTrace();
                     Log.v("test", "Background thread is f*cked");
                 }
+
+                return model;
             }
-        });
-        thread.start();
+
+            @Override
+            protected void onPostExecute(SearchResultModel result){
+                // Populate my first map
+                result.populateMapWithModels(mMap);
+
+                // print test
+                result.print();
+
+            }
+        }.execute("");
     }
 
     // convert InputStream to String

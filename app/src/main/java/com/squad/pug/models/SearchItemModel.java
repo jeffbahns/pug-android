@@ -1,17 +1,9 @@
 package com.squad.pug.models;
 
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
-
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.annotations.SerializedName;
-
-
-import java.util.ArrayList;
-import java.util.List;
-
-/**
- * Created by Trevor on 11/11/2015.
- */
-
 
 public class SearchItemModel {
 
@@ -49,6 +41,21 @@ public class SearchItemModel {
     public LatLng getCourtLatLng(){
         LatLng courtLatLng = new LatLng(geometry.getLocation1().getLat(), geometry.getLocation1().getLng());
         return courtLatLng;
+    }
+
+    // takes map param and injects a new marker ( court )
+    public void populateMapWithModel(GoogleMap mMap) {
+        mMap.addMarker(new MarkerOptions()
+                .position(getCourtLatLng())
+                .draggable(false)
+                .title("Hello World!"));
+    }
+
+    // for general testing purposes
+    public void print() {
+        System.out.println("Name: " + name);
+        System.out.println("Location: " + geometry.getLocation1().getLat().toString() + ", " + geometry.getLocation1().getLng().toString());
+
     }
 
 

@@ -2,25 +2,25 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\Trevor\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\adapter-rxjava\2.0.0-beta2\3a233746381a03dbb0f5f3ed10b11c3e72dba499\adapter-rxjava-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3a233746381a03dbb0f5f3ed10b11c3e72dba499">
-        <dex dex="G:\Docs\Squad\pug2\pug\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.0.0-beta2-741ddedd6c3fa2e4100e68e6bfaf13fea4721070.jar" />
-    </item>
-    <item
-        jar="C:\Users\Trevor\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta2\880d9e0997b2d1bfc98e0d121ced33ee5d04aac4\retrofit-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
-        <dex dex="G:\Docs\Squad\pug2\pug\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta2-07b1a034f1a6c1d62afb43e0d13e78e4e4c62fde.jar" />
-    </item>
-    <item
-        jar="C:\Users\Trevor\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta2\392c3d09e0f5e7087544093cc0cb23bb9c7af5fa\converter-gson-2.0.0-beta2.jar"
+        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta2\392c3d09e0f5e7087544093cc0cb23bb9c7af5fa\converter-gson-2.0.0-beta2.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="392c3d09e0f5e7087544093cc0cb23bb9c7af5fa">
-        <dex dex="G:\Docs\Squad\pug2\pug\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta2-686d5d5066dd8279ff21b1af525ae7a1594b0382.jar" />
+        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta2-8cea122a18476e9b4b35e1601405bb3953ab4e9f.jar" />
+    </item>
+    <item
+        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\adapter-rxjava\2.0.0-beta2\3a233746381a03dbb0f5f3ed10b11c3e72dba499\adapter-rxjava-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3a233746381a03dbb0f5f3ed10b11c3e72dba499">
+        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.0.0-beta2-cb27d7619059a6549928cdc26d1ea1e09fcf2418.jar" />
+    </item>
+    <item
+        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta2\880d9e0997b2d1bfc98e0d121ced33ee5d04aac4\retrofit-2.0.0-beta2.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
+        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta2-6371172c2e6464eca1c0293d76b7e8e56def04f6.jar" />
     </item>
 
 </items>
