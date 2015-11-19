@@ -17,7 +17,7 @@
         android:layout_marginTop="30dp">
 
         <TextView
-            android:hint=" Enter Date"
+            android:hint="Enter Date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -25,7 +25,7 @@
             android:layout_below="@+id/setTime"
             android:layout_alignStart="@+id/setTime"
             android:layout_weight="0.09"
-            android:textSize="22sp"
+            android:textSize="24dp"
             android:clickable="true" />
 
     </LinearLayout>
@@ -38,7 +38,7 @@
         android:layout_marginTop="30dp">
 
         <TextView
-            android:hint=" Enter Time"
+            android:hint="Enter Time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -48,7 +48,7 @@
             android:layout_row="5"
             android:layout_column="0"
             android:layout_weight="0.07"
-            android:textSize="22dp"
+            android:textSize="24dp"
             android:clickable="true" />
     </LinearLayout>
 
@@ -60,7 +60,7 @@
         android:layout_marginTop="30dp">
 
         <EditText
-            android:hint=" Enter players needed"
+            android:hint="Enter players needed"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="number"
@@ -69,7 +69,7 @@
             android:layout_centerHorizontal="true"
             android:layout_row="4"
             android:layout_column="0"
-            android:textSize="22dp" />
+            android:textSize="24dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,11 +80,11 @@
         android:layout_marginTop="30dp">
 
         <AutoCompleteTextView
-            android:hint=" Enter Location"
+            android:hint="Enter Location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/autoLocation"
-            android:textSize="22dp" />
+            android:textSize="24dp" />
     </LinearLayout>
 
     <LinearLayout

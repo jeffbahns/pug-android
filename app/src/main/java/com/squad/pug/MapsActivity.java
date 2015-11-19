@@ -20,8 +20,6 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squad.pug.models.LocationData;
@@ -79,17 +77,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             mMap.setMyLocationEnabled(true);
         }
-
-        // Add a marker in Sydney and move the camera
-//        LatLng SonomaState = new LatLng(38.3393866, -122.6763699);
-//        mMap.addMarker(new MarkerOptions().position(SonomaState).title("Marker in Sonoma State"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(SonomaState));
-
-        Marker helloWorld = mMap.addMarker(new MarkerOptions()
-//                  .position(latLngIndex0)
-                .position(new LatLng(38.3322549, -122.6724832))
-                .draggable(false)
-                .title("Hello World!"));
     }
 
     /* public void gotoCourtsList(View view){
@@ -111,12 +98,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     System.out.println("HELLLLLO");
 
                     // Building query string
-                    String locationlatlng = "38.341402,-122.6838169";
+                    //Location myLocation = mMap.getMyLocation();
+                    //String locationLatLng = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+                    String locationLatLng = "38.3393866,-122.6763699";
+                    System.out.println(locationLatLng);
                     String rad = "&radius=5000";
                     String type = "&type=park";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBase + locationlatlng + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBase + locationLatLng + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -124,7 +114,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     // Deserialize data into SearchResultModel, which is an ArrayList<SearchItemModel>!
                     Reader reader = new InputStreamReader(is);
                     model = gson.fromJson(reader, SearchResultModel.class);
-
+                    //
                 } catch (Exception e){
                     e.printStackTrace();
                     Log.v("test", "Background thread is f*cked");
@@ -145,7 +135,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }.execute("");
     }
 
-    // convert InputStream to String
     private static String getStringFromInputStream(InputStream is) {
 
         BufferedReader br = null;
@@ -172,7 +161,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
 
         return sb.toString();
-
     }
 
     public void openProfile(View view) {
@@ -192,7 +180,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Intent intent = new Intent(this, GamesActivity.class);
         startActivity(intent);
     }
+
     public void openCreateGame(View view) {
+        // build the intent
         Intent intent = new Intent(this, CreateGameActivity.class);
         startActivity(intent);
     }
@@ -211,8 +201,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
-
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
 
