@@ -1,9 +1,11 @@
 package com.squad.pug;
 
 import android.Manifest;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -42,11 +44,13 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity
+        implements OnMapReadyCallback, CourtFragment.OnFragmentInteractionListener {
 
     private GoogleMap mMap;
     public SearchResultModel courtsResult;
     public HashMap<String, SearchItemModel> markerMap = new HashMap<String, SearchItemModel>();
+    public android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
+        getFragmentManager().beginTransaction().hide(fragment);
+
     }
 
     @Override
@@ -70,6 +77,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             mMap.setMyLocationEnabled(true);
         }
+
+
     }
 
     public void populateMap(View view) throws IOException {
@@ -126,13 +135,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
+                getFragmentManager().beginTransaction().hide(fragment);
+
                 // Toast works 100%, probably a place holder until pop up fragment is functioning
                 //Toast courtSnippet = Toast.makeText(MapsActivity.this, markerMap.get(marker.getId()).name, Toast.LENGTH_SHORT);
                 //courtSnippet.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
                 //courtSnippet.show();
 
-                //Intent intent = new Intent(MapsActivity.this, CourtActivity.class);
-                //(intent);
                 return true;
             }
         });
@@ -156,6 +165,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     public void openCreateGame(View view) {
         Intent intent = new Intent(this, CreateGameActivity.class);
+
         intent.putExtra("courtNames", courtsResult.getArrayOfNames());
         startActivity(intent);
     }
@@ -255,6 +265,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             }
         }
+    }
+
+    // interaction with court fragment
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
 
