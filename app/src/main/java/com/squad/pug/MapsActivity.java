@@ -4,7 +4,6 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -22,9 +21,11 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squad.pug.models.LocationData;
+import com.squad.pug.models.SearchItemModel;
 import com.squad.pug.models.SearchResultModel;
 import com.squad.pug.services.RESTAPIClient;
 
@@ -34,6 +35,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.HashMap;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -44,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     public SearchResultModel courtsResult;
+    public HashMap<String, SearchItemModel> markerMap = new HashMap<String, SearchItemModel>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +56,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-
     }
 
     @Override
@@ -69,16 +70,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } else {
             mMap.setMyLocationEnabled(true);
         }
-
     }
 
-    /* public void gotoCourtsList(View view){
-         Intent intent = new Intent(this, PutCourtListClassHere)
-     }*/
-
     public void populateMap(View view) throws IOException {
-        Location myLocation = mMap.getMyLocation();
-        final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+        //Location myLocation = mMap.getMyLocation();
+        //final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
         new AsyncTask<String, String, SearchResultModel>(){
             @Override
             protected SearchResultModel doInBackground(String... params) {
@@ -116,15 +112,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             protected void onPostExecute(SearchResultModel result){
                 // Populate my first map
-                // have to send it activity context so it can modify the state
-                // of MapsActivity from outside of it
                 final Context mContext = MapsActivity.this.getApplicationContext();
-                result.populateMapWithModels(mMap, mContext);
+                result.populateMapWithModels(mMap, mContext, markerMap);
 
                 // console print test
                 result.print();
             }
         }.execute("");
+        onPostPopulate();
+    }
+
+    public void onPostPopulate() {
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // Toast works 100%, probably a place holder until pop up fragment is functioning
+                //Toast courtSnippet = Toast.makeText(MapsActivity.this, markerMap.get(marker.getId()).name, Toast.LENGTH_SHORT);
+                //courtSnippet.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+                //courtSnippet.show();
+
+                //Intent intent = new Intent(MapsActivity.this, CourtActivity.class);
+                //(intent);
+                return true;
+            }
+        });
+
     }
 
     public void openProfile(View view) {
@@ -160,7 +172,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
     }
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
 

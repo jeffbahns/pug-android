@@ -6,15 +6,16 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SearchResultModel {
     @SerializedName("results")
     public ArrayList<SearchItemModel> courts;
 
     // iterates through courts and calls their inner populate function
-    public void populateMapWithModels(GoogleMap mMap, Context mContext) {
+    public void populateMapWithModels(GoogleMap mMap, Context mContext, HashMap<String, SearchItemModel> markerMap) {
         for( int i = 0; i < courts.size(); i++ )
-            courts.get(i).populateMapWithModel(mMap, mContext);
+            courts.get(i).populateMapWithModel(mMap, mContext, markerMap);
     }
 
     // used to return a list of court names for autocomplete text purposes
