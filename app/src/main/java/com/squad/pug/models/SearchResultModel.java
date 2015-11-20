@@ -1,5 +1,7 @@
 package com.squad.pug.models;
 
+import android.content.Context;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.gson.annotations.SerializedName;
 
@@ -10,9 +12,9 @@ public class SearchResultModel {
     public ArrayList<SearchItemModel> courts;
 
     // iterates through courts and calls their inner populate function
-    public void populateMapWithModels(GoogleMap mMap) {
+    public void populateMapWithModels(GoogleMap mMap, Context mContext) {
         for( int i = 0; i < courts.size(); i++ )
-            courts.get(i).populateMapWithModel(mMap);
+            courts.get(i).populateMapWithModel(mMap, mContext);
     }
 
     // used to return a list of court names for autocomplete text purposes

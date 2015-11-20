@@ -1,6 +1,7 @@
 package com.squad.pug;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -60,7 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+        // zoom clashes with our UI
+        //mMap.getUiSettings().setZoomControlsEnabled(true);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
@@ -93,7 +95,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     String type = "&keyword=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBase + locationLatLong + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBase + AppDefines.testLocations[0] + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -114,9 +116,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             @Override
             protected void onPostExecute(SearchResultModel result){
                 // Populate my first map
-                result.populateMapWithModels(mMap);
+                // have to send it activity context so it can modify the state
+                // of MapsActivity from outside of it
+                final Context mContext = MapsActivity.this.getApplicationContext();
+                result.populateMapWithModels(mMap, mContext);
 
-                // print test
+                // console print test
                 result.print();
             }
         }.execute("");
@@ -155,7 +160,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
     }
-
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
