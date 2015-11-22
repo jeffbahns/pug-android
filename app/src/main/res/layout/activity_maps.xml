@@ -31,23 +31,31 @@
             android:layout_alignParentTop="true"
             android:gravity="center">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Find Games"
-                android:onClick="populateMap"
-                android:id="@+id/button6" />
 
-            <Button
+            <!-- ********* FIND GAMES BUTTON ************* -->
+            <ImageButton
+                android:background="@android:color/transparent"
+                android:clickable="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Set Search Location"
-                android:id="@+id/button4"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
+                android:drawable="@drawable/find_games_link"
+                android:src="@drawable/find_games_selector"
+                android:onClick="populateMap"
+                android:id="@+id/find_games" />
+
+
+
+
+            <!-- ********  SET SEARCH LOCATION BUTTON ******** -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set_search_location"
+                android:src="@drawable/set_search_location_selector"
+                android:background="@android:color/transparent"
                 android:clickable="true"
-                android:onClick="pickCourtSearchLocation"
-                android:textSize="10dp" />
+                android:onClick="pickCourtSearchLocation" />
+
         </LinearLayout>
 
     </LinearLayout>
@@ -71,6 +79,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/linearLayout4">
 
+                <!-- ****** MY PROFILE BUTTON ******** -->
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -89,14 +98,15 @@
                 android:layout_alignParentTop="true"
                 android:id="@+id/linearLayout3">
 
-                <Button
-                    style="?android:attr/buttonStyleSmall"
+                <!-- ******** CREATE GAMES BUTTON ********* -->
+                <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="14dp"
-                    android:text="Create Game"
+                    android:clickable="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/create_game_selector"
                     android:onClick="openCreateGame"
-                    android:id="@+id/button5"
+                    android:id="@+id/create_games"
                     android:layout_above="@+id/button3"
                     android:layout_centerHorizontal="true" />
             </LinearLayout>
@@ -106,14 +116,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent">
 
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:textSize="14dp"
-                    android:text="Settings"
-                    android:onClick="openSettings"
-                    android:id="@+id/button2"
-                    android:layout_alignParentBottom="true" />
             </LinearLayout>
 
             <LinearLayout
