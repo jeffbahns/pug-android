@@ -12,12 +12,6 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
 
-    <fragment class="com.squad.pug.CourtFragment"
-        android:id="@+id/FraggyList"
-        android:layout_weight="1"
-        android:layout_width="40dp"
-        android:layout_height="match_parent" />
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -29,8 +23,29 @@
             android:layout_height="wrap_content"
             android:id="@+id/linearLayout2"
             android:layout_alignParentTop="true"
-            android:gravity="center">
+            android:gravity="center"
+            android:background="#3c9ec3">
 
+            <!-- ******* COURTS LIST BUTTON ******** -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:id="@+id/courts_list"
+                android:background="@android:color/transparent"
+                android:src="@drawable/courts_list_selector"
+                android:layout_alignParentTop="false"
+                android:onClick="openSettings" />
+
+            <!-- ********  SET SEARCH LOCATION BUTTON ******** -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set_search_location"
+                android:src="@drawable/set_search_location_selector"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:onClick="pickCourtSearchLocation" />
 
             <!-- ********* FIND GAMES BUTTON ************* -->
             <ImageButton
@@ -42,19 +57,6 @@
                 android:src="@drawable/find_games_selector"
                 android:onClick="populateMap"
                 android:id="@+id/find_games" />
-
-
-
-
-            <!-- ********  SET SEARCH LOCATION BUTTON ******** -->
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/set_search_location"
-                android:src="@drawable/set_search_location_selector"
-                android:background="@android:color/transparent"
-                android:clickable="true"
-                android:onClick="pickCourtSearchLocation" />
 
         </LinearLayout>
 
@@ -71,7 +73,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:gravity="center_horizontal">
+            android:gravity="center_horizontal"
+            android:background="#48a3c6">
 
             <LinearLayout
                 android:orientation="horizontal"
@@ -139,17 +142,6 @@
         </LinearLayout>
     </LinearLayout>
 
-    <!-- ******* COURTS LIST BUTTON ******** -->
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:clickable="true"
-        android:id="@+id/courts_list"
-        android:background="@android:color/transparent"
-        android:src="@drawable/courts_list_selector"
-        android:layout_alignParentTop="false"
-        android:layout_marginTop="75dp"
-        android:onClick="openSettings"
-        android:layout_alignParentLeft="false" />
+
 
 </RelativeLayout>

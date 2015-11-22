@@ -1,7 +1,6 @@
 package com.squad.pug;
 
 import android.Manifest;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,26 +9,19 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.squad.pug.models.LocationData;
 import com.squad.pug.models.SearchItemModel;
 import com.squad.pug.models.SearchResultModel;
-import com.squad.pug.services.RESTAPIClient;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -39,10 +31,6 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
 
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
-
 
 public class MapsActivity extends FragmentActivity
         implements OnMapReadyCallback, CourtFragment.OnFragmentInteractionListener {
@@ -50,7 +38,7 @@ public class MapsActivity extends FragmentActivity
     private GoogleMap mMap;
     public SearchResultModel courtsResult;
     public HashMap<String, SearchItemModel> markerMap = new HashMap<String, SearchItemModel>();
-    public android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
+    //public android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +48,8 @@ public class MapsActivity extends FragmentActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-        android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
-        getFragmentManager().beginTransaction().hide(fragment);
+       // android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
+       // getFragmentManager().beginTransaction().hide(fragment);
 
     }
 
@@ -73,9 +61,9 @@ public class MapsActivity extends FragmentActivity
         //mMap.getUiSettings().setZoomControlsEnabled(true);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            mMap.setMyLocationEnabled(true);
+            mMap.setMyLocationEnabled(false);
         } else {
-            mMap.setMyLocationEnabled(true);
+            mMap.setMyLocationEnabled(false);
         }
 
 
@@ -125,10 +113,10 @@ public class MapsActivity extends FragmentActivity
                 // Populate my first map
                 final Context mContext = MapsActivity.this.getApplicationContext();
                 result.populateMapWithModels(mMap, mContext, markerMap);
-/*
+//
                 // Move camera to current testLocation, but eventually to my current location / last known location!
                 try {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(AppDefines.testLocation, 15));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(AppDefines.testLocation, 12));
                     mMap.moveCamera(CameraUpdateFactory.newLatLng(AppDefines.testLocation));
                 }
                 catch (Exception e) {
@@ -136,7 +124,7 @@ public class MapsActivity extends FragmentActivity
                     System.out.println(e);
                     System.out.println("COURT REQUEST FAILED");
                 }
-*/
+//
                 // console print test
                 result.print();
             }
@@ -148,7 +136,7 @@ public class MapsActivity extends FragmentActivity
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                getFragmentManager().beginTransaction().hide(fragment);
+                //getFragmentManager().beginTransaction().hide(fragment);
 
                 // Toast works 100%, probably a place holder until pop up fragment is functioning
                 //Toast courtSnippet = Toast.makeText(MapsActivity.this, markerMap.get(marker.getId()).name, Toast.LENGTH_SHORT);
@@ -195,7 +183,7 @@ public class MapsActivity extends FragmentActivity
             e.printStackTrace();
         }
     }
-
+/*
     // ** Called after Place Picker location selected
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
@@ -206,10 +194,10 @@ public class MapsActivity extends FragmentActivity
                 Gson gson = new GsonBuilder()
                         .create();
 
-                /*    Retrofit RESTAdapter = new Retrofit.Builder()
+                    Retrofit RESTAdapter = new Retrofit.Builder()
                             .baseUrl(AppDefines.COURTS_BASE_URL)
                             .addConverterFactory(GsonConverterFactory.create())
-                            .build();   */
+                            .build();
 
                 // Set up picked location, and move camera accordingly
                 Place place = PlacePicker.getPlace(data, this);
@@ -269,7 +257,7 @@ public class MapsActivity extends FragmentActivity
                                     .draggable(false));
 
                                 }
-                                */
+
                             }
                         });
 //                Log.d("Test**", strlocation);
@@ -280,7 +268,7 @@ public class MapsActivity extends FragmentActivity
             }
         }
     }
-
+*/
     // interaction with court fragment
     @Override
     public void onFragmentInteraction(Uri uri) {

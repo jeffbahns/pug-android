@@ -9,7 +9,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.annotations.SerializedName;
 import com.squad.pug.AppDefines;
-import com.squad.pug.R;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -59,15 +58,15 @@ public class SearchItemModel {
     // takes map param and injects a a new court marker
     public void populateMapWithModel(GoogleMap mMap, final Context mContext, HashMap<String, SearchItemModel> markerMap) {
         Random rand = new Random();
-        int randomColor = rand.nextInt(360);
+        int randomColor = rand.nextInt(4);
 
         markyMarker = mMap.addMarker(new MarkerOptions()
                 .position(getCourtLatLng())
                 .draggable(false)
                 .title(name)
                 .snippet(games + " games active within 24hrs")
-//                .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor]))
-                .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
+                .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor])));
+                //  .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
 
         // connects HashMap to SearchItemModel/Map marker
         markerMap.put(markyMarker.getId(), this);

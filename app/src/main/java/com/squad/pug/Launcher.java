@@ -47,6 +47,7 @@ public class Launcher extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         // Instantiate 6th Man Logo
+
         ImageView squadLogo = new ImageView(this);
         squadLogo.setVisibility(View.VISIBLE);
         squadLogo.setImageResource(R.drawable.sixth_man_icon_launcher_fade);
@@ -56,6 +57,7 @@ public class Launcher extends AppCompatActivity
         int fadeInDuration = 20000;
         int timeBetween = 20000;
         int fadeOutDuration = 20000;
+
         Animation fadeIn = new AlphaAnimation(0, 1);
         fadeIn.setInterpolator(new DecelerateInterpolator()); // add this
         fadeIn.setDuration(fadeInDuration);
