@@ -8,6 +8,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.annotations.SerializedName;
+import com.squad.pug.AppDefines;
+import com.squad.pug.R;
 
 import java.util.HashMap;
 import java.util.Random;
@@ -64,6 +66,7 @@ public class SearchItemModel {
                 .draggable(false)
                 .title(name)
                 .snippet(games + " games active within 24hrs")
+//                .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor]))
                 .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
 
         // connects HashMap to SearchItemModel/Map marker

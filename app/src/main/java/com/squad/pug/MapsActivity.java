@@ -84,6 +84,8 @@ public class MapsActivity extends FragmentActivity
     public void populateMap(View view) throws IOException {
         //Location myLocation = mMap.getMyLocation();
         //final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+
+
         new AsyncTask<String, String, SearchResultModel>(){
             @Override
             protected SearchResultModel doInBackground(String... params) {
@@ -123,7 +125,18 @@ public class MapsActivity extends FragmentActivity
                 // Populate my first map
                 final Context mContext = MapsActivity.this.getApplicationContext();
                 result.populateMapWithModels(mMap, mContext, markerMap);
-
+/*
+                // Move camera to current testLocation, but eventually to my current location / last known location!
+                try {
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(AppDefines.testLocation, 15));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(AppDefines.testLocation));
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                    System.out.println(e);
+                    System.out.println("COURT REQUEST FAILED");
+                }
+*/
                 // console print test
                 result.print();
             }
@@ -183,6 +196,7 @@ public class MapsActivity extends FragmentActivity
         }
     }
 
+    // ** Called after Place Picker location selected
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
@@ -206,7 +220,7 @@ public class MapsActivity extends FragmentActivity
                 String strlocation = strlocationlat + "," + strlocationlong;
                 String toastMsg = String.format("Place: %s", place.getName());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 14));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 12));
 
                 // Convert location to string and pass to maps http request
                 //         IGetCourtsApi mApi = RESTAdapter.create(IGetCourtsApi.class);
