@@ -80,13 +80,14 @@
                 android:id="@+id/linearLayout4">
 
                 <!-- ****** MY PROFILE BUTTON ******** -->
-                <Button
+                <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="14sp"
-                    android:text="My Profile"
+                    android:clickable="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/my_profile_selector"
                     android:onClick="openProfile"
-                    android:id="@+id/button3"
+                    android:id="@+id/my_profile"
                     android:layout_alignParentBottom="true" />
 
             </LinearLayout>
@@ -124,17 +125,31 @@
                 android:layout_height="match_parent"
                 android:id="@+id/linearLayout">
 
-                <Button
+                <!-- ******* MY GAMES BUTTON ******* -->
+                <ImageButton
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:textSize="14dp"
-                    android:text="Games"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/my_games_selector"
                     android:onClick="openGames"
-                    android:id="@+id/button"
+                    android:id="@+id/my_games"
                     android:layout_alignParentBottom="true"
                     android:layout_centerHorizontal="true" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
+
+    <!-- ******* COURTS LIST BUTTON ******** -->
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:id="@+id/courts_list"
+        android:background="@android:color/transparent"
+        android:src="@drawable/courts_list_selector"
+        android:layout_alignParentTop="false"
+        android:layout_marginTop="75dp"
+        android:onClick="openSettings"
+        android:layout_alignParentLeft="false" />
 
 </RelativeLayout>

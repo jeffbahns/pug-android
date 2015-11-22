@@ -19,6 +19,19 @@ import java.util.Calendar;
 
 import static com.squad.pug.R.id.submit;
 
+
+/*
+**********************************************************
+* ~~SO I DON'T FORGET~~
+* NOTE FROM TREVOR ----> JEFF:
+* This will fail if it is called (using the + button in the app) with no searchresultmodel object.
+* We'll later implement a check to see if they've populated their result model yet.
+*
+* *********************************************************
+ */
+
+
+
 public class CreateGameActivity extends AppCompatActivity {
     TextView setTime;
     TextView setDate;

@@ -9,6 +9,13 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -39,7 +46,33 @@ public class Launcher extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Instantiate 6th Man Logo
+        ImageView squadLogo = new ImageView(this);
+        squadLogo.setVisibility(View.VISIBLE);
+        squadLogo.setImageResource(R.drawable.sixth_man_icon_launcher_fade);
+        setContentView(squadLogo);
 
+        // FADE IN SQUUAAD LOGO
+        int fadeInDuration = 20000;
+        int timeBetween = 20000;
+        int fadeOutDuration = 20000;
+        Animation fadeIn = new AlphaAnimation(0, 1);
+        fadeIn.setInterpolator(new DecelerateInterpolator()); // add this
+        fadeIn.setDuration(fadeInDuration);
+
+        Animation fadeOut = new AlphaAnimation(1, 0);
+        fadeOut.setInterpolator(new AccelerateInterpolator()); // and this
+        fadeOut.setStartOffset(fadeInDuration + timeBetween);
+        fadeOut.setDuration(fadeOutDuration);
+
+        AnimationSet animation = new AnimationSet(false); // change to false
+        animation.addAnimation(fadeIn);
+        animation.addAnimation(fadeOut);
+        animation.setRepeatCount(1);
+        squadLogo.setAnimation(animation);
+
+        try { Thread.sleep(5000); }
+        catch (InterruptedException ex) { android.util.Log.d("YourApplicationName", ex.toString()); }
 
         // Build following Google APIs: Location Servcices; Places[GeoDataApi & PlaceDetectionApi]
         mGoogleApiClient = new GoogleApiClient.Builder(this)
