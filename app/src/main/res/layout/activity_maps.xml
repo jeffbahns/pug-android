@@ -24,7 +24,8 @@
             android:id="@+id/linearLayout2"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:background="#3c9ec3">
+            android:background="#873c9ec3"
+            android:alpha="1">
 
             <!-- ******* COURTS LIST BUTTON ******** -->
             <ImageButton
@@ -74,13 +75,14 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
-            android:background="#48a3c6">
+            android:background="#8e48a3c6">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:id="@+id/linearLayout4">
+                android:id="@+id/linearLayout4"
+                android:alpha="1.2">
 
                 <!-- ****** MY PROFILE BUTTON ******** -->
                 <ImageButton

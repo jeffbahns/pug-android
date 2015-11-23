@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -50,6 +51,10 @@ public class MapsActivity extends FragmentActivity
         mapFragment.getMapAsync(this);
        // android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
        // getFragmentManager().beginTransaction().hide(fragment);
+
+        // Set alpha of lin. layout bars
+//        LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
+//        ll.setAlpha(0.4);
 
     }
 

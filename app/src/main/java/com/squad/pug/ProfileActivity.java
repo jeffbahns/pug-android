@@ -6,12 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     Button openHome;
-    Button bLogout;
-    EditText etUsername, etName, etSex, etAge;
+    ImageButton bLogout;
+    TextView etUsername, etName, etSex, etAge;
     UserLocalStore userLocalStore;
 
     @Override
@@ -19,15 +22,17 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        etUsername = (EditText) findViewById(R.id.etUsername);
-        etName = (EditText) findViewById(R.id.etName);
-        etSex = (EditText) findViewById(R.id.etSex);
-        etAge = (EditText) findViewById(R.id.etAge);
-        bLogout = (Button) findViewById(R.id.bLogout);
-
+        etUsername = (TextView) findViewById(R.id.etUsername);
+        etName = (TextView) findViewById(R.id.etName);
+        etSex = (TextView) findViewById(R.id.etSex);
+        etAge = (TextView) findViewById(R.id.etAge);
+        bLogout = (ImageButton) findViewById(R.id.bLogout);
         bLogout.setOnClickListener(this);
-
         userLocalStore = new UserLocalStore(this);
+
+        // Baby image, later to be profile picture
+        ImageView img = new ImageView(this);
+        img.setImageResource(R.drawable.baby);
     }
 
     @Override

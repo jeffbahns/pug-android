@@ -8,13 +8,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button bLogin, openHome;
+    ImageButton bLogin, tvRegisterLink, openHome;
     EditText etUsername, etFirst, etLast, etSex, etAge, etPassword;
-    TextView tvRegisterLink;
 
     UserLocalStore userLocalStore;
 
@@ -26,8 +26,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         etUsername = (EditText) findViewById(R.id.etUsername);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        bLogin = (Button) findViewById(R.id.bLogin);
-        tvRegisterLink = (TextView) findViewById(R.id.tvRegisterLink);
+        bLogin = (ImageButton) findViewById(R.id.bLogin);
+        tvRegisterLink = (ImageButton) findViewById(R.id.tvRegisterLink);
         bLogin.setOnClickListener(this);
         tvRegisterLink.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
