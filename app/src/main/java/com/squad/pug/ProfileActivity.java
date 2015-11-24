@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -38,12 +37,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onStart() {
         super.onStart();
-
-        if (authenticate() == true) {
-            displayUserDetails();
-        }else{
-            startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
-        }
+        displayUserDetails();
+        //if (authenticate() == true) {
+          //  displayUserDetails();
+        //}else{
+          //  startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
+        //}
     }
 
     private boolean authenticate(){
@@ -73,7 +72,4 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
                 break;
         }
     }
-
-
-
 }

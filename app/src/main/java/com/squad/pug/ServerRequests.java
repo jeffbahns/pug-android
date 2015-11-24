@@ -123,7 +123,7 @@ public class ServerRequests {
 
                 HttpEntity entity = httpResponse.getEntity();
                 String result = EntityUtils.toString(entity);
-                JSONObject jObject = new JSONObject("{"+result+"}");
+                JSONObject jObject = new JSONObject(result);
 
                 if(jObject.length() == 0){
                     user = null;

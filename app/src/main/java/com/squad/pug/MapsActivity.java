@@ -4,13 +4,13 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
@@ -19,6 +19,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
 import com.squad.pug.models.SearchItemModel;
@@ -66,17 +67,17 @@ public class MapsActivity extends FragmentActivity
         //mMap.getUiSettings().setZoomControlsEnabled(true);
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
-            mMap.setMyLocationEnabled(false);
+            mMap.setMyLocationEnabled(true);
         } else {
-            mMap.setMyLocationEnabled(false);
+            mMap.setMyLocationEnabled(true);
         }
 
 
     }
 
     public void populateMap(View view) throws IOException {
-        //Location myLocation = mMap.getMyLocation();
-        //final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+        final Location myLocation = mMap.getMyLocation();
+        final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
 
 
         new AsyncTask<String, String, SearchResultModel>(){
@@ -95,7 +96,7 @@ public class MapsActivity extends FragmentActivity
                     String type = "&keyword=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBase + AppDefines.testLocations[0] + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBase + /*AppDefines.testLocations[0]*/ locationLatLong + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -121,8 +122,8 @@ public class MapsActivity extends FragmentActivity
 //
                 // Move camera to current testLocation, but eventually to my current location / last known location!
                 try {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(AppDefines.testLocation, 12));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(AppDefines.testLocation));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
                 }
                 catch (Exception e) {
                     e.printStackTrace();
@@ -279,7 +280,17 @@ public class MapsActivity extends FragmentActivity
     public void onFragmentInteraction(Uri uri) {
 
     }
+
+    // **** HELPER FUNCTIONS ****
+    //
+    //
+
+    // this takes a coordinate string (API call string), changes it to latLng object
+    // took this from app defines so we could reuse
+    public LatLng latLngFormatter(String strLatLng) {
+        final String[] latlong = strLatLng.split(",");
+        final double latitude = Double.parseDouble(latlong[0]);
+        final double longitude = Double.parseDouble(latlong[1]);
+        return new LatLng(latitude, longitude);
+    }
 }
-
-
-

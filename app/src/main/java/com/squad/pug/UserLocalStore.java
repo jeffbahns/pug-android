@@ -25,11 +25,11 @@ public class UserLocalStore {
     }
 
     public User getLoggedInUser(){
-        String username = userLocalDatabase.getString("username", "");
-        String name = userLocalDatabase.getString("name", "");
-        String sex = userLocalDatabase.getString("sex", "");
-        int age = userLocalDatabase.getInt("age", -1);
-        String password = userLocalDatabase.getString("password", "");
+        String username = userLocalDatabase.getString("username", "demo");
+        String name = userLocalDatabase.getString("name", "test");
+        String sex = userLocalDatabase.getString("sex", "male");
+        int age = userLocalDatabase.getInt("age", 21);
+        String password = userLocalDatabase.getString("password", "test");
 
         User storedUser = new User(username, name, sex, age, password);
 

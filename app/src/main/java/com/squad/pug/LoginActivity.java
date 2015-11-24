@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -76,7 +74,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userLocalStore.storeUserData(returnedUser);
         userLocalStore.setUserLoggedIn(true);
 
-        startActivity(new Intent(this, ProfileActivity.class));
+        startActivity(new Intent(this, Launcher.class));
     }
     /*public void openHome(View view) {
         //build the intent
