@@ -125,7 +125,6 @@
                 android:layout_toEndOf="@+id/setTime"
                 android:layout_row="0"
                 android:layout_column="2"
-                android:onClick="makeToast"
                 />
         </LinearLayout>
     </LinearLayout>

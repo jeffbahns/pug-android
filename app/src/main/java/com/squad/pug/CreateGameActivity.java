@@ -1,12 +1,13 @@
 package com.squad.pug;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
@@ -14,7 +15,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -37,6 +37,7 @@ import static com.squad.pug.R.id.submit;
 public class CreateGameActivity extends AppCompatActivity {
     TextView setTime;
     TextView setDate;
+    AutoCompleteTextView autoLocation;
     EditText setNumPlayers;
     EditText setLocation;
     Button submitButton;
@@ -96,46 +97,81 @@ public class CreateGameActivity extends AppCompatActivity {
                 }
         );
 
-        // submit button
-        submitButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        time = setTime.getText().toString();
-                        date = setDate.getText().toString();
-                        numPlayers = Integer.parseInt(setNumPlayers.getText().toString());
-                        //location = setLocation.getText().toString();
-
-                        testPrint();
-                        /*
-                        AlertDialog alertDialog = new AlertDialog.Builder(CreateGameActivity.this).create();
-                        alertDialog.setTitle("Hello");
-                        alertDialog.setMessage("Your game was successfully created");
-                        alertDialog.show();
-                        */
-                    }
-                }
+        autoLocation.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                @Override
+                                                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                    location = (String)parent.getItemAtPosition(position);
+                                                }
+                                            }
         );
 
-        // autocomplete location picker
-        String[] COURTS = new String[] {
+                // autocomplete location picker
+                String[] COURTS = new String[] {
                 "Lady Bug Park", "Dorotea Park", "Callinan Sports & Fitness Center",
                 "Rancho Cotate High School", "Sonoma State University"
         };
         AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, courtNames);
         textView.setAdapter(adapter);
+
+        // submit button
+        submitButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        String error = "";
+                        try {
+                            time = setTime.getText().toString();
+                        } finally {
+                            if( time == "")
+                                error += "Time not entered\n";
+                        }
+
+                        try {
+                            date = setDate.getText().toString();
+                        } finally {
+                            if( date == "")
+                                error += "Date not entered\n";
+                        }
+
+                        try {
+                            numPlayers = Integer.parseInt(setNumPlayers.getText().toString());
+                        } catch (RuntimeException e) {
+                            error += "Number of players not entered\n";
+                        }
+
+                        try {
+                            location = location;
+                        } catch(RuntimeException e) {
+                            error += "Location not entered\n";
+                        }
+                        if( error != "")
+                            System.out.println(error);
+
+                        /*
+                        Toast courtSnippet = Toast.makeText(CreateGameActivity.this, error, Toast.LENGTH_SHORT);
+                        courtSnippet.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL, 0, 0);
+                        courtSnippet.show();
+                        //testPrint();
+                        */
+                        AlertDialog alertDialog = new AlertDialog.Builder(CreateGameActivity.this).create();
+                        alertDialog.setTitle("Hello");
+                        alertDialog.setMessage(error);
+
+                        alertDialog.show();
+
+                    }
+                }
+        );
+
+
     }
 
-    public void makeToast() {
-        Toast courtSnippet = Toast.makeText(CreateGameActivity.this, "Game successfully submitted", Toast.LENGTH_SHORT);
-        courtSnippet.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
-        courtSnippet.show();
-    }
 
     protected void testPrint() {
         Log.v("Time : ", time);
         Log.v("Date : ", date);
         Log.v("Number Players : ", String.valueOf(numPlayers));
+        Log.v("Location : ", location);
     }
 }

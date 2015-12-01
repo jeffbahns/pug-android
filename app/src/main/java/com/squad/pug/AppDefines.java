@@ -2,9 +2,7 @@ package com.squad.pug;
 
 import com.google.android.gms.maps.model.LatLng;
 
-/**
- * Created by jfisher on 11/7/15.
- */
+
 public class AppDefines {
 
     public static final String COURTS_BASE_URL = "https://maps.googleapis.com";
@@ -25,5 +23,4 @@ public class AppDefines {
 
     // it works , don't touch it bruh
     public static final String JEFFS_GOOGLE_API_KEY = "AIzaSyA_8dJbAB6sS_taHGQIVSEohJMwehksVEU";
-
 }
