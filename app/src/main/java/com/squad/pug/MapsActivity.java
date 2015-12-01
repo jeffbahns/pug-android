@@ -139,6 +139,7 @@ public class MapsActivity extends FragmentActivity
     }
 
     public void onPostPopulate() {
+        /*
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
@@ -152,6 +153,7 @@ public class MapsActivity extends FragmentActivity
                 return true;
             }
         });
+        */
 
     }
 

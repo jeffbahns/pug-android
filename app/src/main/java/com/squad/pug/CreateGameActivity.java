@@ -5,6 +5,7 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -13,6 +14,7 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -123,6 +125,12 @@ public class CreateGameActivity extends AppCompatActivity {
         AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, courtNames);
         textView.setAdapter(adapter);
+    }
+
+    public void makeToast() {
+        Toast courtSnippet = Toast.makeText(CreateGameActivity.this, "Game successfully submitted", Toast.LENGTH_SHORT);
+        courtSnippet.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+        courtSnippet.show();
     }
 
     protected void testPrint() {
