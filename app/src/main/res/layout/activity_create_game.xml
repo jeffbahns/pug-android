@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_row="3"
+    android:layout_column="0"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateLayout"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:hint="Enter Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/setDate"
+                android:layout_below="@+id/setTime"
+                android:layout_alignStart="@+id/setTime"
+                android:layout_weight="0.09"
+                android:textSize="24dp"
+                android:clickable="true"
+                android:gravity="left|center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/timeLayout"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:hint="Enter Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:id="@+id/setTime"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_row="5"
+                android:layout_column="0"
+                android:layout_weight="0.07"
+                android:textSize="24dp"
+                android:clickable="true" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/playersLayout"
+            android:layout_marginTop="30dp">
+
+            <EditText
+                android:hint="Enter players needed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:id="@+id/setNumPlayers"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_row="4"
+                android:layout_column="0"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/locationLayout"
+            android:layout_marginTop="30dp">
+
+            <AutoCompleteTextView
+                android:hint="Enter Location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/autoLocation"
+                android:textSize="24dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:id="@+id/progressLayout">
+
+            <ProgressBar
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/progressBar" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/submitLayout"
+            android:longClickable="false"
+            android:layout_marginTop="30dp">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SUBMIT"
+                android:id="@+id/submit"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toEndOf="@+id/setTime"
+                android:layout_row="0"
+                android:layout_column="2"
+                android:onClick="makeToast"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,150 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:map="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+        android:layout_height="match_parent" android:id="@+id/map"
+        tools:context="com.squad.pug.Activities.MapsActivity"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearLayout2"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:background="#873c9ec3"
+            android:alpha="1">
+
+            <!-- ******* COURTS LIST BUTTON ******** -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:id="@+id/courts_list"
+                android:background="@android:color/transparent"
+                android:src="@drawable/courts_list_selector"
+                android:layout_alignParentTop="false"
+                android:onClick="openSettings" />
+
+            <!-- ********  SET SEARCH LOCATION BUTTON ******** -->
+            <ImageButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/set_search_location"
+                android:src="@drawable/set_search_location_selector"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:onClick="pickCourtSearchLocation" />
+
+            <!-- ********* FIND GAMES BUTTON ************* -->
+            <ImageButton
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawable="@drawable/find_games_link"
+                android:src="@drawable/find_games_selector"
+                android:onClick="populateMap"
+                android:id="@+id/find_games" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:id="@+id/mapsActivityMainLinear">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:background="#8e48a3c6">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout4"
+                android:alpha="1.2">
+
+                <!-- ****** MY PROFILE BUTTON ******** -->
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/my_profile_selector"
+                    android:onClick="openProfile"
+                    android:id="@+id/my_profile"
+                    android:layout_alignParentBottom="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentTop="true"
+                android:id="@+id/linearLayout3">
+
+                <!-- ******** CREATE GAMES BUTTON ********* -->
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:clickable="true"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/create_game_selector"
+                    android:onClick="openCreateGame"
+                    android:id="@+id/create_games"
+                    android:layout_above="@+id/button3"
+                    android:layout_centerHorizontal="true" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:id="@+id/linearLayout">
+
+                <!-- ******* MY GAMES BUTTON ******* -->
+                <ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/my_games_selector"
+                    android:onClick="openGames"
+                    android:id="@+id/my_games"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
