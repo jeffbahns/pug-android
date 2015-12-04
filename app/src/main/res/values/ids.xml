@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <item name="action_profile" type="id">Profile</item>
-    <item name="action_games" type="id">Games</item>
-</resources>
