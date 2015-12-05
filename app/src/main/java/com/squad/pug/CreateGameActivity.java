@@ -54,7 +54,12 @@ public class CreateGameActivity extends AppCompatActivity {
         setTime = (TextView) findViewById(R.id.setTime);
         setDate = (TextView) findViewById(R.id.setDate);
         setNumPlayers = (EditText) findViewById(R.id.setNumPlayers);
-        ArrayList<String> courtNames = getIntent().getStringArrayListExtra("courtNames");
+        ArrayList<String> courtNames = new ArrayList<>();
+        try {
+            courtNames = getIntent().getStringArrayListExtra("courtNames");
+        } catch(RuntimeException e ) {
+            e.printStackTrace();
+        }
         // time picker
         setTime.setOnClickListener(
                 new View.OnClickListener() {
@@ -106,7 +111,7 @@ public class CreateGameActivity extends AppCompatActivity {
                         date = setDate.getText().toString();
                         numPlayers = Integer.parseInt(setNumPlayers.getText().toString());
                         //location = setLocation.getText().toString();
-                        location = "Lady Bug Park";
+                        location = "Dorotea Park";
 
                         Game newGame = new Game("Jeff Bahns", time, date, numPlayers, location);
                         createGame(newGame);
@@ -122,14 +127,15 @@ public class CreateGameActivity extends AppCompatActivity {
                 }
         );
 
-        // autocomplete location picker
-        String[] COURTS = new String[] {
-                "Lady Bug Park", "Dorotea Park", "Callinan Sports & Fitness Center",
-                "Rancho Cotate High School", "Sonoma State University"
-        };
-        AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, courtNames);
-        textView.setAdapter(adapter);
+            // autocomplete location picker
+            String[] COURTS = new String[]{
+                    "Lady Bug Park", "Dorotea Park", "Callinan Sports & Fitness Center",
+                    "Rancho Cotate High School", "Sonoma State University"
+            };
+            AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, courtNames);
+            textView.setAdapter(adapter);
+
     }
 
     public void makeToast() {

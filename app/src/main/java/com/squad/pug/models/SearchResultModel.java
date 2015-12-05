@@ -27,6 +27,13 @@ public class SearchResultModel {
         return courtNames;
     }
 
+
+    public void grabGamesFromDatabaseForEachCourt(Context mContext, GoogleMap mMap, HashMap<String, SearchItemModel> markerMap) {
+        for( int i = 0; i < courts.size(); i++ ) {
+            courts.get(i).getGamesFromDatabase(mContext, mMap, markerMap);
+        }
+    }
+
     // test print routine
     public void print() {
         System.out.println("_________________________________________________________________________");
@@ -35,6 +42,7 @@ public class SearchResultModel {
         for( int i = 0; i < courts.size(); i++ ) {
             System.out.println("X - - - - - Court " + i + " - - - - - X");
             courts.get(i).print();
+            courts.get(i).printGames();
             System.out.println(" ");
         }
         System.out.println("_________________________________________________________________________");

@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -28,8 +31,9 @@ public class CourtActivity extends AppCompatActivity
 
     public ArrayList<String> getItemModelDataStringArray(){
         Intent intent = getIntent();
-//        ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
-        ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
+        ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
+
+ //       ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
         return model;
     }
 
@@ -39,6 +43,31 @@ public class CourtActivity extends AppCompatActivity
         setContentView(R.layout.activity_court);
 //        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
+
+
+
+        /////////////////////LIST VIEW SHIT/////////////////////
+        Intent intent = getIntent();
+        ArrayList<Game> games = intent.getParcelableArrayListExtra("GameData");
+
+        ListView gamesListView = (ListView) findViewById(R.id.gamesListView);
+
+
+        final String[] gamesList_arr = {"5", "asdf", "fuck"};
+        /*(
+        for(int i = 0; i < games.size(); i++ ) {
+            gamesList_arr[i] = games.get(i).date + " -- " + games.get(i).time;
+        }
+        */
+        gamesListView.setAdapter(new ArrayAdapter<String>(CourtActivity.this, android.R.layout.simple_list_item_1, gamesList_arr));
+
+        gamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.v("CLICK", gamesList_arr[position]);
+            }
+        });
+
 
 
         mGoogleApiClient = new GoogleApiClient.Builder(this)
@@ -51,47 +80,32 @@ public class CourtActivity extends AppCompatActivity
         //      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        Intent intent = getIntent();
         ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
         //ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
 
         TextView courtName = (TextView) findViewById(R.id.courtName);
-        TextView courtId = (TextView) findViewById(R.id.courtId);
 
-        // ** idkText is just the name place, I think we should make it clickable and maybe say "Directions to Here"
-        // because the name of the court (item model) is already displayed at the top of the activity anyways - Trevor
-        TextView idkText = (TextView) findViewById(R.id.idkTextView);
+        TextView directions = (TextView) findViewById(R.id.directions);
         // Indexes:
         // 0: geometry
         // 1: icon
         // 2: id
         // 3: name
         // 4: placeId
+        // 5: directions formatted
         courtName.setText(model.get(3));
-        courtId.setText(model.get(2));
-
-
-
+        directions.setText(model.get(5));
 
         ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
 
-        // COMMENTING ALL THIS OUT CUZ IM TRYNA IMPLEMENT ACTUAL PHOTO - TREVOR
-        addPhoto(model, courtPhoto, idkText);
-
-//       new ImageLoadTask(model.get(1), courtPhoto);
-//       new ImageLoadTask(model.get(1), courtPhoto).execute();
-
-
+        addPhoto(model, courtPhoto, directions);
     }
-
 
     public void addPhoto(ArrayList<String> model, final ImageView mImageView, final TextView mText) {
 
-
-
         // Create a new AsyncTask that displays the bitmap and attribution once loaded.
         // Create a new AsyncTask that displays the bitmap and attribution once loaded.
-        new PhotoTask(350, 350, model.get(4), mGoogleApiClient) {
+        new PhotoTask(600, 600, model.get(4), mGoogleApiClient) {
             @Override
             protected void onPreExecute() {
                 // Display a temporary image to show while bitmap is loading.
@@ -103,17 +117,12 @@ public class CourtActivity extends AppCompatActivity
                 if (attributedPhoto != null) {
 
                     // Setting size restrictions and parameters on ImageView
-                    RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) mImageView.getLayoutParams();
-                    params.addRule(RelativeLayout.CENTER_IN_PARENT);
+                    /*
+                    FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) mImageView.getLayoutParams();
                     params.height += 650;
                     params.width += 650;
                     mImageView.setLayoutParams(params);
-
-                    // Trying to center mImageView programmatically & fucking with resolutions.
-//                    mImageView.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT,
-//                            RelativeLayout.LayoutParams.WRAP_CONTENT));
-//
-
+                    */
 
                     // Photo has been loaded, display it.
                     mImageView.setImageBitmap(attributedPhoto.bitmap);
@@ -123,10 +132,8 @@ public class CourtActivity extends AppCompatActivity
                         mText.setVisibility(View.GONE);
                     } else {
                         mText.setVisibility(View.VISIBLE);
-                          mText.setText("Directions to Here");
                        // mText.setText(Html.fromHtml(attributedPhoto.attribution.toString()));
                     }
-
                 }
             }
         }.execute();

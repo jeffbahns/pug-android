@@ -93,9 +93,10 @@ public class MapsActivity extends FragmentActivity
                     // Building query string
                     String rad = "&radius=5000";
                     String type = "&keyword=basketball+court";
+                    String query = "&query=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBase + AppDefines.testLocations[1] /*locationLatLong*/ + rad + type + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBaseText + AppDefines.testLocations[1] /*locationLatLong*/ + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -104,6 +105,7 @@ public class MapsActivity extends FragmentActivity
                     Reader reader = new InputStreamReader(is);
                     model = gson.fromJson(reader, SearchResultModel.class);
                     courtsResult = model;
+
 
                 }
                 catch (Exception e) {
@@ -117,8 +119,8 @@ public class MapsActivity extends FragmentActivity
             protected void onPostExecute(SearchResultModel result){
                 // Populate my first map
                 final Context mContext = MapsActivity.this.getApplicationContext();
-                result.populateMapWithModels(mMap, mContext, markerMap);
-//
+                result.grabGamesFromDatabaseForEachCourt(mContext, mMap, markerMap);
+                //result.populateMapWithModels(mMap, mContext, markerMap);
                 // Move camera to current testLocation, but eventually to my current location / last known location!
                 try {
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
@@ -146,6 +148,7 @@ public class MapsActivity extends FragmentActivity
 
                 // looks into hashmap for correct marker, then grabs the array
                 intent.putExtra("CourtData", markerMap.get(marker.getId()).getItemModelStringArray());
+                intent.putParcelableArrayListExtra("GameData", markerMap.get(marker.getId()).gamesList);
                 markerMap.get(marker.getId()).arrayIterator(markerMap.get(marker.getId()).getItemModelStringArray());
                 startActivity(intent);
 
@@ -174,8 +177,11 @@ public class MapsActivity extends FragmentActivity
 
     public void openCreateGame(View view) {
         Intent intent = new Intent(this, CreateGameActivity.class);
-
-        intent.putExtra("courtNames", courtsResult.getArrayOfNames());
+        try {
+            intent.putExtra("courtNames", courtsResult.getArrayOfNames());
+        } catch( RuntimeException e) {
+            e.printStackTrace();
+        }
         startActivity(intent);
     }
 

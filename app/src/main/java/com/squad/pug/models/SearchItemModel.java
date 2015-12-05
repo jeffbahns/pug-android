@@ -15,7 +15,6 @@ import com.squad.pug.ServerRequests;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 public class SearchItemModel {
     @SerializedName("geometry")
@@ -32,6 +31,9 @@ public class SearchItemModel {
 
     @SerializedName("place_id")
     public String placeId;
+
+    @SerializedName("formatted_address")
+    public String address;
 
     public Marker markyMarker;
 
@@ -54,21 +56,19 @@ public class SearchItemModel {
 
     // Trevor's temp. constructor to build mock item model
 
-    public SearchItemModel (GeometryData geometryData, String ic, String idString,
-                            String nameString, String place_id){
+    public SearchItemModel(GeometryData geometryData, String ic, String idString,
+                           String nameString, String place_id) {
         geometry = geometryData;
         icon = ic;
         id = idString;
         name = nameString;
         placeId = place_id;
-        gamesList = new ArrayList<>();
-        gamesList.add(new Game("jefff", "12a/23/23", "232f3", 3, "Dorotea"));
 
     }
 
-    public ArrayList<String> getItemModelStringArray () {
+    public ArrayList<String> getItemModelStringArray() {
 
-        // Indexes: 0: geometry 1: icon 2: id 3: name 4: placeId
+        // Indexes: 0: geometry 1: icon 2: id 3: name 4: placeId 5: directions
         // trevor** icon,id,name,placeId are already strings, toString=unnecessary
         ArrayList<String> mockItemStringArray = new ArrayList<>();
         mockItemStringArray.add(geometry.toString());
@@ -76,30 +76,36 @@ public class SearchItemModel {
         mockItemStringArray.add(id);
         mockItemStringArray.add(name);
         mockItemStringArray.add(placeId);
+        mockItemStringArray.add(address);
 
         return mockItemStringArray;
     }
+
     // just for testing
-    public void arrayIterator(ArrayList<String> arr ) {
-        for( int i = 0; i < arr.size(); i++ ) {
+    public void arrayIterator(ArrayList<String> arr) {
+        for (int i = 0; i < arr.size(); i++) {
             try {
                 System.out.println(arr.get(i));
-            } catch(RuntimeException e ) {
+            } catch (RuntimeException e) {
                 e.printStackTrace();
             }
         }
     }
 
 
-    public LatLng getCourtLatLng(){
+    public LatLng getCourtLatLng() {
         LatLng courtLatLng = new LatLng(geometry.getLocation1().getLat(), geometry.getLocation1().getLng());
         return courtLatLng;
     }
 
     // takes map param and injects a a new court marker
     public void populateMapWithModel(GoogleMap mMap, final Context mContext, HashMap<String, SearchItemModel> markerMap) {
-        Random rand = new Random();
-        int randomColor = rand.nextInt(4);
+        int randomColor;
+        if (gamesExist()) {
+            randomColor = 0;
+        } else {
+            randomColor = 3;
+        }
 
         markyMarker = mMap.addMarker(new MarkerOptions()
                 .position(getCourtLatLng())
@@ -107,26 +113,31 @@ public class SearchItemModel {
                 .title(name)
                 .snippet(games + " games active within 24hrs")
                 .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor])));
+
         //  .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
 
         // connects HashMap to SearchItemModel/Map marker
         markerMap.put(markyMarker.getId(), this);
 
         // server request
-        Game game = new Game(name);//
-        searchLocation(game, mContext);
-        printGames();
-        //
+        //Game game = new Game(name);
+        //searchLocation(game, mContext);
+
     }
+
+    public void getGamesFromDatabase(Context mContext, GoogleMap mMap, HashMap<String, SearchItemModel> markerMap) {
+        Game game = new Game(name);
+        searchLocation(game, mContext, mMap, markerMap);
+    }
+
+    public boolean gamesExist() {
+        return (gamesList.size() > 0);
+    }
+
     public void printGames() {
-        try {
-            if (gamesList.size() != 0) {
-                for (int i = 0; i < gamesList.size(); i++) {
-                    gamesList.get(i).print();
-                }
-            }
-        } catch(RuntimeException e) {
-            e.printStackTrace();
+        for (int i = 0; i < gamesList.size(); i++) {
+
+            gamesList.get(i).print();
         }
     }
 
@@ -134,20 +145,24 @@ public class SearchItemModel {
     public void print() {
         System.out.println("Name: " + name);
         System.out.println("Location: " + geometry.getLocation1().getLat().toString() + ", " + geometry.getLocation1().getLng().toString());
+        System.out.println("Address: " + address);
     }
-    public void searchLocation(Game game, Context mContext){
+
+    public void searchLocation(Game game, final Context mContext, final GoogleMap mMap, final HashMap<String, SearchItemModel> markerMap) {
         ServerRequests serverRequests = new ServerRequests(mContext);
+        gamesList = new ArrayList<>();
         serverRequests.fetchGameDataInBackground(game, new GetGameCallback() {
             @Override
             public void done(Game returnedGame) {
                 if (returnedGame != null) {
                     try {
-                        //gamesList.add(returnedGame);
-                        returnedGame.print();
+                        gamesList.add(returnedGame);
+                        printGames();
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
                 }
+                populateMapWithModel(mMap, mContext, markerMap);
             }
         });
     }
