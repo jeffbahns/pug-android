@@ -5,6 +5,55 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="com.squad.pug.GamesActivity">
+    tools:context="com.squad.pug.GamesActivity"
+    android:background="#141a31">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Squad&apos;s Game"
+        android:id="@+id/gameCreator"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#FF8592D0" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="timeCreated"
+        android:id="@+id/timeCreated"
+        android:textColor="#FF8592D0"
+        android:layout_marginBottom="25dp"
+        android:layout_above="@+id/dateCreated" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="dateCreated"
+        android:id="@+id/dateCreated"
+        android:textColor="#FF8592D0"
+        android:layout_marginBottom="27dp"
+        android:layout_above="@+id/numPlayers" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="numPlayers"
+        android:id="@+id/numPlayers"
+        android:textColor="#FF8592D0"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="41dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/courtPhoto"
+        android:layout_above="@+id/timeCreated"
+        android:layout_marginBottom="98dp"
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

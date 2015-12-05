@@ -2,6 +2,7 @@ package com.squad.pug;
 
 import android.content.Intent;
 import android.content.IntentSender;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.games.Games;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Places;
 
@@ -27,6 +29,7 @@ public class CourtActivity extends AppCompatActivity
     private boolean mResolvingError = false;
     private static final String DIALOG_ERROR = "diaglog_error";
     private static final int REQUEST_RESOLVE_ERROR = 1001;
+    public Bitmap courtBitmap;
 
 
     public ArrayList<String> getItemModelDataStringArray(){
@@ -65,6 +68,10 @@ public class CourtActivity extends AppCompatActivity
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.v("CLICK", gamesList_arr[position]);
+                Intent intent = new Intent(getApplicationContext(), GamesActivity.class);
+                intent.putExtra("CourtBitmap", courtBitmap);
+                startActivity(intent);
+
             }
         });
 
@@ -109,7 +116,7 @@ public class CourtActivity extends AppCompatActivity
             @Override
             protected void onPreExecute() {
                 // Display a temporary image to show while bitmap is loading.
-                mImageView.setImageResource(R.drawable.baby);
+                mImageView.setImageResource(R.drawable.sixthmanicon_courtdefault);
             }
 
             @Override
@@ -126,6 +133,7 @@ public class CourtActivity extends AppCompatActivity
 
                     // Photo has been loaded, display it.
                     mImageView.setImageBitmap(attributedPhoto.bitmap);
+                    courtBitmap = attributedPhoto.bitmap;
 
                     // Display the attribution as HTML content if set.
                     if (attributedPhoto.attribution == null) {
