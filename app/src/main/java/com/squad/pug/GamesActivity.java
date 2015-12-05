@@ -7,12 +7,6 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 
 public class GamesActivity extends AppCompatActivity {
 

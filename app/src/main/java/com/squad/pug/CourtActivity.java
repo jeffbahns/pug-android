@@ -15,7 +15,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.games.Games;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Places;
 
@@ -51,13 +50,13 @@ public class CourtActivity extends AppCompatActivity
 
         /////////////////////LIST VIEW SHIT/////////////////////
         Intent intent = getIntent();
-        ArrayList<Game> games = intent.getParcelableArrayListExtra("GameData");
+        final ArrayList<Game> games = intent.getParcelableArrayListExtra("GameData");
 
         ListView gamesListView = (ListView) findViewById(R.id.gamesListView);
 
 
-        final String[] gamesList_arr = {"5", "asdf", "fuck"};
-        /*(
+        final String[] gamesList_arr = {"asdf"};
+        /*
         for(int i = 0; i < games.size(); i++ ) {
             gamesList_arr[i] = games.get(i).date + " -- " + games.get(i).time;
         }
@@ -67,9 +66,10 @@ public class CourtActivity extends AppCompatActivity
         gamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("CLICK", gamesList_arr[position]);
+                Log.v("CLICK", gamesList_arr[0]);
                 Intent intent = new Intent(getApplicationContext(), GamesActivity.class);
                 intent.putExtra("CourtBitmap", courtBitmap);
+                intent.putExtra("GameData", games.get(position));
                 startActivity(intent);
 
             }
