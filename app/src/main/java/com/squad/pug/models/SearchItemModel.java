@@ -18,9 +18,6 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class SearchItemModel {
-
-
-
     @SerializedName("geometry")
     public GeometryData geometry;
 
@@ -65,6 +62,7 @@ public class SearchItemModel {
         name = nameString;
         placeId = place_id;
         gamesList = new ArrayList<>();
+        gamesList.add(new Game("jefff", "12a/23/23", "232f3", 3, "Dorotea"));
 
     }
 
@@ -109,18 +107,17 @@ public class SearchItemModel {
                 .title(name)
                 .snippet(games + " games active within 24hrs")
                 .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor])));
-                //  .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
+        //  .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
 
         // connects HashMap to SearchItemModel/Map marker
         markerMap.put(markyMarker.getId(), this);
 
         // server request
-        Game game = new Game(name);
+        Game game = new Game(name);//
         searchLocation(game, mContext);
         printGames();
         //
     }
-
     public void printGames() {
         try {
             if (gamesList.size() != 0) {
@@ -145,7 +142,8 @@ public class SearchItemModel {
             public void done(Game returnedGame) {
                 if (returnedGame != null) {
                     try {
-                        gamesList.add(returnedGame);
+                        //gamesList.add(returnedGame);
+                        returnedGame.print();
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }
