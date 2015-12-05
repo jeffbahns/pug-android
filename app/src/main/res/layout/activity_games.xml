@@ -53,7 +53,11 @@
         android:layout_height="wrap_content"
         android:id="@+id/courtPhoto"
         android:layout_above="@+id/timeCreated"
-        android:layout_marginBottom="98dp"
-        android:layout_centerInParent="true" />
+        android:layout_centerInParent="true"
+        android:layout_alignParentLeft="false"
+        android:layout_alignParentBottom="false"
+        android:layout_alignParentTop="false"
+        android:layout_alignWithParentIfMissing="false"
+        android:foregroundGravity="center" />
 
 </RelativeLayout>
