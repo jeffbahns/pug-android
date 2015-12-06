@@ -10,9 +10,11 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ImageButton;
 
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -21,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.gson.Gson;
+import com.squad.pug.models.LocationData;
 import com.squad.pug.models.SearchItemModel;
 import com.squad.pug.models.SearchResultModel;
 
@@ -49,13 +52,22 @@ public class MapsActivity extends FragmentActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-       // android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
-       // getFragmentManager().beginTransaction().hide(fragment);
 
-        // Set alpha of lin. layout bars
-//        LinearLayout ll = (LinearLayout) findViewById(R.id.linearLayout);
-//        ll.setAlpha(0.4);
-
+        ImageButton findLocalGames = (ImageButton) findViewById(R.id.find_games);
+        findLocalGames.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        try {
+                            final Location myLocation = mMap.getMyLocation();
+                            final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+                            populateMap(locationLatLong);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+        );
     }
 
     @Override
@@ -70,14 +82,21 @@ public class MapsActivity extends FragmentActivity
         } else {
             mMap.setMyLocationEnabled(true);
         }
+        String locationLatLong = "";
+        try {
+            final Location myLocation = mMap.getMyLocation();
+            locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
 
 
     }
 
-    public void populateMap(View view) throws IOException {
-        final Location myLocation = mMap.getMyLocation();
-        final String locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
-
+    public void populateMap(final String location) throws IOException {
 
         new AsyncTask<String, String, SearchResultModel>(){
             @Override
@@ -96,7 +115,7 @@ public class MapsActivity extends FragmentActivity
                     String query = "&query=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBaseText + AppDefines.testLocations[1] /*locationLatLong*/ + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBaseText + location + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -123,8 +142,8 @@ public class MapsActivity extends FragmentActivity
                 //result.populateMapWithModels(mMap, mContext, markerMap);
                 // Move camera to current testLocation, but eventually to my current location / last known location!
                 try {
-                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
-                    mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(location), 12));
+                    //mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(location)));
                 }
                 catch (Exception e) {
                     e.printStackTrace();
@@ -211,7 +230,7 @@ public class MapsActivity extends FragmentActivity
         final double longitude = Double.parseDouble(latlong[1]);
         return new LatLng(latitude, longitude);
     }
-}
+
 
 
 // BANISHED CODE //
@@ -223,89 +242,28 @@ public class MapsActivity extends FragmentActivity
 //courtSnippet.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
 //courtSnippet.show();
 
-/*2 *//*
     // ** Called after Place Picker location selected
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
-
-
-                Gson gson = new GsonBuilder()
-                        .create();
-
-                    Retrofit RESTAdapter = new Retrofit.Builder()
-                            .baseUrl(AppDefines.COURTS_BASE_URL)
-                            .addConverterFactory(GsonConverterFactory.create())
-                            .build();
-
-                // Set up picked location, and move camera accordingly
-                Place place = PlacePicker.getPlace(data, this);
-                LatLng placeLatLng = place.getLatLng();
-                LocationData loc = new LocationData(placeLatLng);
-                String strlocationlat = loc.getLat().toString();
-                String strlocationlong = loc.getLng().toString();
-                String strlocation = strlocationlat + "," + strlocationlong;
-                String toastMsg = String.format("Place: %s", place.getName());
-                Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show();
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(place.getLatLng(), 12));
-
-                // Convert location to string and pass to maps http request
-                //         IGetCourtsApi mApi = RESTAdapter.create(IGetCourtsApi.class);
-
-                // Temps / Test values (Distance in meters for radius)
-                String rad = "2000";
-                String currentSearchTerm = "court";
-
-
-                // Call to Search using current location as a string
-
-                RESTAPIClient.getCourtsProvider()
-                        .GetCourts(strlocation, currentSearchTerm, rad, AppDefines.GOOGLE_SERVER_API)
-                        .subscribeOn(Schedulers.newThread())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Subscriber<SearchResultModel>() {
-                            @Override
-                            public void onCompleted() {
-
-
-
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-
-                                int i = 0;
-
-                            }
-
-                            @Override
-                            public void onNext(SearchResultModel courtsSearchResults) {
-
-                                int index = 0;
-                                // Testing to see if I have data
-                                String testing = courtsSearchResults.courts.get(index).id;
-
-                                Toast.makeText(getApplicationContext(), testing,
-                                        Toast.LENGTH_LONG).show();
-                                Log.v("***********************", "onNext called.");
-
-
-                       /*         while(courtsSearchResults.courts.get(index) == null) {
-                                    mMap.addMarker(new MarkerOptions()
-                                    .position(courtsSearchResults.courts.get(index).getCourtLatLng())
-                                    .draggable(false));
-
-                                }
-
-                            }
-                        });
-//                Log.d("Test**", strlocation);
-//                Toast.makeText(getApplicationContext(), strlocation,
-//                       Toast.LENGTH_LONG).show();
-
+                Place p = PlacePicker.getPlace(data, this);
+                LatLng loc = p.getLatLng();
+                System.out.println(loc.toString());
+                LocationData locationData = new LocationData(loc);
+                String strloclat = locationData.getLat().toString();
+                String strloclng = locationData.getLng().toString();
+                String strlocation = strloclat + "," + strloclng;
+                try {
+                    populateMap(strlocation);
+                } catch (IOException e) {
+                        e.printStackTrace();
+                }
 
             }
         }
     }
-*/
+
+
+
+}

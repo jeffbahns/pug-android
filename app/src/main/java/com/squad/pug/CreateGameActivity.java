@@ -113,7 +113,7 @@ public class CreateGameActivity extends AppCompatActivity {
                         //location = setLocation.getText().toString();
                         location = "Dorotea Park";
 
-                        Game newGame = new Game("Jeff Bahns", time, date, numPlayers, location);
+                        Game newGame = new Game(1,  "Jeff Bahns", time, date, numPlayers, location);
                         createGame(newGame);
 
                         testPrint();

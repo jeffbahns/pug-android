@@ -1,6 +1,5 @@
 package com.squad.pug;
 
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
@@ -19,8 +18,7 @@ public class GamesActivity extends AppCompatActivity {
         // Fill this in later when we implement it to grab bitmap from court
         // To contain bitmap passed in from CourtActivity
         ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
-        Bitmap courtPhotoBitmap = getIntent().getParcelableExtra("CourtBitmap");
-        courtPhoto.setImageBitmap(courtPhotoBitmap);
+        courtPhoto.setImageResource(R.drawable.sixthmanicon_courtdefault);
 
 
 

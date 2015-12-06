@@ -218,6 +218,7 @@ public class ServerRequests {
         @Override
         protected Game doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("id", Integer.toString(game.id)));
             dataToSend.add(new BasicNameValuePair("location", game.location));
 
             HttpParams httpRequestParams = new BasicHttpParams();
@@ -245,7 +246,7 @@ public class ServerRequests {
                     String date = jObject.getString("date");
                     int num_players = jObject.getInt("num_players");
 
-                    returnedGame = new Game(user, time, date, num_players, game.location);
+                    returnedGame = new Game(game.id, user, time, date, num_players, game.location);
                 }
 
             } catch (Exception e) {

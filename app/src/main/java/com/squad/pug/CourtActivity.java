@@ -5,7 +5,6 @@ import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -55,21 +54,22 @@ public class CourtActivity extends AppCompatActivity
         ListView gamesListView = (ListView) findViewById(R.id.gamesListView);
 
 
-        final String[] gamesList_arr = {"asdf"};
-        /*
+        final String[] gamesList_arr = new String[10];
+
         for(int i = 0; i < games.size(); i++ ) {
             gamesList_arr[i] = games.get(i).date + " -- " + games.get(i).time;
         }
-        */
+
         gamesListView.setAdapter(new ArrayAdapter<String>(CourtActivity.this, android.R.layout.simple_list_item_1, gamesList_arr));
 
         gamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.v("CLICK", gamesList_arr[0]);
+                //Log.v("CLICK", gamesList_arr[0]);
                 Intent intent = new Intent(getApplicationContext(), GamesActivity.class);
-                intent.putExtra("CourtBitmap", courtBitmap);
-                intent.putExtra("GameData", games.get(position));
+                //intent.putExtra("CourtBitmap", courtBitmap);
+                //intent.putExtra("GameData", games.get(position));
+                intent.putExtra("GameData", games.get((int)id));
                 startActivity(intent);
 
             }
@@ -103,9 +103,9 @@ public class CourtActivity extends AppCompatActivity
         courtName.setText(model.get(3));
         directions.setText(model.get(5));
 
-        ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
+        //ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
 
-        addPhoto(model, courtPhoto, directions);
+        //addPhoto(model, courtPhoto, directions);
     }
 
     public void addPhoto(ArrayList<String> model, final ImageView mImageView, final TextView mText) {

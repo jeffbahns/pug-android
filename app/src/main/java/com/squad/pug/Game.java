@@ -10,11 +10,11 @@ import android.os.Parcelable;
 
 public class Game implements Parcelable {
     String user, time, date, location;
-    int num_players;
+    int num_players, id;
 
-    public Game (String user, String time, String date, int num_players,
+    public Game (int id, String user, String time, String date, int num_players,
                  String location){
-
+        this.id = id;
         this.user = user;
         this.time = time;
         this.date = date;
@@ -22,7 +22,8 @@ public class Game implements Parcelable {
         this.location = location;
     }
 
-    public Game(String location) {
+    public Game(int id, String location) {
+        this.id = id;
         this.location = location;
         this.time = "";
         this.date = "";
@@ -30,6 +31,7 @@ public class Game implements Parcelable {
     }
 
     public void print() {
+        System.out.println(id);
         System.out.println(user);
         System.out.println(time);
         System.out.println(date);

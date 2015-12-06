@@ -11,8 +11,8 @@ import android.widget.ImageButton;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
-    ImageButton bLogin, tvRegisterLink, openHome;
-    EditText etUsername, etFirst, etLast, etSex, etAge, etPassword;
+    ImageButton bLogin, tvRegisterLink;
+    EditText etUsername, etPassword;
 
     UserLocalStore userLocalStore;
 
@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 User user = new User(username, password);
 
-                authenticate(user, username, password);
+                authenticate(user);
                 break;
 
             case R.id.tvRegisterLink:
@@ -51,15 +51,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-    private void authenticate(User user, String username, String password){
+                public void authenticate(final User user){
         ServerRequests serverRequests = new ServerRequests(this);
         serverRequests.fetchUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
-                if (returnedUser == null){
-                    showErrorMessage();
-                }else{
+                if (returnedUser.name == user.name){
                     logUserIn(returnedUser);
+                }else{
+                    showErrorMessage();
                 }
             }
         });
@@ -74,16 +74,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         userLocalStore.storeUserData(returnedUser);
         userLocalStore.setUserLoggedIn(true);
 
-
-
-        startActivity(new Intent(this, Launcher.class));
-
+        startActivity(new Intent(this, MapsActivity.class));
     }
-    /*public void openHome(View view) {
-        //build the intent
-        Intent intent = new Intent(this, Home.class);
-        startActivity(intent);
-    }*/
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -100,3 +93,4 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
 
 }
+

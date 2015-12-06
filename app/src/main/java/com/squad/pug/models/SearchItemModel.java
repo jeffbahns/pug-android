@@ -126,8 +126,12 @@ public class SearchItemModel {
     }
 
     public void getGamesFromDatabase(Context mContext, GoogleMap mMap, HashMap<String, SearchItemModel> markerMap) {
-        Game game = new Game(name);
-        searchLocation(game, mContext, mMap, markerMap);
+        int id = 1;
+        //Game game = new Game(id, name);
+        for(int i = 1; i < 4; i++ ) {
+            searchLocation( new Game(i, name), mContext, mMap, markerMap);
+        }
+        printGames();
     }
 
     public boolean gamesExist() {
@@ -157,7 +161,7 @@ public class SearchItemModel {
                 if (returnedGame != null) {
                     try {
                         gamesList.add(returnedGame);
-                        printGames();
+
                     } catch (NullPointerException e) {
                         e.printStackTrace();
                     }

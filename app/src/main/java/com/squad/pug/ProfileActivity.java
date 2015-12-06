@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button openHome;
     ImageButton bLogout;
+    Button bmaps = (Button) findViewById(R.id.bLogin);
     TextView etUsername, etName, etSex, etAge;
     UserLocalStore userLocalStore;
 
@@ -27,6 +27,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         etAge = (TextView) findViewById(R.id.etAge);
         bLogout = (ImageButton) findViewById(R.id.bLogout);
         bLogout.setOnClickListener(this);
+        bmaps.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
 
         // Baby image, later to be profile picture
@@ -37,14 +38,12 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     @Override
     protected void onStart() {
         super.onStart();
-        //displayUserDetails();
         if (authenticate() == true) {
             displayUserDetails();
         }else{
             startActivity(new Intent(ProfileActivity.this, LoginActivity.class));
         }
     }
-
 
     private boolean authenticate(){
         return userLocalStore.getUserLoggedIn();
@@ -66,11 +65,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.bLogout:
                 userLocalStore.clearUserData();
                 userLocalStore.setUserLoggedIn(false);
-
-
-
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
+            case R.id.bLogin:
+                startActivity(new Intent(this, MapsActivity.class));
         }
     }
 }

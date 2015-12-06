@@ -37,6 +37,7 @@ public class UserLocalStore {
     }
 
     public User getLoggedInUser(){
+    //public User getloggedinuser(){
         String username = userLocalDatabase.getString("username", "demo");
         String name = userLocalDatabase.getString("name", "test");
         String sex = userLocalDatabase.getString("sex", "male");

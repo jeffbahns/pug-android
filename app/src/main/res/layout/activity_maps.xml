@@ -56,7 +56,6 @@
                 android:layout_height="wrap_content"
                 android:drawable="@drawable/find_games_link"
                 android:src="@drawable/find_games_selector"
-                android:onClick="populateMap"
                 android:id="@+id/find_games" />
 
         </LinearLayout>
