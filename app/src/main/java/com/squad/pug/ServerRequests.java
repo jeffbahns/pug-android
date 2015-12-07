@@ -74,6 +74,7 @@ public class ServerRequests {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
             dataToSend.add(new BasicNameValuePair("username", user.username));
             dataToSend.add(new BasicNameValuePair("name", user.name));
+            dataToSend.add(new BasicNameValuePair("tel_number", user.tel_number));
             dataToSend.add(new BasicNameValuePair("sex", user.sex));
             dataToSend.add(new BasicNameValuePair("age", user.age + ""));
             dataToSend.add(new BasicNameValuePair("password", user.password));
@@ -141,10 +142,11 @@ public class ServerRequests {
                     user = null;
                 }else{
                     String name = jObject.getString("name");
+                    String tel_number = jObject.getString("tel_number");
                     String sex = jObject.getString("sex");
                     int age = jObject.getInt("age");
 
-                    returnedUser = new User(user.username, name, sex, age, user.password);
+                    returnedUser = new User(user.username, name, tel_number, sex, age, user.password);
 
                 }
 
@@ -180,7 +182,6 @@ public class ServerRequests {
         protected Void doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
             dataToSend.add(new BasicNameValuePair("id", game.id + ""));
-
             dataToSend.add(new BasicNameValuePair("user", game.user));
             dataToSend.add(new BasicNameValuePair("time", game.time));
             dataToSend.add(new BasicNameValuePair("date", game.date));

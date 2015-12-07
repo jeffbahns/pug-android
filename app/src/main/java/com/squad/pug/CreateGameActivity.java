@@ -107,10 +107,10 @@ public class CreateGameActivity extends AppCompatActivity {
                             successAlert.setMessage(message);
                             successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id ) {
-                                    userLocalStore.clearGameData();
-                                    User user = userLocalStore.getUsername();
-                                    String uuser = user.username.toString();
-                                    Game game = new Game(0, uuser, time, date, numPlayers, location);
+                                    //userLocalStore.clearGameData();
+                                    User user = userLocalStore.getLoggedInUser();
+                                    String uuser = user.username;
+                                    Game game = new Game(0, uuser, time, date, numPlayers, "Lady Bug Park");
                                     //createGame( new Game(game);
                                     userLocalStore.storeGameData(game);
                                     getID(game);
@@ -155,13 +155,13 @@ public class CreateGameActivity extends AppCompatActivity {
             return false;
         }
 
-        try {
-            location = locationSpinner.getSelectedItem().toString();
-            if( location == "")
-                return false;
-        } catch(RuntimeException e) {
-            return false;
-        }
+//        try {
+//            location = locationSpinner.getSelectedItem().toString();
+//            if( location == "")
+//                return false;
+//        } catch(RuntimeException e) {
+//            return false;
+        //}
         return true;
     }
 
@@ -192,7 +192,7 @@ public class CreateGameActivity extends AppCompatActivity {
                     String date = ngame.date;
                     int num_players = ngame.num_players;
                     String location = ngame.location;
-                    Game game = new Game(id, user, time, date, num_players, location);
+                    Game game = new Game(id, user, time, date, num_players, "Lady Bug Park");
                     createGame(game);
 
                 }

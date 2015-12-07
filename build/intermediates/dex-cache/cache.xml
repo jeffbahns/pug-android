@@ -2,270 +2,228 @@
 <items version="2" >
 
     <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-drive\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-478f145c8afb8c543c06822cb86ab7d5a381b281.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-c15df4d41cfeeee2353ab8088d47e37017e13438.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-cast\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3178362320bcf51228835b60ff978efadfd1f783">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-4b2baa472808c04258d7fde3437f1c75571804fe.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-analytics\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="95758a2905669affbffc5ddd262921d375674fad">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-a017c9acd4e0266ebe49cef46304c7209d20b775.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-f00c3383e4cc587ee710d75244ca5db926489de4.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-fa7bbb80be3cb498fbbe54570683e801ac3e5f1e.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\libs\internal_impl-22.2.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.0-4d14aa14c8a973e64e701cf7cc9aa9e4661207e1.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appinvite\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-1273e808e3c8c44ef0f3d0a3af154631a9f2c001.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-gcm\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="dcb5b75baf05d92e61d5706737200ee55949f97b">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-7e7f176f5fbb97739e529d0af9b0921ff8e16531.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-ads\8.1.0\jars\classes.jar"
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="997773777cf3904c11d6764fe3b7668538220e49">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-bfa4bfe3d3aff2fe6a6fc2c8472199047ed10249.jar" />
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-e01ac8a80a33ac25595b57713c54c3bd2c6f59a3.jar" />
     </item>
     <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\adapter-rxjava\2.0.0-beta2\3a233746381a03dbb0f5f3ed10b11c3e72dba499\adapter-rxjava-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3a233746381a03dbb0f5f3ed10b11c3e72dba499">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\adapter-rxjava-2.0.0-beta2-cb27d7619059a6549928cdc26d1ea1e09fcf2418.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\retrofit\2.0.0-beta2\880d9e0997b2d1bfc98e0d121ced33ee5d04aac4\retrofit-2.0.0-beta2.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="880d9e0997b2d1bfc98e0d121ced33ee5d04aac4">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\retrofit-2.0.0-beta2-6371172c2e6464eca1c0293d76b7e8e56def04f6.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-location\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-e0404959f4671ba6a7433dfc55f3f965b4c795ee.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-safetynet\8.1.0\jars\classes.jar"
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="3b05c18f60969ecc2ba49c0409c4b96be2d9cb0c">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-11b215784ec66523fbbde2f727f61c847b7a0505.jar" />
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-fa9bba397083efa15044b3bdfea2fdd22a4ebf3b.jar" />
     </item>
     <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-b61cd1f90a34d24490b6ceb4b7727d3d65e45833.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-games\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-1d3eeba8aabe7294e42dd87b4f14df8b20692d1a.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\io.reactivex\rxjava\1.0.14\898f9ab61e2a23afd615f0b0389478bec86f49f9\rxjava-1.0.14.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\rxjava-1.0.14-dd7349a93320766513e17f88882f2eed4ccbe32a.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.6.0\98476622f10715998eacf9240d6b479f12c66143\okio-1.6.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="98476622f10715998eacf9240d6b479f12c66143">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\okio-1.6.0-24d2f0e969d6230bbcd855f757283c06bdbdda16.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-panorama\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-be3d2811bdffb2e6646c2a4d6b92c80d5ad94544.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-43645087655d3b48f7c0c2e16a38b70b76c27d43.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\mediarouter-v7\22.2.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-512e119bc94c0db16e3ad38d202ff4e4ff13a4da.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wearable\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-764ac157d45d423548ff0d0e83d77d3b6b4b4fc5.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-fitness\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-1927e107ca3d68648e125b0159ade96d3ba66c1e.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\io.reactivex\rxandroid\1.0.1\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="aa81bfe8c5cc88c2472ca936ae71f0c3dd1766df">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-6103d615678ff8f055cfb5ac115ad4dc7761ec41.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp\okhttp\2.5.0\4de2b4ed3445c37ec1720a7d214712e845a24636\okhttp-2.5.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4de2b4ed3445c37ec1720a7d214712e845a24636">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\okhttp-2.5.0-50a7b2fa7641c651c56b43cccd7c36e745590967.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-vision\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="17449c47df35c754b257532052f1270c444f7993">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-071863846f658d3251bf0ba08d6802372f2063db.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.google.code.gson\gson\2.3.1\ecb6e1f8e4b0e84c4b886c2f14a1500caf309757\gson-2.3.1.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\gson-2.3.1-da39f91472630df9ccb3a318c3afe9392a73f6f3.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-identity\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-1e3fcf7e64fbbf9b2c6a26d8b6817e5f62b13bdc.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-wallet\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-727ca8faa6a521d7583edbd03182658a71a78fe9.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-da0e784b2572c7dd922b6e8da8ad06371fe89918.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-8b127f49580199e898358e53638cb43c8219d571.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\support-v4\23.1.0\jars\libs\internal_impl-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\internal_impl-23.1.0-3e48e64b2338f1d1e4e256e3fca044fb90c2c3c2.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.android.support\design\23.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-ad145f8751fd8dd7f72a58ca2c302dec545e2af0.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-nearby\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-22332a2ebe0acf051596b1c1542f53acfe5b32f0.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\23.1.0\support-annotations-23.1.0.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\support-annotations-23.1.0-1424b0416f2022543ee486cfe566aa9533dab4f0.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-plus\8.1.0\jars\classes.jar"
-        jumboMode="false"
-        revision="23.0.1"
-        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-1467a7848d3ed177ed41abad173e7e93a9510da9.jar" />
-    </item>
-    <item
-        jar="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-measurement\8.1.0\jars\classes.jar"
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
         sha1="482de223655d06253cc6a4955d653f8994169500">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\classes-8e647eaa8623df5e2db08524a3007673aef2f147.jar" />
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-5ae8450437871ee87eee5e00a1a234032640677b.jar" />
     </item>
     <item
-        jar="C:\Users\jeffbahns\.gradle\caches\modules-2\files-2.1\com.squareup.retrofit\converter-gson\2.0.0-beta2\392c3d09e0f5e7087544093cc0cb23bb9c7af5fa\converter-gson-2.0.0-beta2.jar"
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/8.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.1"
-        sha1="392c3d09e0f5e7087544093cc0cb23bb9c7af5fa">
-        <dex dex="C:\Users\jeffbahns\Documents\GitHub\pug\app\build\intermediates\pre-dexed\debug\converter-gson-2.0.0-beta2-8cea122a18476e9b4b35e1601405bb3953ab4e9f.jar" />
+        sha1="3c729e6d76a36c5dc27e6a4c4009296f49eaa88a">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-4272ebac06537b668c7fd3fad0ed0c7fe1278324.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ecb6e1f8e4b0e84c4b886c2f14a1500caf309757">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/gson-2.3.1-77ba53934d17b114b8117b0761ea0af6853c9218.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-8356d676a66bf3e92226d6e7a04bb645e933400f.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3178362320bcf51228835b60ff978efadfd1f783">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-085acffe36aeefa14754f3a395939e27162ae3d0.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-4f834ecff45946d21f01dd44cb1a19829452f22a.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="4477ea44f5ec5ad064022a22691732d7638ff197">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-2aff5ba113e7c534abc415a6958c71b158c3ac05.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d294caf562c4c678b2ef351662a0ca6f1a4d06c0">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-dea961a513be15a95e347ceec64a6f35376c64e6.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d93480da1d303122ee67dc3bc23e6297bdef9951">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-b456f17d9a8414ae6e7dc4afac6e0fc34a3b1e65.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="17449c47df35c754b257532052f1270c444f7993">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-92fdc4625f8e20b1a529c2c07eb4d4b12617182c.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d0dda274b703dd9c5bb056867649d22b4171ae7d">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-44a279d0b4b89db69fea9cf540d6c2de2c19a6a7.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="2a7e47da654546f9457deb6132364f1bf33a1857">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-f184f7df5903d32a3545c2e775dc184ab0f3074a.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="9cf8c0ef60847621c7ad00b4f78dbfc9daba4af2">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-925fc2298ebf0240b4cefb05af31ad5766c85fae.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-3de6492669741000828729fcaddba2533a40aaf8.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-c5da607b77d6ce30f116bb2cd1f5bc714f93db3e.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-2219ada028c7b76b333f10106ecfa0bb133eefcd.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="041d93cf0533591c29d1d7263b2fa114dbfb20bd">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-e80eb240d3ba64960b3fadc78c5d9d8c39917f39.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="d61920aba361832a9545a43fa8c9453eb02f18f7">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-3bd0cd41b79e3d4f1b77a0e6697b9a8750fb33a5.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="3aed37c38c56679602255dd72ef356da5d327cda">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-5ddd45847a4764ba6814f71fbb2d817bcecc4da3.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="82825756edeeb3b56b15e73b2edd56e93da5a444">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-f2a0393154445797196024e70e7d2352c47dbe83.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="325788a04b436a0bccbc5b4c54cf0f12ebdcbd2d">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-422c7132232344d1e443e6cc9a9caae928684e72.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcf8c83c3dead00a6c4fe313e95f7aaca20dc641">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-5cfedba9eddd362e1e351857b8a8100a3a6d8ca7.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="993834cb17d07d51b92db89d2c330243592ebf77">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-b8fcef47759b611f26edde111814c98054b24887.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.2.0/jars/libs/internal_impl-22.2.0.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="0632f06970823b7e3436f649bfa65b47035c91d0">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/internal_impl-22.2.0-c0acbf0db912c4ab3a1f860f7384064e5d370a46.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="97f3b099801a9ad9d70e835b9125273e986eb68d">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-d7fa207517194b01a0837531bace43071aac46dd.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-056252621cac0e201d70b34f8235baf391aaa062.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="b92002cb2f0e11a226ac5bac6dff1dc2a9d0b774">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-c45eae112e9fa69e9e3525e5bfc60511439c268a.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="95758a2905669affbffc5ddd262921d375674fad">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-3fa404c2e1a6ae748d39b783fa0bd550ce503280.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/.gradle/caches/modules-2/files-2.1/io.reactivex/rxjava/1.0.14/898f9ab61e2a23afd615f0b0389478bec86f49f9/rxjava-1.0.14.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="898f9ab61e2a23afd615f0b0389478bec86f49f9">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/rxjava-1.0.14-36445b2eb3d7fe07653d81293be76b608611fede.jar" />
+    </item>
+    <item
+        jar="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.1"
+        sha1="dcb5b75baf05d92e61d5706737200ee55949f97b">
+        <dex dex="/Users/Bryanpenaloza/Desktop/6man/app/build/intermediates/pre-dexed/debug/classes-33494b68fa2ce284f8e555e70d75703bbfdc8eb7.jar" />
     </item>
 
 </items>
