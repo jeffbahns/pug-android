@@ -29,6 +29,13 @@ public class Game implements Parcelable {
         this.date = "";
         this.num_players = -1;
     }
+    public Game(int id) {
+        this.location = "";
+        this.id = id;
+        this.time = "";
+        this.date = "";
+        this.num_players = -1;
+    }
 
     public void print() {
         System.out.println(id);

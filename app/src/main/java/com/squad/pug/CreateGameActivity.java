@@ -27,8 +27,9 @@ public class CreateGameActivity extends AppCompatActivity {
     String time;
     String date;
     String location;
+    UserLocalStore userLocalStore;
     int numPlayers;
-
+    int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +39,7 @@ public class CreateGameActivity extends AppCompatActivity {
         setDate = (TextView) findViewById(R.id.setDate);
         setNumPlayers = (EditText) findViewById(R.id.setNumPlayers);
         locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
+        userLocalStore = new UserLocalStore(this);
         ArrayList<String> courtNames = new ArrayList<>();
         courtNames.add("");
         try {
@@ -48,6 +50,7 @@ public class CreateGameActivity extends AppCompatActivity {
         } catch(RuntimeException e ) {
             e.printStackTrace();
         }
+
         // time picker
         setTime.setOnClickListener(
                 new View.OnClickListener() {
@@ -105,7 +108,14 @@ public class CreateGameActivity extends AppCompatActivity {
                             successAlert.setMessage(message);
                             successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id ) {
-                                    createGame( new Game(10, "Jeff", time, date, numPlayers, location));
+
+                                    User user = userLocalStore.getLoggedInUser();
+                                    String uuser = user.username.toString();
+                                    Game game = new Game(0, uuser, time, date, numPlayers, location);
+                                    //createGame( new Game(game);
+                                    userLocalStore.storeGameData(game);
+                                    getID(game);
+
                                 }
                             });
                             successAlert.setNegativeButton("Cancel", null);
@@ -153,12 +163,6 @@ public class CreateGameActivity extends AppCompatActivity {
         } catch(RuntimeException e) {
             return false;
         }
-
-        Game newGame = new Game(1,  "Jeff Bahns", time, date, numPlayers, location);
-        newGame.print();
-
-        //createGame(newGame);
-
         return true;
     }
 
@@ -166,11 +170,35 @@ public class CreateGameActivity extends AppCompatActivity {
         ServerRequests serverRequests = new ServerRequests(this);
         serverRequests.storedGameDataInBackground(game, new GetGameCallback() {
             @Override
-            public void done(Game returnedGame) {
+            public void  done(Game returnedGame) {
                 startActivity(new Intent(CreateGameActivity.this, MapsActivity.class));
 
             }
         });
 
+    }
+    public void getID(Game game){
+        ServerRequests serverRequests = new ServerRequests(this);
+        serverRequests.getIDInBackground(game, new GetGameCallback() {
+            @Override
+            public void done(Game returnedGame) {
+                if (returnedGame == null) {
+                    createGame(userLocalStore.getGame());
+                } else {
+                    userLocalStore.storeID(returnedGame);
+                    Game ngame = userLocalStore.getGame();
+                    int id = ngame.id + 1;
+                    String user = ngame.user;
+                    String time = ngame.time;
+                    String date = ngame.date;
+                    int num_players = ngame.num_players;
+                    String location = ngame.location;
+                    Game game = new Game(id, user, time, date, num_players, location);
+                    createGame(game);
+
+                }
+                //return returnedGame;
+            }
+        });
     }
 }

@@ -51,15 +51,17 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-                public void authenticate(final User user){
+    public void authenticate(User user){
         ServerRequests serverRequests = new ServerRequests(this);
         serverRequests.fetchUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
-                if (returnedUser.name == user.name){
+                if (returnedUser ==null){
+                    //showErrorMessage();
                     logUserIn(returnedUser);
+
                 }else{
-                    showErrorMessage();
+                    logUserIn(returnedUser);
                 }
             }
         });
@@ -71,8 +73,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         dialogBuilder.show();
     }
     private void logUserIn(User returnedUser){
-        userLocalStore.storeUserData(returnedUser);
-        userLocalStore.setUserLoggedIn(true);
+        //userLocalStore.storeUserData(returnedUser);
+        //userLocalStore.setUserLoggedIn(true);
 
         startActivity(new Intent(this, MapsActivity.class));
     }

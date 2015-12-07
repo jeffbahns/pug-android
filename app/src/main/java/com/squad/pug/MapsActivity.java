@@ -197,6 +197,10 @@ public class MapsActivity extends FragmentActivity
         Intent intent = new Intent(this, GamesListView.class);
         intent.putParcelableArrayListExtra("GamesData", localGames);
         intent.putStringArrayListExtra("GamesPlaceIds", gamesPlaceIds);
+<<<<<<< HEAD
+=======
+        startActivity(intent);
+>>>>>>> branchAlaHeffe
     }
 
     public void openCreateGame(View view) {
@@ -262,7 +266,7 @@ public class MapsActivity extends FragmentActivity
                 try {
                     populateMap(strlocation);
                 } catch (IOException e) {
-                        e.printStackTrace();
+                    e.printStackTrace();
                 }
 
             }

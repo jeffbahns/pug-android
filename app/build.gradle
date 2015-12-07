@@ -35,7 +35,12 @@ dependencies {
     // Retrofit dependencies
     // Trying beta 2 due to PROTOCOL_ERROR
 
+<<<<<<< HEAD
 
+=======
+    // rxAndroid dependencies
+    compile 'io.reactivex:rxjava:1.0.14'
+>>>>>>> branchAlaHeffe
     // Parceler
     // compile 'org.parceler:parceler-api:1.0.4'
     //   apt 'org.parceler:parceler:1.0.4'

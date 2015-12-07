@@ -37,7 +37,7 @@ public class CourtActivity extends AppCompatActivity
         Intent intent = getIntent();
         ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
 
- //       ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
+        //       ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
         return model;
     }
 
@@ -88,7 +88,11 @@ public class CourtActivity extends AppCompatActivity
                 .build();
 
 
+<<<<<<< HEAD
        final ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
+=======
+        final ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
+>>>>>>> branchAlaHeffe
         //ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
 
         TextView courtName = (TextView) findViewById(R.id.courtName);
@@ -103,7 +107,11 @@ public class CourtActivity extends AppCompatActivity
         // 5: directions formatted
         // 6: String LatLng
         courtName.setText(model.get(3));
+<<<<<<< HEAD
      //   directions.setText(model.get(5));
+=======
+        //   directions.setText(model.get(5));
+>>>>>>> branchAlaHeffe
         // Underline directions and set to formatted address
         SpannableString dir = new SpannableString(model.get(5));
         dir.setSpan(new UnderlineSpan(), 0, dir.length(), 0);
@@ -112,7 +120,11 @@ public class CourtActivity extends AppCompatActivity
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW,
+<<<<<<< HEAD
                 Uri.parse("http://maps.google.com/maps?daddr=" + model.get(6)));
+=======
+                        Uri.parse("http://maps.google.com/maps?daddr=" + model.get(6)));
+>>>>>>> branchAlaHeffe
                 startActivity(intent);
             }
         });
@@ -158,7 +170,7 @@ public class CourtActivity extends AppCompatActivity
 //                       // mText.setText(Html.fromHtml(attributedPhoto.attribution.toString()));
 //                    }
                 }
-          }
+            }
         }.execute();
     }
 

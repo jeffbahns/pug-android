@@ -58,7 +58,7 @@ public class UserLocalStore {
 
 
     public boolean getUserLoggedIn(){
-        if (userLocalDatabase.getBoolean("LoggedIn", false)) {
+        if (userLocalDatabase.getBoolean("loggedIn", false)) {
             return true;
         }else{
             return false;
@@ -69,6 +69,43 @@ public class UserLocalStore {
         spEditor.clear();
         spEditor.commit();
 
+    }
+    public void storeGameData(Game game){
+        SharedPreferences.Editor gameEditor = userLocalDatabase.edit();
+        gameEditor.putInt("id", game.id);
+        gameEditor.putString("user", game.user);
+        gameEditor.putString("time", game.time);
+        gameEditor.putString("date", game.date);
+        gameEditor.putInt("num_players", game.num_players);
+        gameEditor.putString("location", game.location);
+        gameEditor.commit();
+
+    }
+    public void storeID(Game game){
+
+        SharedPreferences.Editor gameEditor = userLocalDatabase.edit();
+        gameEditor.putInt("id", game.id);
+        gameEditor.commit();
+
+    }
+    public void clearGameData(){
+        SharedPreferences.Editor gameEditor = userLocalDatabase.edit();
+        gameEditor.clear();
+        gameEditor.commit();
+
+    }
+    public Game getGame() {
+
+        int id = userLocalDatabase.getInt("id", 0);
+        String user = userLocalDatabase.getString("user", "");
+        String time = userLocalDatabase.getString("time", "");
+        String date = userLocalDatabase.getString("date", "");
+        int num_players = userLocalDatabase.getInt("num_players", -1);
+        String location = userLocalDatabase.getString("location", "");
+
+        Game storedGame = new Game(id, user, time, date, num_players, location);
+
+        return storedGame;
     }
 
 

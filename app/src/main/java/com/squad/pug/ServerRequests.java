@@ -55,6 +55,10 @@ public class ServerRequests {
 //        progressDialog.show();
         new fetchGameDataAsyncTask(game, callBack).execute();
     }
+    public void getIDInBackground(Game game, GetGameCallback callback) {
+        //progressDialog.show();
+        new getIDAsyncTask(game, callback).execute();
+    }
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void> {
         User user;
@@ -156,9 +160,10 @@ public class ServerRequests {
 
         @Override
         protected void onPostExecute(User returnedUser) {
-            progressDialog.dismiss();
-            userCallback.done(user);
             super.onPostExecute(returnedUser);
+
+            progressDialog.dismiss();
+            userCallback.done(returnedUser);
 
         }
     }
@@ -174,6 +179,8 @@ public class ServerRequests {
         @Override
         protected Void doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("id", game.id + ""));
+
             dataToSend.add(new BasicNameValuePair("user", game.user));
             dataToSend.add(new BasicNameValuePair("time", game.time));
             dataToSend.add(new BasicNameValuePair("date", game.date));
@@ -248,6 +255,63 @@ public class ServerRequests {
 
                     returnedGame = new Game(game.id, user, time, date, num_players, game.location);
                 }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+            return returnedGame;
+        }
+
+
+        @Override
+        protected void onPostExecute(Game returnedGame) {
+            super.onPostExecute(returnedGame);
+            progressDialog.dismiss();
+            gameCallback.done(returnedGame);
+        }
+    }
+    public class getIDAsyncTask extends AsyncTask<Void, Void, Game> {
+        Game game;
+        GetGameCallback gameCallback;
+
+        public getIDAsyncTask(Game game, GetGameCallback gameCallback) {
+            this.game = game;
+            this.gameCallback = gameCallback;
+        }
+
+        @Override
+        protected Game doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("location", game.location));
+
+
+            HttpParams httpRequestParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "GetMaxId.php");
+
+            Game returnedGame = null;
+
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                HttpResponse httpResponse = client.execute(post);
+                HttpEntity entity = httpResponse.getEntity();
+                String result = EntityUtils.toString(entity);
+                JSONObject jObject = new JSONObject(result);
+
+                if (jObject.length() == 0) {
+                    game = null;
+                } else {
+                    int id = jObject.getInt("id");
+
+
+                    returnedGame = new Game(id);
+                }
+                // }
 
             } catch (Exception e) {
                 e.printStackTrace();
