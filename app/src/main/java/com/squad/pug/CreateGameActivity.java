@@ -7,40 +7,22 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.Calendar;
-
-import static com.squad.pug.R.id.submit;
-
-
-/*
-**********************************************************
-* ~~SO I DON'T FORGET~~
-* NOTE FROM TREVOR ----> JEFF:
-* This will fail if it is called (using the + button in the app) with no searchresultmodel object.
-* We'll later implement a check to see if they've populated their result model yet.
-*
-* *********************************************************
- */
-
-
 
 public class CreateGameActivity extends AppCompatActivity {
     TextView setTime;
     TextView setDate;
     EditText setNumPlayers;
-    Button submitButton;
+    ImageButton submitButton;
     Spinner locationSpinner;
     String time;
     String date;
@@ -51,7 +33,7 @@ public class CreateGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_game);
-        submitButton = (Button) findViewById(submit);
+        submitButton = (ImageButton) findViewById(R.id.submit);
         setTime = (TextView) findViewById(R.id.setTime);
         setDate = (TextView) findViewById(R.id.setDate);
         setNumPlayers = (EditText) findViewById(R.id.setNumPlayers);
@@ -139,7 +121,7 @@ public class CreateGameActivity extends AppCompatActivity {
         );
 
         //location picker ** Tried to change color. Let's see if it works - Trevor
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, courtNames);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_spinner_item, courtNames);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         locationSpinner.setAdapter(adapter);
 

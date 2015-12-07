@@ -60,7 +60,7 @@ public class CourtActivity extends AppCompatActivity
         TextView tv = new TextView(CourtActivity.this);
         tv.setText("Court Schedule");
         gamesListView.addHeaderView(tv);
-        gamesListView.setAdapter(new ArrayAdapter<String>(CourtActivity.this, android.R.layout.simple_list_item_1, gamesList_arr));
+        gamesListView.setAdapter(new ArrayAdapter<String>(CourtActivity.this, R.layout.simple_list_item_trevor, gamesList_arr));
         gamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -146,7 +146,7 @@ public class CourtActivity extends AppCompatActivity
                        // mText.setText(Html.fromHtml(attributedPhoto.attribution.toString()));
                     }
                 }
-            }
+          }
         }.execute();
     }
 
