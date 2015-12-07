@@ -51,15 +51,15 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
-                public void authenticate(final User user){
+    public void authenticate(User user){
         ServerRequests serverRequests = new ServerRequests(this);
         serverRequests.fetchUserDataInBackground(user, new GetUserCallback() {
             @Override
             public void done(User returnedUser) {
-                if (returnedUser.name == user.name){
-                    logUserIn(returnedUser);
-                }else{
+                if (returnedUser ==null){
                     showErrorMessage();
+                }else{
+                    logUserIn(returnedUser);
                 }
             }
         });

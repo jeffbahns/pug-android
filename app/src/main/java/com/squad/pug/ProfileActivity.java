@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,7 +11,6 @@ import android.widget.TextView;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton bLogout;
-    Button bmaps = (Button) findViewById(R.id.bLogin);
     TextView etUsername, etName, etSex, etAge;
     UserLocalStore userLocalStore;
 
@@ -27,7 +25,6 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
         etAge = (TextView) findViewById(R.id.etAge);
         bLogout = (ImageButton) findViewById(R.id.bLogout);
         bLogout.setOnClickListener(this);
-        bmaps.setOnClickListener(this);
         userLocalStore = new UserLocalStore(this);
 
         // Baby image, later to be profile picture
