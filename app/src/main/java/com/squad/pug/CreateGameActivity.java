@@ -111,7 +111,7 @@ public class CreateGameActivity extends AppCompatActivity {
 
                                     User user = userLocalStore.getLoggedInUser();
                                     String uuser = user.username.toString();
-                                    Game game = new Game(0, uuser, time, date, numPlayers, location);
+                                    Game game = new Game(0, uuser, time, date, numPlayers, uuser, location);
                                     //createGame( new Game(game);
                                     userLocalStore.storeGameData(game);
                                     getID(game);
@@ -193,7 +193,7 @@ public class CreateGameActivity extends AppCompatActivity {
                     String date = ngame.date;
                     int num_players = ngame.num_players;
                     String location = ngame.location;
-                    Game game = new Game(id, user, time, date, num_players, location);
+                    Game game = new Game(id, user, time, date, num_players, user, location);
                     createGame(game);
 
                 }

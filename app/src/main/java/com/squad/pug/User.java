@@ -5,14 +5,15 @@ package com.squad.pug;
  */
 public class User {
 
-    public String username, name, sex, password;
+    public String username, name, tel_number, sex, password;
     int age;
 
-    public User (String username, String name, String sex, int age,
+    public User (String username, String name, String tel_number, String sex, int age,
                  String password){
 
         this.username = username;
         this.name = name;
+        this.tel_number = tel_number;
         this.sex = sex;
         this.age = age;
         this.password = password;
@@ -22,6 +23,7 @@ public class User {
         this.username = username;
         this.password = password;
         this.name = "";
+        this.tel_number = "";
         this.sex = "N/A";
         this.age = -1;
     }

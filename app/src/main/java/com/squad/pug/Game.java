@@ -9,16 +9,17 @@ import android.os.Parcelable;
 
 
 public class Game implements Parcelable {
-    String user, time, date, location;
+    String user, time, date, players_attending, location;
     int num_players, id;
 
-    public Game (int id, String user, String time, String date, int num_players,
+    public Game (int id, String user, String time, String date, int num_players, String players_attending,
                  String location){
         this.id = id;
         this.user = user;
         this.time = time;
         this.date = date;
         this.num_players = num_players;
+        this.players_attending = players_attending;
         this.location = location;
     }
 
@@ -28,6 +29,8 @@ public class Game implements Parcelable {
         this.time = "";
         this.date = "";
         this.num_players = -1;
+        this.players_attending = "";
+
     }
     public Game(int id) {
         this.location = "";
@@ -35,6 +38,8 @@ public class Game implements Parcelable {
         this.time = "";
         this.date = "";
         this.num_players = -1;
+        this.players_attending = "";
+
     }
 
     public void print() {
@@ -43,6 +48,8 @@ public class Game implements Parcelable {
         System.out.println(time);
         System.out.println(date);
         System.out.println(num_players);
+        System.out.println(players_attending);
+
         System.out.println(location);
     }
 
@@ -56,6 +63,8 @@ public class Game implements Parcelable {
         out.writeString(time);
         out.writeString(date);
         out.writeInt(num_players);
+        out.writeString(players_attending);
+
         out.writeString(location);
 
     }
@@ -68,6 +77,8 @@ public class Game implements Parcelable {
         time = in.readString();
         date = in.readString();
         num_players = in.readInt();
+        players_attending = in.readString();
+
         location = in.readString();
     }
 

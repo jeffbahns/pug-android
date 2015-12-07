@@ -12,65 +12,101 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"/>
+        android:text="Username"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColorHint="#c1ddf7"
+        android:hint="Enter Username"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Name"/>
+        android:text="Name"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColorHint="#c1ddf7"
+        android:hint="Enter Full Name"
+        android:textColor="#c1ddf7" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telephone Number"
+        android:textColor="#c1ddf7" />
+
+    <EditText
+        android:id="@+id/etTNumber"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="10dp"
+        android:layout_height="wrap_content"
+        android:textColorHint="#c1ddf7"
+        android:inputType="phone"
+        android:hint="XXX-XXX-XXXX"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sex"/>
+        android:text="Sex"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etSex"
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColorHint="#c1ddf7"
+        android:hint="M or F"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Age"/>
+        android:text="Age"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etAge"
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:inputType="number"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColorHint="#c1ddf7"
+        android:hint="Enter age"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:layout_width="wrap_content"
         android:text="Password"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColorHint="#c1ddf7"
+        android:hint="Enter Password"
+        android:textColor="#c1ddf7" />
 
     <Button
         android:id="@+id/bRegister"
         android:text="Register"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:clickable="false" />
 
 
 
