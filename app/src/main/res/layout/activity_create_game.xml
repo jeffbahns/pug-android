@@ -6,7 +6,8 @@
     android:layout_row="3"
     android:layout_column="0"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#141a31">
 
     <LinearLayout
         android:orientation="vertical"
@@ -32,7 +33,9 @@
                 android:layout_weight="0.09"
                 android:textSize="24dp"
                 android:clickable="true"
-                android:gravity="left|center_horizontal" />
+                android:gravity="left|center_horizontal"
+                android:textColor="#c1ddf7"
+                android:textColorHint="#c1ddf7" />
 
         </LinearLayout>
 
@@ -55,7 +58,9 @@
                 android:layout_column="0"
                 android:layout_weight="0.07"
                 android:textSize="24dp"
-                android:clickable="true" />
+                android:clickable="true"
+                android:textColor="#c1ddf7"
+                android:textColorHint="#c1ddf7" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,7 +80,9 @@
                 android:layout_centerHorizontal="true"
                 android:layout_row="4"
                 android:layout_column="0"
-                android:textSize="24dp" />
+                android:textSize="24dp"
+                android:textColorHint="#c1ddf7"
+                android:textColor="#c1ddf7" />
         </LinearLayout>
 
         <LinearLayout
@@ -113,7 +120,8 @@
             android:longClickable="false"
             android:layout_marginTop="30dp">
 
-            <Button
+            <!-- SUBMIT BUTTON -->
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="SUBMIT"
@@ -121,10 +129,12 @@
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentEnd="true"
                 android:layout_toEndOf="@+id/setTime"
+                android:background="@android:color/transparent"
+                android:src="@drawable/logout_selector"
                 android:layout_row="0"
                 android:layout_column="2"
                 android:onClick="makeToast"
-                />
+                android:layout_gravity="center_horizontal" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

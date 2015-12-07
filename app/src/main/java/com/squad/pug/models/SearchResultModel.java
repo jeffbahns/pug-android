@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.google.android.gms.maps.GoogleMap;
 import com.google.gson.annotations.SerializedName;
+import com.squad.pug.Game;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -27,6 +28,15 @@ public class SearchResultModel {
         return courtNames;
     }
 
+    public ArrayList<Game> grabGames() {
+        ArrayList<Game> localGames = new ArrayList<>();
+        for (int i = 0; i < courts.size(); i++) {
+            for (int j = 0; j < courts.get(i).gamesList.size(); j++) {
+                localGames.add(courts.get(i).gamesList.get(j));
+            }
+        }
+        return localGames;
+    }
 
     public void grabGamesFromDatabaseForEachCourt(Context mContext, GoogleMap mMap, HashMap<String, SearchItemModel> markerMap) {
         for( int i = 0; i < courts.size(); i++ ) {

@@ -3,6 +3,7 @@ package com.squad.pug;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -113,10 +114,19 @@ public class CreateGameActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         if( onSubmit() ) {
-                            AlertDialog successAlert = new AlertDialog.Builder(CreateGameActivity.this).create();
+                            AlertDialog.Builder successAlert = new AlertDialog.Builder(CreateGameActivity.this);
                             successAlert.setTitle("Confirm game creation");
-                            String message = "Time : " + time + "\nDate :" + date + "\nNo. Players : " + numPlayers + "\nLocation : " + location;
+                            String message =    "Time            : " + time +
+                                    "\nDate             : " + date +
+                                    "\nNo. Players : " + numPlayers +
+                                    "\nLocation      : " + location;
                             successAlert.setMessage(message);
+                            successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id ) {
+                                    createGame( new Game(10, "Jeff", time, date, numPlayers, location));
+                                }
+                            });
+                            successAlert.setNegativeButton("Cancel", null);
                             successAlert.show();
                         } else {
                             AlertDialog failureAlert = new AlertDialog.Builder(CreateGameActivity.this).create();
@@ -128,17 +138,11 @@ public class CreateGameActivity extends AppCompatActivity {
                 }
         );
 
-        //location picker
+        //location picker ** Tried to change color. Let's see if it works - Trevor
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, courtNames);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         locationSpinner.setAdapter(adapter);
 
-    }
-
-    public void makeToast() {
-        Toast courtSnippet = Toast.makeText(CreateGameActivity.this, "Game successfully submitted", Toast.LENGTH_SHORT);
-        courtSnippet.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
-        courtSnippet.show();
     }
 
     // submit button triggers this function

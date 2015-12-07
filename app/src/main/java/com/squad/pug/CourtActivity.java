@@ -5,6 +5,8 @@ import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -64,7 +66,7 @@ public class CourtActivity extends AppCompatActivity
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Log.v("CLICK", gamesList_arr[0]);
                 Intent intent = new Intent(getApplicationContext(), GamesActivity.class);
-                intent.putExtra("CourtBitmap", courtBitmap);
+                intent.putExtra("CourtBitmapPlaceId", getItemModelDataStringArray().get(4));
                 //intent.putExtra("GameData", games.get(position));
                 intent.putExtra("GameData", games.get((int)id));
                 startActivity(intent);
@@ -74,6 +76,8 @@ public class CourtActivity extends AppCompatActivity
 
 
 
+
+        // Build another google api client!
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .addOnConnectionFailedListener(this)
@@ -81,7 +85,6 @@ public class CourtActivity extends AppCompatActivity
                 .addApiIfAvailable(Places.GEO_DATA_API)
                 .addApiIfAvailable(Places.PLACE_DETECTION_API)
                 .build();
-        //      getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
@@ -98,11 +101,14 @@ public class CourtActivity extends AppCompatActivity
         // 4: placeId
         // 5: directions formatted
         courtName.setText(model.get(3));
-        directions.setText(model.get(5));
+     //   directions.setText(model.get(5));
+        // Underline directions
+        SpannableString dir = new SpannableString(model.get(5));
+        dir.setSpan(new UnderlineSpan(), 0, dir.length(), 0);
 
-        //ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
+        ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
 
-        //addPhoto(model, courtPhoto, directions);
+        addPhoto(model, courtPhoto, directions);
     }
 
     public void addPhoto(ArrayList<String> model, final ImageView mImageView, final TextView mText) {
@@ -179,9 +185,8 @@ public class CourtActivity extends AppCompatActivity
     @Override
     protected void onStart(){
         super.onStart();
-        if (!mResolvingError) {  // more about this later
+        if (!mResolvingError) {
 
-            // CRASHING HERE ***
             mGoogleApiClient.connect();
         }
     }
