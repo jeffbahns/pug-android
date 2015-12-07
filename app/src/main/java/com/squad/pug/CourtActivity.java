@@ -105,6 +105,8 @@ public class CourtActivity extends AppCompatActivity
         // Underline directions
         SpannableString dir = new SpannableString(model.get(5));
         dir.setSpan(new UnderlineSpan(), 0, dir.length(), 0);
+        directions.setText(dir);
+
 
         ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
 

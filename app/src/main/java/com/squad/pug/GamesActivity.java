@@ -47,6 +47,7 @@ public class GamesActivity extends AppCompatActivity
         TextView dateCreated = (TextView) findViewById(R.id.dateCreated);
         TextView numPlayers = (TextView) findViewById(R.id.numPlayers);
 
+
         // Set all text views
         gameCreator.setText(game.user + "'s Game");
         timeCreated.setText("Time created: " + game.time);
