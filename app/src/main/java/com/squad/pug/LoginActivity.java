@@ -57,7 +57,9 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void done(User returnedUser) {
                 if (returnedUser ==null){
-                    showErrorMessage();
+                    //showErrorMessage();
+                    logUserIn(returnedUser);
+
                 }else{
                     logUserIn(returnedUser);
                 }
@@ -71,8 +73,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         dialogBuilder.show();
     }
     private void logUserIn(User returnedUser){
-        userLocalStore.storeUserData(returnedUser);
-        userLocalStore.setUserLoggedIn(true);
+        //userLocalStore.storeUserData(returnedUser);
+        //userLocalStore.setUserLoggedIn(true);
 
         startActivity(new Intent(this, MapsActivity.class));
     }

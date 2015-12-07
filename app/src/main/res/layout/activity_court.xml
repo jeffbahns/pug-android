@@ -37,7 +37,8 @@
             android:text="directions"
             android:id="@+id/directions"
             android:layout_gravity="center"
-            android:textColor="#c1ddf7" />
+            android:textColor="#c1ddf7"
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -56,9 +57,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/courtPhoto"
-                android:layout_gravity="center"
                 android:src="@drawable/sixthmanicon_courtdefault"
-                android:scrollIndicators="right" />
+                android:scrollIndicators="right"
+                android:layout_gravity="center" />
         </LinearLayout>
 
         <ListView

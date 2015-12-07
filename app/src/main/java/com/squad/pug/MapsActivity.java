@@ -192,7 +192,12 @@ public class MapsActivity extends FragmentActivity
 
     public void openGames(View view) {
         ArrayList<Game> localGames = courtsResult.grabGames();
-        System.out.println(localGames.size());
+        ArrayList<String> gamesPlaceIds = courtsResult.getArrayOfPlaceIds();
+        System.out.println("LOCAL GAMES ARRAY SIZE:" + localGames.size());
+        Intent intent = new Intent(this, GamesListView.class);
+        intent.putParcelableArrayListExtra("GamesData", localGames);
+        intent.putStringArrayListExtra("GamesPlaceIds", gamesPlaceIds);
+        startActivity(intent);
     }
 
     public void openCreateGame(View view) {
@@ -258,7 +263,7 @@ public class MapsActivity extends FragmentActivity
                 try {
                     populateMap(strlocation);
                 } catch (IOException e) {
-                        e.printStackTrace();
+                    e.printStackTrace();
                 }
 
             }

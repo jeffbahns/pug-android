@@ -8,30 +8,38 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
 
-    android:background="@drawable/sixth_man_icon_launcher_fade"
+    android:background="#141a31"
     android:id="@+id/loginActivityMainLinear">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Username"/>
+        android:text="Username"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etUsername"
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#c1ddf7"
+        android:textColorHint="#c1ddf7"
+        android:hint="Enter Username" />
     <TextView
         android:layout_width="wrap_content"
         android:text="Password"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#c1ddf7" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColor="#c1ddf7"
+        android:hint="Enter Password"
+        android:textColorHint="#c1ddf7" />
 
     <!-- LOGIN BUTTON -->
     <ImageButton
@@ -52,6 +60,20 @@
         android:src="@drawable/register_here_selector"
         android:layout_gravity="center_horizontal"
         android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="75dp" />
+    </LinearLayout>
 
     <!--<Button-->
     <!--android:layout_gravity="bottom"-->

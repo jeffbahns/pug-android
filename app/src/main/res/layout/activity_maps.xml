@@ -24,7 +24,7 @@
             android:id="@+id/linearLayout2"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:background="#873c9ec3"
+            android:background="#141a31"
             android:alpha="1">
 
             <!-- ******* COURTS LIST BUTTON ******** -->
@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center_horizontal"
-            android:background="#8e48a3c6">
+            android:background="#141a31">
 
             <LinearLayout
                 android:orientation="horizontal"

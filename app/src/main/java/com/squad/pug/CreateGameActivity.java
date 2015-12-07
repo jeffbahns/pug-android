@@ -27,8 +27,8 @@ public class CreateGameActivity extends AppCompatActivity {
     String time;
     String date;
     String location;
-    int numPlayers;
     UserLocalStore userLocalStore;
+    int numPlayers;
     int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +50,7 @@ public class CreateGameActivity extends AppCompatActivity {
         } catch(RuntimeException e ) {
             e.printStackTrace();
         }
+
         // time picker
         setTime.setOnClickListener(
                 new View.OnClickListener() {
@@ -107,8 +108,8 @@ public class CreateGameActivity extends AppCompatActivity {
                             successAlert.setMessage(message);
                             successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id ) {
-                                    userLocalStore.clearGameData();
-                                    User user = userLocalStore.getUsername();
+
+                                    User user = userLocalStore.getLoggedInUser();
                                     String uuser = user.username.toString();
                                     Game game = new Game(0, uuser, time, date, numPlayers, location);
                                     //createGame( new Game(game);
