@@ -74,6 +74,7 @@ public class ServerRequests {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
             dataToSend.add(new BasicNameValuePair("username", user.username));
             dataToSend.add(new BasicNameValuePair("name", user.name));
+            dataToSend.add(new BasicNameValuePair("tel_number", user.tel_number));
             dataToSend.add(new BasicNameValuePair("sex", user.sex));
             dataToSend.add(new BasicNameValuePair("age", user.age + ""));
             dataToSend.add(new BasicNameValuePair("password", user.password));
@@ -141,10 +142,11 @@ public class ServerRequests {
                     user = null;
                 }else{
                     String name = jObject.getString("name");
+                    String tel_number = jObject.getString("tel_number");
                     String sex = jObject.getString("sex");
                     int age = jObject.getInt("age");
 
-                    returnedUser = new User(user.username, name, sex, age, user.password);
+                    returnedUser = new User(user.username, name, tel_number, sex, age, user.password);
 
                 }
 
@@ -180,11 +182,11 @@ public class ServerRequests {
         protected Void doInBackground(Void... params) {
             ArrayList<NameValuePair> dataToSend = new ArrayList<>();
             dataToSend.add(new BasicNameValuePair("id", game.id + ""));
-
             dataToSend.add(new BasicNameValuePair("user", game.user));
             dataToSend.add(new BasicNameValuePair("time", game.time));
             dataToSend.add(new BasicNameValuePair("date", game.date));
             dataToSend.add(new BasicNameValuePair("num_players", game.num_players + ""));
+            dataToSend.add(new BasicNameValuePair("players_attending", game.players_attending));
             dataToSend.add(new BasicNameValuePair("location", game.location));
 
             HttpParams httpRequestParams = new BasicHttpParams();
@@ -252,8 +254,11 @@ public class ServerRequests {
                     String time = jObject.getString("time");
                     String date = jObject.getString("date");
                     int num_players = jObject.getInt("num_players");
+                    String players_attending = jObject.getString("players_attending");
 
-                    returnedGame = new Game(game.id, user, time, date, num_players, game.location);
+
+
+                    returnedGame = new Game(game.id, user, time, date, num_players, players_attending, game.location);
                 }
 
             } catch (Exception e) {

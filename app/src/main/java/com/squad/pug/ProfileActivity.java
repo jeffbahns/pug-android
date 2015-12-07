@@ -11,7 +11,7 @@ import android.widget.TextView;
 public class ProfileActivity extends AppCompatActivity implements View.OnClickListener {
 
     ImageButton bLogout;
-    TextView etUsername, etName, etSex, etAge;
+    TextView etUsername, etName, etTNumber, etSex, etAge;
     UserLocalStore userLocalStore;
 
     @Override
@@ -21,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         etUsername = (TextView) findViewById(R.id.etUsername);
         etName = (TextView) findViewById(R.id.etName);
+        etTNumber = (TextView) findViewById(R.id.etTNumber);
         etSex = (TextView) findViewById(R.id.etSex);
         etAge = (TextView) findViewById(R.id.etAge);
         bLogout = (ImageButton) findViewById(R.id.bLogout);
@@ -51,6 +52,7 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
 
         etUsername.setText(user.username);
         etName.setText(user.name);
+        etTNumber.setText(user.tel_number);
         etSex.setText(user.sex);
         etAge.setText(user.age + "");
 

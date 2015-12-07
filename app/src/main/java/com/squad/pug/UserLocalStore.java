@@ -19,6 +19,7 @@ public class UserLocalStore {
         SharedPreferences.Editor spEditor = userLocalDatabase.edit();
         spEditor.putString("username", user.username);
         spEditor.putString("name", user.name);
+        spEditor.putString("tel_number", user.tel_number);
         spEditor.putString("sex", user.sex);
         spEditor.putInt("age", user.age);
         spEditor.putString("password", user.password);
@@ -27,6 +28,7 @@ public class UserLocalStore {
     public User getUsername() {
         String username = userLocalDatabase.getString("username", "");
         String name = userLocalDatabase.getString("name", "");
+        String tel_number = userLocalDatabase.getString("tel_number", "");
         String sex = userLocalDatabase.getString("sex", "");
         int age = userLocalDatabase.getInt("age", -1);
         String password = userLocalDatabase.getString("password", "");
@@ -38,13 +40,14 @@ public class UserLocalStore {
 
     public User getLoggedInUser(){
     //public User getloggedinuser(){
-        String username = userLocalDatabase.getString("username", "demo");
-        String name = userLocalDatabase.getString("name", "test");
-        String sex = userLocalDatabase.getString("sex", "male");
-        int age = userLocalDatabase.getInt("age", 21);
-        String password = userLocalDatabase.getString("password", "test");
+        String username = userLocalDatabase.getString("username", "");
+        String name = userLocalDatabase.getString("name", "");
+        String tel_number = userLocalDatabase.getString("tel_number", "");
+        String sex = userLocalDatabase.getString("sex", "");
+        int age = userLocalDatabase.getInt("age", -1);
+        String password = userLocalDatabase.getString("password", "");
 
-        User storedUser = new User(username, name, sex, age, password);
+        User storedUser = new User(username, name, tel_number, sex, age, password);
 
         return storedUser;
 
@@ -77,6 +80,7 @@ public class UserLocalStore {
         gameEditor.putString("time", game.time);
         gameEditor.putString("date", game.date);
         gameEditor.putInt("num_players", game.num_players);
+        gameEditor.putString("players_attending", game.players_attending);
         gameEditor.putString("location", game.location);
         gameEditor.commit();
 
@@ -101,9 +105,11 @@ public class UserLocalStore {
         String time = userLocalDatabase.getString("time", "");
         String date = userLocalDatabase.getString("date", "");
         int num_players = userLocalDatabase.getInt("num_players", -1);
+        String players_attending = userLocalDatabase.getString("players_attending", "");
         String location = userLocalDatabase.getString("location", "");
 
-        Game storedGame = new Game(id, user, time, date, num_players, location);
+        Game storedGame = new Game(id, user, time, date, num_players, players_attending,
+                location);
 
         return storedGame;
     }
