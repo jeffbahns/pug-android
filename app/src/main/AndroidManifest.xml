@@ -16,12 +16,12 @@
         <activity
             android:name=".ProfileActivity"
             android:label="@string/title_activity_profile"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
 
         <meta-data
@@ -31,13 +31,13 @@
         <activity
             android:name=".MapsActivity"
             android:label="@string/title_activity_maps"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".Launcher"
             android:label="@string/title_activity_launcher"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
 
             <!-- ******** IF you're changing launcher intents leave these comments here and us cntrl + '/' so we can easily switch back & forth **************** -->
             <!-- <intent-filter> -->
@@ -51,17 +51,17 @@
         <activity
             android:name=".GamesActivity"
             android:label="@string/title_activity_games"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CreateGameActivity"
             android:label="@string/title_activity_create_game"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
 
             <!-- ******** IF you're changing launcher intents leave these comments here and us cntrl + '/' so we can easily switch back & forth **************** -->
             <intent-filter>
@@ -72,14 +72,23 @@
         </activity>
         <activity
             android:name=".RegisterActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".CourtActivity"
             android:label="@string/title_activity_court"
             android:parentActivityName=".MapsActivity"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.squad.pug.MapsActivity" />
+        </activity>
+        <activity
+            android:name=".GamesListView"
+            android:label="@string/title_activity_games_list_view"
+            android:parentActivityName=".MapsActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.squad.pug.MapsActivity" />

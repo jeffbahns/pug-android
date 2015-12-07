@@ -28,6 +28,15 @@ public class SearchResultModel {
         return courtNames;
     }
 
+    // used to return a list of court placeIds for photo purposes
+    public ArrayList<String> getArrayOfPlaceIds() {
+        ArrayList<String> placeIds = new ArrayList<>();
+        for( int i = 0; i < courts.size(); i++ )
+            placeIds.add(courts.get(i).placeId);
+
+        return placeIds;
+    }
+
     public ArrayList<Game> grabGames() {
         ArrayList<Game> localGames = new ArrayList<>();
         for (int i = 0; i < courts.size(); i++) {

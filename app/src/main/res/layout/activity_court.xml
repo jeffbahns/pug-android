@@ -37,7 +37,8 @@
             android:text="directions"
             android:id="@+id/directions"
             android:layout_gravity="center"
-            android:textColor="#c1ddf7" />
+            android:textColor="#c1ddf7"
+            android:onClick="onRoute" />
     </LinearLayout>
 
     <LinearLayout

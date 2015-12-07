@@ -15,4 +15,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_court">CourtActivity</string>
+    <string name="title_activity_games_list_view">GamesListView</string>
 </resources>
