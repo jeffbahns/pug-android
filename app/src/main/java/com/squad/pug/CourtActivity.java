@@ -88,7 +88,7 @@ public class CourtActivity extends AppCompatActivity
                 .build();
 
 
-        ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
+       final ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
         //ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
 
         TextView courtName = (TextView) findViewById(R.id.courtName);
@@ -101,24 +101,33 @@ public class CourtActivity extends AppCompatActivity
         // 3: name
         // 4: placeId
         // 5: directions formatted
+        // 6: String LatLng
         courtName.setText(model.get(3));
      //   directions.setText(model.get(5));
         // Underline directions and set to formatted address
         SpannableString dir = new SpannableString(model.get(5));
         dir.setSpan(new UnderlineSpan(), 0, dir.length(), 0);
         directions.setText(dir);
+        directions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://maps.google.com/maps?daddr=" + model.get(6)));
+                startActivity(intent);
+            }
+        });
 
 
         ImageView courtPhoto = (ImageView) findViewById(R.id.courtPhoto);
 
-        addPhoto(model, courtPhoto, directions);
+        addPhoto(model, courtPhoto);
     }
 
-    public void addPhoto(ArrayList<String> model, final ImageView mImageView, final TextView mText) {
+    public void addPhoto(ArrayList<String> model, final ImageView mImageView) {
 
         // Create a new AsyncTask that displays the bitmap and attribution once loaded.
         // Create a new AsyncTask that displays the bitmap and attribution once loaded.
-        new PhotoTask(600, 600, model.get(4), mGoogleApiClient) {
+        new PhotoTask(400, 400, model.get(4), mGoogleApiClient) {
             @Override
             protected void onPreExecute() {
                 // Display a temporary image to show while bitmap is loading.
@@ -142,12 +151,12 @@ public class CourtActivity extends AppCompatActivity
                     courtBitmap = attributedPhoto.bitmap;
 
                     // Display the attribution as HTML content if set.
-                    if (attributedPhoto.attribution == null) {
-                        mText.setVisibility(View.GONE);
-                    } else {
-                        mText.setVisibility(View.VISIBLE);
-                       // mText.setText(Html.fromHtml(attributedPhoto.attribution.toString()));
-                    }
+//                    if (attributedPhoto.attribution == null) {
+//                        mText.setVisibility(View.GONE);
+//                    } else {
+//                        mText.setVisibility(View.VISIBLE);
+//                       // mText.setText(Html.fromHtml(attributedPhoto.attribution.toString()));
+//                    }
                 }
           }
         }.execute();
@@ -208,11 +217,11 @@ public class CourtActivity extends AppCompatActivity
         dialogFragment.show(getSupportFragmentManager(), "errordialog");
     }
 
-    public void onRoute(View view, String destAddrLatLng){
-        Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?daddr=" + destAddrLatLng));
-        startActivity(intent);
-    }
+//    public void onRoute(View view, String destAddrLatLng){
+//        Intent intent = new Intent(Intent.ACTION_VIEW,
+//                Uri.parse("http://maps.google.com/maps?daddr=" + destAddrLatLng));
+//        startActivity(intent);
+//    }
 
     public void openCreateGameWithCourt(View view){
         Intent intent = new Intent(this, CreateGameActivity.class);

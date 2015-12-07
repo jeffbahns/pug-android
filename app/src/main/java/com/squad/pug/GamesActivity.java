@@ -53,7 +53,7 @@ public class GamesActivity extends AppCompatActivity
         timeCreated.setText("Time created: " + game.time);
         dateCreated.setText("Date created: " + game.date);
         numPlayers.setText("Number of players checked in: " +
-                String.valueOf(game.num_players));
+                String.valueOf(game.num_players) + "/10");
 
         // Build another google api client!
         mGoogleApiClient = new GoogleApiClient.Builder(this)

@@ -66,19 +66,27 @@ public class SearchItemModel {
 
     }
 
+    public String getStringLatLng () {
+        String stringLat = String.valueOf(geometry.getLocation1().getLat());
+        String stringLng = String.valueOf(geometry.getLocation1().getLng());
+        String stringLatLng = stringLat + stringLng;
+        System.out.println("STRING LAT LNG" + stringLatLng);
+        return stringLatLng;
+    }
+
     public ArrayList<String> getItemModelStringArray() {
 
-        // Indexes: 0: geometry 1: icon 2: id 3: name 4: placeId 5: directions
+        // Indexes: 0: geometry 1: icon 2: id 3: name 4: placeId 5: directions 6: stringLatLng
         // trevor** icon,id,name,placeId are already strings, toString=unnecessary
-        ArrayList<String> mockItemStringArray = new ArrayList<>();
-        mockItemStringArray.add(geometry.toString());
-        mockItemStringArray.add(icon);
-        mockItemStringArray.add(id);
-        mockItemStringArray.add(name);
-        mockItemStringArray.add(placeId);
-        mockItemStringArray.add(address);
-
-        return mockItemStringArray;
+        ArrayList<String> StringArray = new ArrayList<>();
+        StringArray.add(geometry.toString());
+        StringArray.add(icon);
+        StringArray.add(id);
+        StringArray.add(name);
+        StringArray.add(placeId);
+        StringArray.add(address);
+        StringArray.add(getStringLatLng());
+        return StringArray;
     }
 
     // just for testing
