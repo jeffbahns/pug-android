@@ -80,6 +80,7 @@ public class UserLocalStore {
         gameEditor.putString("time", game.time);
         gameEditor.putString("date", game.date);
         gameEditor.putInt("num_players", game.num_players);
+        gameEditor.putString("players_attending", game.players_attending);
         gameEditor.putString("location", game.location);
         gameEditor.commit();
 
@@ -104,9 +105,11 @@ public class UserLocalStore {
         String time = userLocalDatabase.getString("time", "");
         String date = userLocalDatabase.getString("date", "");
         int num_players = userLocalDatabase.getInt("num_players", -1);
+        String players_attending = userLocalDatabase.getString("players_attending", "");
         String location = userLocalDatabase.getString("location", "");
 
-        Game storedGame = new Game(id, user, time, date, num_players, location);
+        Game storedGame = new Game(id, user, time, date, num_players, players_attending,
+                location);
 
         return storedGame;
     }

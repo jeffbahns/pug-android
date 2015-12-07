@@ -110,7 +110,8 @@ public class CreateGameActivity extends AppCompatActivity {
                                     //userLocalStore.clearGameData();
                                     User user = userLocalStore.getLoggedInUser();
                                     String uuser = user.username;
-                                    Game game = new Game(0, uuser, time, date, numPlayers, "Lady Bug Park");
+                                    //Game game = new Game(0, uuser, time, date, numPlayers, uuser, "Lady Bug Park");
+                                    Game game = new Game(0, uuser, time, date, numPlayers, uuser, location);
                                     //createGame( new Game(game);
                                     userLocalStore.storeGameData(game);
                                     getID(game);
@@ -155,13 +156,13 @@ public class CreateGameActivity extends AppCompatActivity {
             return false;
         }
 
-//        try {
-//            location = locationSpinner.getSelectedItem().toString();
-//            if( location == "")
-//                return false;
-//        } catch(RuntimeException e) {
-//            return false;
-        //}
+        try {
+            location = locationSpinner.getSelectedItem().toString();
+            if( location == "")
+                return false;
+        } catch(RuntimeException e) {
+            return false;
+        }
         return true;
     }
 
@@ -192,7 +193,8 @@ public class CreateGameActivity extends AppCompatActivity {
                     String date = ngame.date;
                     int num_players = ngame.num_players;
                     String location = ngame.location;
-                    Game game = new Game(id, user, time, date, num_players, "Lady Bug Park");
+                    //Game game = new Game(id, user, time, date, num_players, user, "Lady Bug Park");
+                    Game game = new Game(id, user, time, date, num_players, user, location);
                     createGame(game);
 
                 }

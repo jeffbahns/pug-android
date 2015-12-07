@@ -186,6 +186,7 @@ public class ServerRequests {
             dataToSend.add(new BasicNameValuePair("time", game.time));
             dataToSend.add(new BasicNameValuePair("date", game.date));
             dataToSend.add(new BasicNameValuePair("num_players", game.num_players + ""));
+            dataToSend.add(new BasicNameValuePair("players_attending", game.players_attending));
             dataToSend.add(new BasicNameValuePair("location", game.location));
 
             HttpParams httpRequestParams = new BasicHttpParams();
@@ -253,8 +254,11 @@ public class ServerRequests {
                     String time = jObject.getString("time");
                     String date = jObject.getString("date");
                     int num_players = jObject.getInt("num_players");
+                    String players_attending = jObject.getString("players_attending");
 
-                    returnedGame = new Game(game.id, user, time, date, num_players, game.location);
+
+
+                    returnedGame = new Game(game.id, user, time, date, num_players, players_attending, game.location);
                 }
 
             } catch (Exception e) {
