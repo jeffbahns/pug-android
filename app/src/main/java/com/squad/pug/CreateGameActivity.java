@@ -132,7 +132,7 @@ public class CreateGameActivity extends AppCompatActivity {
 
         //location picker ** Tried to change color. Let's see if it works - Trevor
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.simple_spinner_item, courtNames);
-        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        adapter.setDropDownViewResource(R.layout.simple_dropdown_item_trevor);
         locationSpinner.setAdapter(adapter);
 
     }
