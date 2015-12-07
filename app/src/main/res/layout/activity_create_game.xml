@@ -85,12 +85,10 @@
             android:id="@+id/locationLayout"
             android:layout_marginTop="30dp">
 
-            <AutoCompleteTextView
-                android:hint="Enter Location"
+            <Spinner
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/autoLocation"
-                android:textSize="24dp" />
+                android:id="@+id/locationSpinner" />
         </LinearLayout>
 
         <LinearLayout

@@ -50,24 +50,21 @@ public class CourtActivity extends AppCompatActivity
         /////////////////////LIST VIEW SHIT/////////////////////
         Intent intent = getIntent();
         final ArrayList<Game> games = intent.getParcelableArrayListExtra("GameData");
-
         ListView gamesListView = (ListView) findViewById(R.id.gamesListView);
-
-
-        final String[] gamesList_arr = new String[10];
-
+        final String[] gamesList_arr = new String[games.size()];
         for(int i = 0; i < games.size(); i++ ) {
             gamesList_arr[i] = games.get(i).date + " -- " + games.get(i).time;
         }
-
+        TextView tv = new TextView(CourtActivity.this);
+        tv.setText("Court Schedule");
+        gamesListView.addHeaderView(tv);
         gamesListView.setAdapter(new ArrayAdapter<String>(CourtActivity.this, android.R.layout.simple_list_item_1, gamesList_arr));
-
         gamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //Log.v("CLICK", gamesList_arr[0]);
                 Intent intent = new Intent(getApplicationContext(), GamesActivity.class);
-                //intent.putExtra("CourtBitmap", courtBitmap);
+                intent.putExtra("CourtBitmap", courtBitmap);
                 //intent.putExtra("GameData", games.get(position));
                 intent.putExtra("GameData", games.get((int)id));
                 startActivity(intent);

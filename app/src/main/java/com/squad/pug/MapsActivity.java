@@ -110,7 +110,7 @@ public class MapsActivity extends FragmentActivity
                     Gson gson = new Gson();
 
                     // Building query string
-                    String rad = "&radius=5000";
+                    String rad = "&radius=500";
                     String type = "&keyword=basketball+court";
                     String query = "&query=basketball+court";
 

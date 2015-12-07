@@ -1,18 +1,18 @@
 package com.squad.pug;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -39,8 +39,8 @@ public class CreateGameActivity extends AppCompatActivity {
     TextView setTime;
     TextView setDate;
     EditText setNumPlayers;
-    EditText setLocation;
     Button submitButton;
+    Spinner locationSpinner;
     String time;
     String date;
     String location;
@@ -54,9 +54,14 @@ public class CreateGameActivity extends AppCompatActivity {
         setTime = (TextView) findViewById(R.id.setTime);
         setDate = (TextView) findViewById(R.id.setDate);
         setNumPlayers = (EditText) findViewById(R.id.setNumPlayers);
+        locationSpinner = (Spinner) findViewById(R.id.locationSpinner);
         ArrayList<String> courtNames = new ArrayList<>();
+        courtNames.add("");
         try {
-            courtNames = getIntent().getStringArrayListExtra("courtNames");
+            ArrayList<String> extraCourtNames;
+            extraCourtNames = getIntent().getStringArrayListExtra("courtNames");
+            if( extraCourtNames != null )
+                courtNames = extraCourtNames;
         } catch(RuntimeException e ) {
             e.printStackTrace();
         }
@@ -107,48 +112,70 @@ public class CreateGameActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        time = setTime.getText().toString();
-                        date = setDate.getText().toString();
-                        numPlayers = Integer.parseInt(setNumPlayers.getText().toString());
-                        //location = setLocation.getText().toString();
-                        location = "Dorotea Park";
-
-                        Game newGame = new Game(1,  "Jeff Bahns", time, date, numPlayers, location);
-                        createGame(newGame);
-
-                        testPrint();
-                        /*
-                        AlertDialog alertDialog = new AlertDialog.Builder(CreateGameActivity.this).create();
-                        alertDialog.setTitle("Hello");
-                        alertDialog.setMessage("Your game was successfully created");
-                        alertDialog.show();
-                        */
+                        if( onSubmit() ) {
+                            AlertDialog successAlert = new AlertDialog.Builder(CreateGameActivity.this).create();
+                            successAlert.setTitle("Confirm game creation");
+                            String message = "Time : " + time + "\nDate :" + date + "\nNo. Players : " + numPlayers + "\nLocation : " + location;
+                            successAlert.setMessage(message);
+                            successAlert.show();
+                        } else {
+                            AlertDialog failureAlert = new AlertDialog.Builder(CreateGameActivity.this).create();
+                            failureAlert.setTitle("Error");
+                            failureAlert.setMessage("All fields must be successfully filled");
+                            failureAlert.show();
+                        }
                     }
                 }
         );
 
-            // autocomplete location picker
-            String[] COURTS = new String[]{
-                    "Lady Bug Park", "Dorotea Park", "Callinan Sports & Fitness Center",
-                    "Rancho Cotate High School", "Sonoma State University"
-            };
-            AutoCompleteTextView textView = (AutoCompleteTextView) findViewById(R.id.autoLocation);
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, courtNames);
-            textView.setAdapter(adapter);
+        //location picker
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, courtNames);
+        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
+        locationSpinner.setAdapter(adapter);
 
     }
 
     public void makeToast() {
         Toast courtSnippet = Toast.makeText(CreateGameActivity.this, "Game successfully submitted", Toast.LENGTH_SHORT);
-        courtSnippet.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+        courtSnippet.setGravity(Gravity.TOP | Gravity.CENTER_HORIZONTAL, 0, 0);
         courtSnippet.show();
     }
 
-    protected void testPrint() {
-        Log.v("Time : ", time);
-        Log.v("Date : ", date);
-        Log.v("Number Players : ", String.valueOf(numPlayers));
+    // submit button triggers this function
+    private boolean onSubmit() {
+        try {
+            time = setTime.getText().toString();
+        } catch(RuntimeException e) {
+            return false;
+        }
+        try {
+            date = setDate.getText().toString();
+        } catch(RuntimeException e) {
+            return false;
+        }
+
+        try {
+            numPlayers = Integer.parseInt(setNumPlayers.getText().toString());
+        } catch(RuntimeException e) {
+            return false;
+        }
+
+        try {
+            location = locationSpinner.getSelectedItem().toString();
+            if( location == "")
+                return false;
+        } catch(RuntimeException e) {
+            return false;
+        }
+
+        Game newGame = new Game(1,  "Jeff Bahns", time, date, numPlayers, location);
+        newGame.print();
+
+        //createGame(newGame);
+
+        return true;
     }
+
     private void createGame(Game game){
         ServerRequests serverRequests = new ServerRequests(this);
         serverRequests.storedGameDataInBackground(game, new GetGameCallback() {
