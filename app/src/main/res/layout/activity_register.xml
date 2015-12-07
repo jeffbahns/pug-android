@@ -101,12 +101,13 @@
         android:hint="Enter Password"
         android:textColor="#c1ddf7" />
 
-    <Button
+    <ImageButton
         android:id="@+id/bRegister"
-        android:text="Register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="false" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/register_selector"
+        />
 
 
 

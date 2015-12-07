@@ -6,10 +6,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button bRegister;
+    ImageButton bRegister;
     EditText etUsername, etName, etTNumber, etSex, etAge, etPassword;
 
 
@@ -24,7 +25,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         etSex = (EditText) findViewById(R.id.etSex);
         etAge = (EditText) findViewById(R.id.etAge);
         etPassword = (EditText) findViewById(R.id.etPassword);
-        bRegister = (Button) findViewById(R.id.bRegister);
+        bRegister = (ImageButton) findViewById(R.id.bRegister);
 
         bRegister.setOnClickListener(this);
 

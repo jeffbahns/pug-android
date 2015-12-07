@@ -70,9 +70,10 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="75dp" />
+            android:id="@+id/poweredBySquad"
+            android:background="@android:color/transparent"
+            android:src="@drawable/powered_by_squad"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
     <!--<Button-->

@@ -101,8 +101,8 @@
             android:layout_height="wrap_content"
             android:id="@+id/signIntoGame"
             android:layout_gravity="center"
-            android:src="@drawable/login_selector"
-            android:background="#00ffffff" />
+            android:src="@drawable/im_in_selector"
+            android:background="@android:color/transparent" />
     </LinearLayout>
 
 </LinearLayout>
