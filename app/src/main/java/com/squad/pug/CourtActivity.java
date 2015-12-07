@@ -3,6 +3,7 @@ package com.squad.pug;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
@@ -102,7 +103,7 @@ public class CourtActivity extends AppCompatActivity
         // 5: directions formatted
         courtName.setText(model.get(3));
      //   directions.setText(model.get(5));
-        // Underline directions
+        // Underline directions and set to formatted address
         SpannableString dir = new SpannableString(model.get(5));
         dir.setSpan(new UnderlineSpan(), 0, dir.length(), 0);
         directions.setText(dir);
@@ -205,6 +206,12 @@ public class CourtActivity extends AppCompatActivity
         args.putInt(DIALOG_ERROR, errorCode);
         dialogFragment.setArguments(args);
         dialogFragment.show(getSupportFragmentManager(), "errordialog");
+    }
+
+    public void onRoute(View view, String destAddrLatLng){
+        Intent intent = new Intent(Intent.ACTION_VIEW,
+                Uri.parse("http://maps.google.com/maps?daddr=" + destAddrLatLng));
+        startActivity(intent);
     }
 
     public void openCreateGameWithCourt(View view){
