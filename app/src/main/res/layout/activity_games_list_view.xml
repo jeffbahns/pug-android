@@ -26,13 +26,29 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"></LinearLayout>
+        android:layout_gravity="center_horizontal">
 
-    <ListView
+        <ImageView
+            android:layout_width="337dp"
+            android:layout_height="205dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center"
+            android:src="@drawable/powered_by_squad" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/gamesListView"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal">
+
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/gamesListView"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+
 </LinearLayout>
 <!--<android.support.design.widget.CoordinatorLayout-->
     <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
