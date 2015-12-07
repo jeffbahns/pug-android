@@ -69,11 +69,8 @@ public class SearchItemModel {
     public String getStringLatLng () {
         String stringLat = String.valueOf(geometry.getLocation1().getLat());
         String stringLng = String.valueOf(geometry.getLocation1().getLng());
-<<<<<<< HEAD
-        String stringLatLng = stringLat + stringLng;
-=======
+
         String stringLatLng = stringLat + "," + stringLng;
->>>>>>> branchAlaHeffe
         System.out.println("STRING LAT LNG" + stringLatLng);
         return stringLatLng;
     }

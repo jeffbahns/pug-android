@@ -38,11 +38,8 @@
             android:id="@+id/directions"
             android:layout_gravity="center"
             android:textColor="#c1ddf7"
-<<<<<<< HEAD
             android:onClick="onRoute" />
-=======
             />
->>>>>>> branchAlaHeffe
     </LinearLayout>
 
     <LinearLayout
