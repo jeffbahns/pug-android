@@ -111,9 +111,9 @@ public class SearchItemModel {
     public void populateMapWithModel(GoogleMap mMap, final Context mContext, HashMap<String, SearchItemModel> markerMap) {
         int randomColor;
         if (gamesExist()) {
-            randomColor = 0;
+            randomColor = 1;
         } else {
-            randomColor = 3;
+            randomColor = 1;
         }
 
         markyMarker = mMap.addMarker(new MarkerOptions()

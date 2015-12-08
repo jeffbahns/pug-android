@@ -116,7 +116,7 @@ public class MapsActivity extends FragmentActivity
                     String query = "&query=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBaseText + location + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBaseText + AppDefines.testLocations[0] + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
