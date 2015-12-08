@@ -31,11 +31,11 @@ public class CourtActivity extends AppCompatActivity
     private static final String DIALOG_ERROR = "diaglog_error";
     private static final int REQUEST_RESOLVE_ERROR = 1001;
     public Bitmap courtBitmap;
-
+    public ArrayList<String> model;
 
     public ArrayList<String> getItemModelDataStringArray(){
         Intent intent = getIntent();
-        ArrayList<String> model = intent.getStringArrayListExtra("CourtData");
+        model = intent.getStringArrayListExtra("CourtData");
 
         //       ArrayList<String> model = intent.getStringArrayListExtra("Mock court");
         return model;
@@ -69,6 +69,7 @@ public class CourtActivity extends AppCompatActivity
                 Intent intent = new Intent(getApplicationContext(), GamesActivity.class);
                 intent.putExtra("CourtBitmapPlaceId", getItemModelDataStringArray().get(4));
                 //intent.putExtra("GameData", games.get(position));
+                intent.putStringArrayListExtra("CourtData", model);
                 intent.putExtra("GameData", games.get((int)id));
                 startActivity(intent);
 
