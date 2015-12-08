@@ -29,9 +29,11 @@ public class AppDefines {
     // Test String for the photo in court fragment
     public static final String tempId = "ChIJrTLr-GyuEmsRBfy61i59si0";
 
-    // This array is temporary, and it just randomizes the icons for now until we have things for the colors to indicate
-    public static final int[] court_icons = {R.drawable.court_pin_blue, R.drawable.court_pin_red,
-            R.drawable.court_pin_black, R.drawable.court_pin_green,};
+    // Array of court icons for pins; Indexes:
+    // 0: Blue (indication)
+    // 1: Red (indication)
+    // 2: Green (indication)
+    public static final int[] court_icons = {R.drawable.court_pin_blue, R.drawable.court_pin_red, R.drawable.court_pin_green,};
 
     // it works , don't touch it bruh
     public static final String JEFFS_GOOGLE_API_KEY = "AIzaSyA_8dJbAB6sS_taHGQIVSEohJMwehksVEU";
