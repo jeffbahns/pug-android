@@ -25,4 +25,5 @@
     android:layout_width="match_parent"
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:ellipsize="marquee"
-    android:textColor="#c1ddf7"/>
+    android:textColor="#c1ddf7"
+    android:background="#141a31"/>
