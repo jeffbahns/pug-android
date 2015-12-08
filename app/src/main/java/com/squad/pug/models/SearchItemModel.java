@@ -121,7 +121,7 @@ public class SearchItemModel {
                 .draggable(false)
                 .title(name)
                 .snippet(games + " games active within 24hrs")
-                .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor])));
+                .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[0])));
 
         //  .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
 

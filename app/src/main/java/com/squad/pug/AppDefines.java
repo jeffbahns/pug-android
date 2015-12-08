@@ -17,7 +17,7 @@ public class AppDefines {
     public static final String photoStringBase = "https://maps.googleapis.com/maps/api/place/photo?";
     public static final String[] testLocations = {
             "37.7743902,-122.4379349", // SF, CA
-            "38.3393866,-122.6763699" // SSU, CA
+            "38.3393866,tr1ll" // SSU, CA
     };
 
     // Building quick test location in LatLng type from the above array

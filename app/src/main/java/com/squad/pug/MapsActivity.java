@@ -3,6 +3,7 @@ package com.squad.pug;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.AsyncTask;
@@ -12,9 +13,13 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageButton;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -38,12 +43,16 @@ import java.util.HashMap;
 
 
 public class MapsActivity extends FragmentActivity
-        implements OnMapReadyCallback {
+        implements OnMapReadyCallback, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     private GoogleMap mMap;
     public SearchResultModel courtsResult;
     public HashMap<String, SearchItemModel> markerMap = new HashMap<String, SearchItemModel>();
     //public android.app.Fragment fragment = getFragmentManager().findFragmentById(R.id.FraggyList);
+    protected GoogleApiClient mGoogleApiClient;
+    private boolean mResolvingError = false;
+    private static final String DIALOG_ERROR = "diaglog_error";
+    private static final int REQUEST_RESOLVE_ERROR = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +62,15 @@ public class MapsActivity extends FragmentActivity
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        // Build another google api client!
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApiIfAvailable(LocationServices.API)
+                .addApiIfAvailable(Places.GEO_DATA_API)
+                .addApiIfAvailable(Places.PLACE_DETECTION_API)
+                .build();
 
         ImageButton findLocalGames = (ImageButton) findViewById(R.id.find_games);
         findLocalGames.setOnClickListener(
@@ -84,12 +102,25 @@ public class MapsActivity extends FragmentActivity
             mMap.setMyLocationEnabled(true);
         }
         String locationLatLong = "";
+        String locationLat = "";
+        String locationLng = "";
         try {
             final Location myLocation = mMap.getMyLocation();
-            locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+
+            // Trevor's testing shit for updating map when app is started
+            Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+
+            if (mLastLocation != null) {
+                locationLat = (String.valueOf(mLastLocation.getLatitude()));
+                locationLng = (String.valueOf(mLastLocation.getLongitude()));
+                locationLatLong = locationLat + "," + locationLng;
+
+         //   locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
-        } catch (RuntimeException e) {
+            System.out.println("LOCATION STRING:" + locationLatLong);
+          //  mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
+        }} catch (RuntimeException e) {
             e.printStackTrace();
         }
 
@@ -269,6 +300,85 @@ public class MapsActivity extends FragmentActivity
 
             }
         }
+    }
+
+    @Override
+    public void onConnectionSuspended(int cause){
+
+    }
+
+    @Override
+    public void onConnected(Bundle connectionHint){
+
+        String locationLatLong = "";
+        String locationLat = "";
+        String locationLng = "";
+
+        try {
+            final Location myLocation = mMap.getMyLocation();
+
+            // Trevor's testing shit for updating map when app is started
+            Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
+                    mGoogleApiClient);
+
+            if (mLastLocation != null) {
+                locationLat = (String.valueOf(mLastLocation.getLatitude()));
+                locationLng = (String.valueOf(mLastLocation.getLongitude()));
+                locationLatLong = locationLat + "," + locationLng;
+
+                //   locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
+                System.out.println("LOCATION STRING:" + locationLatLong);
+                //  mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
+            }} catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+
+
+    }
+
+    @Override
+    public void onConnectionFailed(ConnectionResult result){
+        if (mResolvingError){
+            return;
+        } else if (result.hasResolution()) {
+            try{
+                mResolvingError = true;
+                result.startResolutionForResult(this, REQUEST_RESOLVE_ERROR);
+            }
+            catch (IntentSender.SendIntentException e){
+                mGoogleApiClient.connect();
+            }
+        }
+        else{
+            showErrorDialog(result.getErrorCode());
+            mResolvingError = true;
+        }
+
+    }
+
+    @Override
+    protected void onStart(){
+        super.onStart();
+        if (!mResolvingError) {
+
+            mGoogleApiClient.connect();
+        }
+    }
+
+    @Override
+    protected void onStop(){
+        mGoogleApiClient.disconnect();
+        super.onStop();
+    }
+
+    private void showErrorDialog(int errorCode){
+        Launcher.ErrorDialogFragment dialogFragment = new Launcher.ErrorDialogFragment();
+        Bundle args = new Bundle();
+        args.putInt(DIALOG_ERROR, errorCode);
+        dialogFragment.setArguments(args);
+        dialogFragment.show(getSupportFragmentManager(), "errordialog");
     }
 
 
