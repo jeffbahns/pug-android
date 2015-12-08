@@ -80,14 +80,15 @@ public class CreateGameActivity extends AppCompatActivity {
                         int year = mCurrentDate.get(Calendar.YEAR);
                         int month = mCurrentDate.get(Calendar.MONTH);
                         int day = mCurrentDate.get(Calendar.DAY_OF_MONTH);
-
                         DatePickerDialog mDatePicker = new DatePickerDialog(CreateGameActivity.this, new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void  onDateSet(DatePicker datePicker, int selectedYear, int selectedMonth, int selectedDay ) {
-                                setDate.setText( selectedMonth + " / " + selectedDay + " / " + selectedYear );
+                                setDate.setText( selectedMonth+1 + " / " + selectedDay + " / " + selectedYear );
                             }
                         }, year, month, day);
                         mDatePicker.setTitle("Select a court date");
+                        DatePicker dp = mDatePicker.getDatePicker();
+                        dp.setMinDate(mCurrentDate.getTimeInMillis());
                         mDatePicker.show();
                     }
                 }
