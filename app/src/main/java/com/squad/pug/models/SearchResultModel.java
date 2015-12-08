@@ -61,7 +61,7 @@ public class SearchResultModel {
         for( int i = 0; i < courts.size(); i++ ) {
             System.out.println("X - - - - - Court " + i + " - - - - - X");
             courts.get(i).print();
-            courts.get(i).printGames();
+            //courts.get(i).printGames();
             System.out.println(" ");
         }
         System.out.println("_________________________________________________________________________");

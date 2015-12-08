@@ -135,12 +135,15 @@ public class SearchItemModel {
     }
 
     public void getGamesFromDatabase(Context mContext, GoogleMap mMap, HashMap<String, SearchItemModel> markerMap) {
-        int id = 1;
+        getID(new Game(name), mContext, mMap, markerMap);
+        //int id = 1;
         //Game game = new Game(id, name);
-        for(int i = 1; i < 4; i++ ) {
+        /*
+        for(int i = 0; i < 4; i++ ) {
             searchLocation( new Game(i, name), mContext, mMap, markerMap);
         }
         printGames();
+        */
     }
 
     public boolean gamesExist() {
@@ -152,6 +155,26 @@ public class SearchItemModel {
 
             gamesList.get(i).print();
         }
+    }
+
+    public void getID(Game game, final Context mContext, final GoogleMap mMap, final HashMap<String, SearchItemModel> markerMap) {
+        ServerRequests serverRequests = new ServerRequests(mContext);
+        serverRequests.getIDInBackground(game, new GetGameCallback() {
+            @Override
+            public void done(Game returnedGame) {
+                if (returnedGame == null) {
+                    //createGame(userLocalStore.getGame());
+                } else {
+                    //userLocalStore.storeID(returnedGame);
+                    //Game ngame = userLocalStore.getGame();
+                    int court_id = returnedGame.id + 1;  //number of games at the court
+                    for(int i = 0; i < court_id; i++ ) {
+                        searchLocation( new Game(i, name), mContext, mMap, markerMap);
+                    }
+                }
+                //return returnedGame;
+            }
+        });
     }
 
     // test print routine

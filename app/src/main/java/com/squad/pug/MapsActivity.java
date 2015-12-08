@@ -153,7 +153,7 @@ public class MapsActivity extends FragmentActivity
                 }
 //
                 // console print test
-                result.print();
+                //result.print();
             }
         }.execute("");
         onPostPopulate();

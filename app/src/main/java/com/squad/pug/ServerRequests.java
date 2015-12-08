@@ -59,6 +59,10 @@ public class ServerRequests {
         //progressDialog.show();
         new getIDAsyncTask(game, callback).execute();
     }
+    public void joinedGameInBackground(Game game, GetGameCallback gameCallback) {
+        //progressDialog.show();
+        new JoinGameAsyncTask(game, gameCallback).execute();
+    }
 
     public class StoreUserDataAsyncTask extends AsyncTask<Void, Void, Void> {
         User user;
@@ -333,6 +337,48 @@ public class ServerRequests {
             super.onPostExecute(returnedGame);
             progressDialog.dismiss();
             gameCallback.done(returnedGame);
+        }
+    }
+    public class JoinGameAsyncTask extends AsyncTask<Void, Void, Void> {
+        Game game;
+        GetGameCallback gameCallback;
+
+        public JoinGameAsyncTask(Game game, GetGameCallback gameCallback) {
+            this.game = game;
+            this.gameCallback = gameCallback;
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            ArrayList<NameValuePair> dataToSend = new ArrayList<>();
+            dataToSend.add(new BasicNameValuePair("id", game.id + ""));
+            dataToSend.add(new BasicNameValuePair("user", game.user));
+            dataToSend.add(new BasicNameValuePair("location", game.location));
+
+            HttpParams httpRequestParams = new BasicHttpParams();
+            HttpConnectionParams.setConnectionTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+            HttpConnectionParams.setSoTimeout(httpRequestParams, CONNECTION_TIMEOUT);
+
+            HttpClient client = new DefaultHttpClient(httpRequestParams);
+            HttpPost post = new HttpPost(SERVER_ADDRESS + "JoinGame.php");
+
+            try {
+                post.setEntity(new UrlEncodedFormEntity(dataToSend));
+                client.execute(post);
+            } catch (Exception e) {
+                e.printStackTrace();
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+            gameCallback.done(null);
+            super.onPostExecute(aVoid);
+
         }
     }
 }
