@@ -171,7 +171,7 @@ public class MapsActivity extends FragmentActivity
                 // Populate my first map
                 final Context mContext = MapsActivity.this.getApplicationContext();
                 result.grabGamesFromDatabaseForEachCourt(mContext, mMap, markerMap);
-                //result.populateMapWithModels(mMap, mContext, markerMap);
+        //        result.populateMapWithModels(mMap, mContext, markerMap);
                 // Move camera to current testLocation, but eventually to my current location / last known location!
                 try {
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(location), 12));

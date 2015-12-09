@@ -164,6 +164,7 @@ public class SearchItemModel {
             public void done(Game returnedGame) {
                 if (returnedGame == null) {
                     //createGame(userLocalStore.getGame());
+              //      searchLocation(new Game ());
                 } else {
                     //userLocalStore.storeID(returnedGame);
                     //Game ngame = userLocalStore.getGame();
