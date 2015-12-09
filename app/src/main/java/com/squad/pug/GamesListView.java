@@ -1,5 +1,6 @@
 package com.squad.pug;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -44,10 +45,15 @@ public class GamesListView extends AppCompatActivity {
                 //intent.putExtra("GameData", games.get(position));
                 intent2.putExtra("GameData", localGames.get((int)id));
                 startActivity(intent2);
-
-
             }
 
         });
+
+        if( localGamesPlaceIds.size() == 0 ) {
+            AlertDialog.Builder noGamesAlert = new AlertDialog.Builder(GamesListView.this);
+            noGamesAlert.setTitle("No games found, try refreshing");
+            noGamesAlert.setPositiveButton("Confirm", null);
+            noGamesAlert.show();
+        }
     }
 }

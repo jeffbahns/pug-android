@@ -109,19 +109,16 @@ public class SearchItemModel {
 
     // takes map param and injects a a new court marker
     public void populateMapWithModel(GoogleMap mMap, final Context mContext, HashMap<String, SearchItemModel> markerMap) {
-        int randomColor;
+        int randomColor = 0;
         if (gamesExist()) {
             randomColor = 1;
-        } else {
-            randomColor = 1;
         }
-
         markyMarker = mMap.addMarker(new MarkerOptions()
                 .position(getCourtLatLng())
                 .draggable(false)
                 .title(name)
                 .snippet(games + " games active within 24hrs")
-                .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[0])));
+                    .icon(BitmapDescriptorFactory.fromResource(AppDefines.court_icons[randomColor])));
 
         //  .icon(BitmapDescriptorFactory.defaultMarker(randomColor)));
 
@@ -164,7 +161,7 @@ public class SearchItemModel {
             public void done(Game returnedGame) {
                 if (returnedGame == null) {
                     //createGame(userLocalStore.getGame());
-              //      searchLocation(new Game ());
+                    searchLocation(new Game(name), mContext, mMap, markerMap);
                 } else {
                     //userLocalStore.storeID(returnedGame);
                     //Game ngame = userLocalStore.getGame();

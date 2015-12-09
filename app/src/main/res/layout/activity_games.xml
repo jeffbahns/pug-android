@@ -26,8 +26,8 @@
     </LinearLayout>
 
     <ImageView
-        android:layout_width="300dp"
-        android:layout_height="217dp"
+        android:layout_width="234dp"
+        android:layout_height="169dp"
         android:id="@+id/courtPhoto"
         android:layout_centerInParent="true"
         android:layout_alignParentLeft="false"
@@ -88,6 +88,30 @@
             android:textColor="#c1ddf7"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="41dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Players Attending"
+            android:id="@+id/playersAttending"
+            android:textColor="#c1ddf7"
+            android:layout_marginBottom="27dp"
+            android:layout_above="@+id/numPlayers" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/playersList" />
     </LinearLayout>
 
     <LinearLayout

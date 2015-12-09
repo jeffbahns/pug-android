@@ -147,7 +147,7 @@ public class MapsActivity extends FragmentActivity
                     String query = "&query=basketball+court";
 
                     // Make HTTP Connection & Request
-                    String urlString = AppDefines.urlStringBaseText + AppDefines.testLocations[0] + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
+                    String urlString = AppDefines.urlStringBaseText + location + rad + query + "&key=" + AppDefines.GOOGLE_SERVER_API;
                     URL url = new URL(urlString);
                     URLConnection conn = url.openConnection();
                     InputStream is = conn.getInputStream();
@@ -222,9 +222,15 @@ public class MapsActivity extends FragmentActivity
     }
 
     public void openGames(View view) {
-        ArrayList<Game> localGames = courtsResult.grabGames();
-        ArrayList<String> gamesPlaceIds = courtsResult.getArrayOfPlaceIds();
-        System.out.println("LOCAL GAMES ARRAY SIZE:" + localGames.size());
+        ArrayList<Game> localGames = new ArrayList<>();
+        ArrayList<String> gamesPlaceIds = new ArrayList<>();
+        try {
+            localGames = courtsResult.grabGames();
+            gamesPlaceIds = courtsResult.getArrayOfPlaceIds();
+        } catch(RuntimeException e){
+            e.printStackTrace();
+        }
+
         Intent intent = new Intent(this, GamesListView.class);
         intent.putParcelableArrayListExtra("GamesData", localGames);
         intent.putStringArrayListExtra("GamesPlaceIds", gamesPlaceIds);

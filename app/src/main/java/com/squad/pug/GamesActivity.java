@@ -1,5 +1,7 @@
 package com.squad.pug;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -49,7 +51,8 @@ public class GamesActivity extends AppCompatActivity
         TextView timeCreated = (TextView) findViewById(R.id.timeCreated);
         TextView dateCreated = (TextView) findViewById(R.id.dateCreated);
         TextView numPlayers = (TextView) findViewById(R.id.numPlayers);
-
+        TextView playersList = (TextView) findViewById(R.id.playersList);
+        playersList.setText(game.players_attending);
 
         // Set all text views
         gameCreator.setText(game.user + "'s Game");
@@ -87,12 +90,21 @@ public class GamesActivity extends AppCompatActivity
                 String uuser = user.username;
                 String location = model.get(3);
                 int id = game.id;
-                Game game = new Game(id, location, uuser);
-                joinIn(game);
+                final Game game = new Game(id, location, uuser);
+
+                AlertDialog.Builder successAlert = new AlertDialog.Builder(GamesActivity.this);
+                successAlert.setTitle("Confirm join game");
+                String message = "Are you sure you want to join this game?";
+                successAlert.setMessage(message);
+                successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        joinIn(game);
+                    }
+                });
+                successAlert.setNegativeButton("Cancel", null);
+                successAlert.show();
             }
         });
-
-
     }
 
     public void addPhoto(String placeId, final ImageView mImageView) {
