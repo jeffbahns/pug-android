@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     tools:context="com.squad.pug.ProfileActivity"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="#141a31">
 
 
     <TextView
@@ -15,7 +16,8 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.10" />
+        android:layout_weight="0.10"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:text="Name"
@@ -23,7 +25,8 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:layout_weight=".10" />
+        android:layout_weight=".10"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:text="Sex"
@@ -31,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.10" />
+        android:layout_weight="0.10"
+        android:textColor="#c1ddf7" />
 
     <TextView
         android:text="Age"
@@ -39,15 +43,10 @@
         android:id="@+id/etAge"
         android:layout_width="match_parent"
         android:layout_marginBottom="10dp"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="#c1ddf7" />
 
     <!-- LOGOUT BUTTON -->
-    <ImageButton
-        android:id="@+id/bLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/logout_selector"/>
 
     <LinearLayout
         android:orientation="vertical"
@@ -57,10 +56,18 @@
 
 
         <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/powered_by_squad"
+            android:id="@+id/powered_by_squad"
+            android:layout_gravity="center" />
+
+        <ImageButton
+            android:id="@+id/bLogout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baby"
-            android:id="@+id/baby"
+            android:background="@android:color/transparent"
+            android:src="@drawable/sign_out_selector"
             android:layout_gravity="center" />
     </LinearLayout>
 

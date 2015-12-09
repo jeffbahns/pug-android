@@ -136,5 +136,21 @@
                 android:onClick="makeToast"
                 android:layout_gravity="center_horizontal" />
         </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <!-- Powered by squad -->
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView2"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:src="@drawable/powered_by_squad"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

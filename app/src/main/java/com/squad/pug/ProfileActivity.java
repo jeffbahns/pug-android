@@ -49,10 +49,10 @@ public class ProfileActivity extends AppCompatActivity implements View.OnClickLi
     private void displayUserDetails(){
         User user = userLocalStore.getLoggedInUser();
 
-        etUsername.setText(user.username);
-        etName.setText(user.name);
-        etSex.setText(user.sex);
-        etAge.setText(user.age + "");
+        etUsername.setText("Username: " + user.username);
+        etName.setText("Name: " + user.name);
+        etSex.setText("Sex: " + user.sex);
+        etAge.setText("Age: " + user.age + "");
 
     }
 

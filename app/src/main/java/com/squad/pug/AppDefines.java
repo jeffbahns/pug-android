@@ -17,7 +17,7 @@ public class AppDefines {
     public static final String photoStringBase = "https://maps.googleapis.com/maps/api/place/photo?";
     public static final String[] testLocations = {
             "37.7743902,-122.4379349", // SF, CA
-            "38.3393866,tr1ll" // SSU, CA
+            "38.3393866,-122.4379349" // SSU, CA
     };
 
     // Building quick test location in LatLng type from the above array
@@ -30,8 +30,8 @@ public class AppDefines {
     public static final String tempId = "ChIJrTLr-GyuEmsRBfy61i59si0";
 
     // Array of court icons for pins; Indexes:
-    // 0: Blue (indication)
-    // 1: Red (indication)
+    // 0: Blue (indication: nothing going on)
+    // 1: Red (indication: contains people)
     // 2: Green (indication)
     public static final int[] court_icons = {R.drawable.court_pin_blue, R.drawable.court_pin_red, R.drawable.court_pin_green,};
 
