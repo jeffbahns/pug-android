@@ -32,7 +32,7 @@ public class GamesListView extends AppCompatActivity {
         gamesLV.addHeaderView(tv);
         final String[] gamesList_arr = new String[localGames.size()];
         for(int i = 0; i < localGames.size(); i++ ) {
-            gamesList_arr[i] = localGames.get(i).date + " -- " + localGames.get(i).time;
+            gamesList_arr[i] = localGames.get(i).location + " -- " + localGames.get(i).date + " -- " + localGames.get(i).time;
         }
         gamesLV.setAdapter(new ArrayAdapter<String>(GamesListView.this, R.layout.simple_list_item_trevor, gamesList_arr));
         gamesLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {

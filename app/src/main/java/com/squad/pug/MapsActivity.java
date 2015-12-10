@@ -341,7 +341,7 @@ public class MapsActivity extends FragmentActivity
                 locationLatLong = locationLat + "," + locationLng;
 
                 //   locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
+                //mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
                 System.out.println("LOCATION STRING:" + locationLatLong);
                 //  mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
             }} catch (RuntimeException e) {

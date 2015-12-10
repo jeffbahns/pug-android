@@ -18,7 +18,6 @@
         android:layout_height="match_parent">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/linearLayout2"
@@ -31,6 +30,19 @@
 
             <!-- ********  SET SEARCH LOCATION BUTTON ******** -->
 
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/imageView4"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/powered_by_squad_maps_activity" />
+            </LinearLayout>
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -38,7 +50,10 @@
                 android:src="@drawable/set_search_location_selector"
                 android:background="@android:color/transparent"
                 android:clickable="true"
-                android:onClick="pickCourtSearchLocation" />
+                android:onClick="pickCourtSearchLocation"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="20dp" />
 
             <!-- ********* FIND GAMES BUTTON ************* -->
             <ImageButton
@@ -60,19 +75,6 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:id="@+id/mapsActivityMainLinear">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView4"
-                android:background="@android:color/transparent"
-                android:src="@drawable/powered_by_squad_maps_activity" />
-        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
