@@ -110,9 +110,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
         final boolean createGame = false;
         AlertDialog.Builder successAlert = new AlertDialog.Builder(RegisterActivity.this);
-        successAlert.setTitle("Confirm join game");
-        String message = "Are you sure you want to join this game?";
-        successAlert.setMessage(message);
+        successAlert.setTitle("Confirm profile creation");
         successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 final boolean createGame = true;
