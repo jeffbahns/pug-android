@@ -53,6 +53,7 @@ public class MapsActivity extends FragmentActivity
     private boolean mResolvingError = false;
     private static final String DIALOG_ERROR = "diaglog_error";
     private static final int REQUEST_RESOLVE_ERROR = 1001;
+    private boolean alreadyUpdated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +88,10 @@ public class MapsActivity extends FragmentActivity
                     }
                 }
         );
+
+
+
+
     }
 
     @Override
@@ -116,10 +121,11 @@ public class MapsActivity extends FragmentActivity
                 locationLng = (String.valueOf(mLastLocation.getLongitude()));
                 locationLatLong = locationLat + "," + locationLng;
 
-         //   locationLatLong = String.valueOf(myLocation.getLatitude()) + "," + String.valueOf(myLocation.getLongitude());
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
-            System.out.println("LOCATION STRING:" + locationLatLong);
-          //  mMap.moveCamera(CameraUpdateFactory.newLatLng(latLngFormatter(locationLatLong)));
+            if (alreadyUpdated == false) {
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLngFormatter(locationLatLong), 12));
+                alreadyUpdated = true;
+            }
+
         }} catch (RuntimeException e) {
             e.printStackTrace();
         }
@@ -293,6 +299,8 @@ public class MapsActivity extends FragmentActivity
             if (resultCode == RESULT_OK) {
                 Place p = PlacePicker.getPlace(data, this);
                 LatLng loc = p.getLatLng();
+                // Update camera after set search location has been pressed
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(p.getLatLng(), 12));
                 System.out.println(loc.toString());
                 LocationData locationData = new LocationData(loc);
                 String strloclat = locationData.getLat().toString();

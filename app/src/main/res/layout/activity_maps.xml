@@ -28,17 +28,9 @@
             android:alpha="1">
 
             <!-- ******* COURTS LIST BUTTON ******** -->
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:clickable="true"
-                android:id="@+id/courts_list"
-                android:background="@android:color/transparent"
-                android:src="@drawable/courts_list_selector"
-                android:layout_alignParentTop="false"
-                android:onClick="openSettings" />
 
             <!-- ********  SET SEARCH LOCATION BUTTON ******** -->
+
             <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,6 +60,19 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:id="@+id/mapsActivityMainLinear">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageView4"
+                android:background="@android:color/transparent"
+                android:src="@drawable/powered_by_squad_maps_activity" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"

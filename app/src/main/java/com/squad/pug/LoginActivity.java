@@ -43,8 +43,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                 User user = new User(username, password);
 
-                //authenticate(user);
-                startActivity( new Intent(this, MapsActivity.class));
+                authenticate(user);
+               // startActivity( new Intent(this, MapsActivity.class));
                 break;
 
             case R.id.tvRegisterLink:

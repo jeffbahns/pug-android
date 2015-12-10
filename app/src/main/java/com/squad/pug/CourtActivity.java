@@ -3,6 +3,7 @@ package com.squad.pug;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -60,6 +61,7 @@ public class CourtActivity extends AppCompatActivity
         }
         TextView tv = new TextView(CourtActivity.this);
         tv.setText("Court Schedule");
+        tv.setTextColor(Color.parseColor("#c1ddf7"));
         gamesListView.addHeaderView(tv);
         gamesListView.setAdapter(new ArrayAdapter<String>(CourtActivity.this, R.layout.simple_list_item_trevor, gamesList_arr));
         gamesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
