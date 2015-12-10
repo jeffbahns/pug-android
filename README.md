@@ -1,10 +1,7 @@
-# pug
-App for creating and finding pick-up games in local area
+# 6<sup>th</sup> Man
+Android Application (API 18+) for creating and finding basketball pick-up games 
+at courts in your local area.
 
-Collaborators : Jeff B, Trevor C, Bryan P
+Collaborators : Jeff Bahns, Trevor Clarke, Bryan Penaloza
 
-<<<<<<< HEAD
-# Edit
-=======
-edited by jeff
->>>>>>> b99de64b2ec88396a20e3b7e837ea0cc020e11bb
+<em>UI Elements: https://github.com/trev0rclarke/SixthManAssets</em>
