@@ -1,6 +1,7 @@
 package com.squad.pug;
 
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -107,7 +108,21 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             failureAlert.show();
             return;
         }
-        registerUser(new User(username, name, tel_number, sex, age, password));
+        final boolean createGame = false;
+        AlertDialog.Builder successAlert = new AlertDialog.Builder(RegisterActivity.this);
+        successAlert.setTitle("Confirm join game");
+        String message = "Are you sure you want to join this game?";
+        successAlert.setMessage(message);
+        successAlert.setPositiveButton("Confirm", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                final boolean createGame = true;
+            }
+        });
+        successAlert.setNegativeButton("Cancel", null);
+        successAlert.show();
+        if( createGame)
+            registerUser(new User(username, name, tel_number, sex, age, password));
+
 
 
     }

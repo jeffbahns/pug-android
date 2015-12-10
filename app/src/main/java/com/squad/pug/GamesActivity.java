@@ -56,10 +56,10 @@ public class GamesActivity extends AppCompatActivity
 
         // Set all text views
         gameCreator.setText(game.user + "'s Game");
-        timeCreated.setText("Time created: " + game.time);
-        dateCreated.setText("Date created: " + game.date);
-        numPlayers.setText("Number of players checked in: " +
-                String.valueOf(game.num_players) + "/10");
+        timeCreated.setText("Time : " + game.time);
+        dateCreated.setText("Date : " + game.date);
+        numPlayers.setText("Number of players desired : "+
+                String.valueOf(game.num_players));
 
         // Build another google api client!
         mGoogleApiClient = new GoogleApiClient.Builder(this)

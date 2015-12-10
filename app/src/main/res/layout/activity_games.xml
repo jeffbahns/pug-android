@@ -87,23 +87,23 @@
             android:id="@+id/numPlayers"
             android:textColor="#c1ddf7"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="41dp" />
+            android:layout_marginBottom="10dp" />
 
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Players Attending"
+            android:text="Players Attending :"
             android:id="@+id/playersAttending"
             android:textColor="#c1ddf7"
-            android:layout_marginBottom="27dp"
             android:layout_above="@+id/numPlayers" />
 
         <TextView
